@@ -1,67 +1,24 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import {
-  ChevronDown,
-  BookOpen,
-  Calendar,
-  GraduationCap,
-  Map,
-  Brain,
-  Briefcase,
   Search,
   Menu,
   X,
+  GraduationCap,
+  Briefcase,
+  Calendar,
 } from "lucide-react";
 import { useScrollDirection } from "@/app/hooks/useScrollDirection";
 
 export default function Header() {
   const isVisible = useScrollDirection();
+  const pathname = usePathname();
   const [searchValue, setSearchValue] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-
-  const resources = [
-    {
-      label: "Books",
-      description: "Career development resources and guides",
-      icon: BookOpen,
-      href: "#books",
-    },
-    {
-      label: "Events",
-      description: "Networking and learning events",
-      icon: Calendar,
-      href: "#events",
-    },
-    {
-      label: "Courses",
-      description: "Online courses and skill development",
-      icon: GraduationCap,
-      href: "#courses",
-    },
-  ];
-
-  const career = [
-    {
-      label: "Roadmap",
-      description: "Your personalized career path",
-      icon: Map,
-      href: "#roadmap",
-    },
-    {
-      label: "Personality",
-      description: "Self-assessment tools & insights",
-      icon: Brain,
-      href: "#personality",
-    },
-    {
-      label: "Jobs",
-      description: "Browse and apply for opportunities",
-      icon: Briefcase,
-      href: "#jobs",
-    },
-  ];
 
   return (
     <header
@@ -72,7 +29,7 @@ export default function Header() {
       <nav className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="shrink-0 cursor-pointer">
+          <Link href={"/"} className="shrink-0 cursor-pointer">
             <Image
               src="/logo1.png"
               alt="LifePath Logo"
@@ -80,101 +37,40 @@ export default function Header() {
               height={48}
               className="h-8 w-auto"
             />
-          </div>
+          </Link>
 
           {/* Navigation Links - Desktop Only */}
           <div className="hidden lg:flex items-center gap-1 ml-10">
-            {/* Resources Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center gap-1.5 px-3 py-2 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium text-sm cursor-pointer">
-                Resources
-                <ChevronDown size={18} />
-              </button>
-
-              {/* Resources Dropdown Menu */}
-              <div className="absolute left-0 mt-4 w-80 bg-white border border-zinc-200 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-4">
-                <div className="px-4 pb-3 border-b border-zinc-100">
-                  <p className="text-xs font-semibold text-zinc-600 uppercase tracking-wide">
-                    Resources
-                  </p>
-                </div>
-                <div className="px-4 py-3 space-y-2">
-                  {resources.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 transition-colors group"
-                    >
-                      <item.icon
-                        size={24}
-                        className="text-blue-600 shrink-0 mt-0.5 group-hover:text-blue-700"
-                      />
-                      <div>
-                        <p className="font-semibold text-zinc-900 text-sm">
-                          {item.label}
-                        </p>
-                        <p className="text-xs text-zinc-600">
-                          {item.description}
-                        </p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Career Tools Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center text-sm gap-1.5 px-3 py-2 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium cursor-pointer">
-                Your Career
-                <ChevronDown size={18} />
-              </button>
-
-              {/* Career Dropdown Menu */}
-              <div className="absolute left-0 mt-4 w-80 bg-white border border-zinc-200 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-4">
-                <div className="px-4 pb-3 border-b border-zinc-100">
-                  <p className="text-xs font-semibold text-zinc-600 uppercase tracking-wide">
-                    Career Tools
-                  </p>
-                </div>
-                <div className="px-4 py-3 space-y-2">
-                  {career.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 transition-colors group"
-                    >
-                      <item.icon
-                        size={24}
-                        className="text-blue-600 shrink-0 mt-0.5 group-hover:text-blue-700"
-                      />
-                      <div>
-                        <p className="font-semibold text-zinc-900 text-sm">
-                          {item.label}
-                        </p>
-                        <p className="text-xs text-zinc-600">
-                          {item.description}
-                        </p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Other Links */}
-            <a
-              href="#"
-              className="px-3 py-2 text-sm text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium cursor-pointer"
+            <Link
+              href="/courses"
+              className={`px-3 py-2 text-sm font-medium rounded-full transition-colors cursor-pointer ${
+                pathname === "/courses"
+                  ? "bg-blue-100 text-blue-700"
+                  : "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50"
+              }`}
             >
-              Blogs
-            </a>
-            <a
-              href="#"
-              className="px-3 py-2 text-sm text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium cursor-pointer"
+              Courses
+            </Link>
+            <Link
+              href="/jobs"
+              className={`px-3 py-2 text-sm font-medium rounded-full transition-colors cursor-pointer ${
+                pathname === "/jobs"
+                  ? "bg-blue-100 text-blue-700"
+                  : "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50"
+              }`}
             >
-              About
-            </a>
+              Find Jobs
+            </Link>
+            <Link
+              href="/events"
+              className={`px-3 py-2 text-sm font-medium rounded-full transition-colors cursor-pointer ${
+                pathname === "/events"
+                  ? "bg-blue-100 text-blue-700"
+                  : "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50"
+              }`}
+            >
+              Events
+            </Link>
           </div>
 
           {/* Right Side Actions */}
@@ -189,14 +85,20 @@ export default function Header() {
             </button>
 
             {/* Log In Button */}
-            <button className="hidden sm:inline-block px-5 py-2 text-blue-600 font-medium hover:bg-blue-50 hover:border-blue-200 border border-transparent rounded-full transition-colors whitespace-nowrap text-sm cursor-pointer">
+            {/* <Link
+              href="/login"
+              className="hidden sm:inline-block px-5 py-2 text-blue-600 font-medium hover:bg-blue-50 hover:border-blue-200 border border-blue-100 rounded-full transition-colors whitespace-nowrap text-sm cursor-pointer"
+            >
               Log In
-            </button>
+            </Link> */}
 
             {/* Sign Up Button */}
-            <button className="inline-block px-5 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition-colors shadow-sm whitespace-nowrap text-sm cursor-pointer">
-              Join for free
-            </button>
+            <Link
+              href="/personality-test"
+              className="inline-block px-5 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition-colors shadow-sm whitespace-nowrap text-sm cursor-pointer"
+            >
+              Find My Lifepath
+            </Link>
 
             {/* Mobile Menu Button */}
             <button className="lg:hidden p-2 text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer">
@@ -271,13 +173,12 @@ export default function Header() {
                   {
                     label: "All Courses",
                     icon: GraduationCap,
-                    href: "#courses",
+                    href: "/courses",
                   },
-                  { label: "Career Test", icon: Brain, href: "#personality" },
-                  { label: "Job Board", icon: Briefcase, href: "#jobs" },
-                  { label: "Resources", icon: BookOpen, href: "#books" },
+                  { label: "Job Board", icon: Briefcase, href: "/jobs" },
+                  { label: "Events", icon: Calendar, href: "/events" },
                 ].map((link) => (
-                  <a
+                  <Link
                     key={link.label}
                     href={link.href}
                     onClick={() => setIsSearchOpen(false)}
@@ -290,32 +191,13 @@ export default function Header() {
                     <span className="text-sm font-medium text-zinc-700 group-hover:text-blue-700">
                       {link.label}
                     </span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
         </div>
       )}
-      {/* <div className="bg-linear-to-r from-blue-600 via-blue-500 to-indigo-600 text-white text-center py-2.5 px-4 shadow-md">
-        <div className="flex items-center justify-center gap-3 flex-wrap">
-          <Icon
-            icon="mdi:star"
-            width={18}
-            height={18}
-            className="text-yellow-300 animate-pulse"
-          />
-          <h2 className="font-semibold text-sm md:text-base">
-            🚀 Join LifePath Today – Start Your Career Growth Journey Anytime!
-          </h2>
-          <Icon
-            icon="mdi:arrow-right"
-            width={18}
-            height={18}
-            className="text-yellow-300"
-          />
-        </div>
-      </div> */}
     </header>
   );
 }

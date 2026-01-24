@@ -145,7 +145,7 @@ export default function PersonalitySection() {
 
   return (
     <section id="personality" className="py-10 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-6xl mx-auto relative">
         {/* Header */}
         <div className="flex justify-between items-center">
           <div className="mb-12">

@@ -5,6 +5,8 @@ import PersonalitySection from "./components/home/PersonalitySection";
 import JobsSection from "./components/home/JobsSection";
 import CoursesSection from "./components/home/CoursesSection";
 import NewsletterCTA from "./components/home/NewsletterCTA";
+import StudentTestimonialsSection from "./components/home/StudentTestimonialsSection";
+import FAQSection from "./components/home/FAQSection";
 
 export default function Home() {
   return (
@@ -18,9 +20,11 @@ export default function Home() {
         imageSrc="/heroImages/woman2.png"
       />
       <CoursesSection />
+      <StudentTestimonialsSection />
       {/* <NewsletterCTA title="Join the class today" imageSrc="/woman2.png" /> */}
       <PersonalitySection />
-      <NewsletterCTA title="Join the class today" imageSrc="/woman2.png" />
+      <FAQSection />
+      {/* <NewsletterCTA title="Join the class today" imageSrc="/woman2.png" /> */}
     </div>
   );
 }

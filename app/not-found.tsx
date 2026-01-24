@@ -45,7 +45,11 @@ export default function NotFound() {
           {/* 404 with glow effect */}
           <div className="relative mb-16">
             {/* 404 Text */}
-            404
+            <h2 className="text-8xl md:text-9xl font-extrabold text-white relative z-10">
+              404
+            </h2>
+            {/* Glow Effect */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-blue-500 rounded-full opacity-30 blur-3xl animate-pulse"></div>
           </div>
 
           {/* Back to Homepage button */}

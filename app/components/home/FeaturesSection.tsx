@@ -1,11 +1,11 @@
-import { Icon } from "@iconify/react";
+import { Briefcase, BookOpen, BriefcaseIcon, Users } from "lucide-react";
 
 export default function FeaturesSection() {
   const features = [
     {
       title: "Career Foundation",
       description: "Build your professional profile and core skills",
-      icon: "mdi:briefcase",
+      icon: Briefcase,
       badge: "FREE",
       badgeColor: "bg-zinc-100 text-zinc-600",
       iconBg: "bg-blue-500",
@@ -13,7 +13,7 @@ export default function FeaturesSection() {
     {
       title: "Learning Paths",
       description: "Structured courses and training programs",
-      icon: "mdi:book-open-page-variant",
+      icon: BookOpen,
       badge: "PRO",
       badgeColor: "bg-blue-100 text-blue-600",
       iconBg: "bg-zinc-300",
@@ -21,7 +21,7 @@ export default function FeaturesSection() {
     {
       title: "Job Matching",
       description: "Find roles aligned with your goals",
-      icon: "mdi:briefcase-search",
+      icon: BriefcaseIcon,
       badge: "PRO",
       badgeColor: "bg-blue-100 text-blue-600",
       iconBg: "bg-zinc-300",
@@ -29,7 +29,7 @@ export default function FeaturesSection() {
     {
       title: "Career Coaching",
       description: "Expert guidance and mentorship",
-      icon: "mdi:account-multiple",
+      icon: Users,
       badge: "PRO",
       badgeColor: "bg-blue-100 text-blue-600",
       iconBg: "bg-zinc-300",
@@ -51,12 +51,7 @@ export default function FeaturesSection() {
               <div
                 className={`${feature.iconBg} rounded-2xl p-4 mb-6 flex items-center justify-center`}
               >
-                <Icon
-                  icon={feature.icon}
-                  width={32}
-                  height={32}
-                  className="text-white"
-                />
+                <feature.icon size={32} className="text-white" />
               </div>
 
               {/* Title with Badge */}

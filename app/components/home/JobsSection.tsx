@@ -1,49 +1,62 @@
-import { Icon } from "@iconify/react";
+"use client";
+import {
+  BellRing,
+  TrendingUp,
+  Calendar,
+  DollarSign,
+  MapPin,
+  Clock,
+  Tag,
+  ChevronRight,
+  ArrowRight,
+  BriefcaseBusiness,
+} from "lucide-react";
+import Image from "next/image";
 
 export default function JobsSection() {
   const jobs = [
     {
-      id: "F",
-      title: "Frontend Developer",
-      company: "Linear",
+      img: "/company-logo/webx.png",
+      title: "Software Developer",
+      company: "F1 Soft",
       experience: "1-5",
-      salary: "100k-140k",
-      location: "Australia only",
+      salary: "80k-200k",
+      location: "Kathmandu only",
       type: "Full time",
       category: "Software Developer",
-      postedTime: "2 hours ago",
+      postedTime: "1 hour ago",
     },
     {
-      id: "S",
-      title: "Senior Product Designer",
-      company: "Stripe",
-      experience: "6-10",
-      salary: "120k-180k",
+      img: "/company-logo/cursor.svg",
+      title: "UI/UX Designer",
+      company: "Cursor",
+      experience: "1-4",
+      salary: "60k-180k",
       location: "Remote",
       type: "Full time",
       category: "Product Designer",
       postedTime: "4 hours ago",
     },
     {
-      id: "UX",
-      title: "UX/UI Designer",
-      company: "Webflow",
+      img: "/company-logo/webx.png",
+      title: "Graphic Designer",
+      company: "FonePay",
       experience: "3-7",
-      salary: "110k-150k",
-      location: "US only",
+      salary: "60k-150k",
+      location: "Nepal only",
       type: "Full time",
-      category: "UX Designer",
+      category: "Branding Designer",
       postedTime: "5 hours ago",
     },
     {
-      id: "AE",
+      img: "/company-logo/cursor.svg",
       title: "Account Executive",
-      company: "Intercom",
+      company: "Nameste",
       experience: "2-6",
       salary: "90k-140k",
-      location: "Any",
-      type: "Full time",
-      category: "Sales",
+      location: "Nepal only",
+      type: "Part-time",
+      category: "Finance",
       postedTime: "5 hours ago",
     },
   ];
@@ -55,174 +68,70 @@ export default function JobsSection() {
     { title: "Engineering Manager", count: "64 jobs" },
   ];
 
-  const getInitials = (id: string) => id;
+  // const getInitials = (id: string) => id;
 
-  const getLogoColor = (index: number) => {
-    const colors = [
-      "bg-linear-to-br from-blue-600 to-blue-700",
-      "bg-linear-to-br from-indigo-600 to-indigo-700",
-      "bg-linear-to-br from-blue-500 to-blue-600",
-      "bg-linear-to-br from-slate-700 to-slate-800",
-    ];
-    return colors[index % colors.length];
-  };
+  // const getLogoColor = (index: number) => {
+  //   const colors = [
+  //     "bg-linear-to-br from-blue-600 to-blue-700",
+  //     "bg-linear-to-br from-indigo-600 to-indigo-700",
+  //     "bg-linear-to-br from-blue-500 to-blue-600",
+  //     "bg-linear-to-br from-slate-700 to-slate-800",
+  //   ];
+  //   return colors[index % colors.length];
+  // };
 
   return (
-    <section
-      id="jobs"
-      className="py-20 bg-linear-to-br from-white via-blue-50 to-white"
-    >
+    <section id="jobs" className="py-8">
       <div className="max-w-6xl mx-auto px-4 lg:px-0">
         {/* Header Section */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-3">
-            <Icon
-              icon="mdi:briefcase"
-              width={32}
-              height={32}
-              className="text-blue-600"
-            />
-            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
-              Opportunities
-            </span>
+        <div className="flex justify-between items-center">
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-3">
+              <BriefcaseBusiness size={32} className="text-blue-600" />
+              <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+                Based on 5,000+ Nepali job listings
+              </span>
+            </div>
+            {/* <ShinyText
+              text="High-Paying Career Paths in Nepal (2026)"
+              speed={1}
+              delay={0.5}
+              color="#000000"
+              shineColor="#355CFE"
+              spread={120}
+              direction="left"
+              yoyo={false}
+              pauseOnHover={false}
+              disabled={false}
+              className="text-4xl font-semibold h-fit"
+            /> */}
+            <h2 className="text-4xl md:text-4xl font-bold  text-zinc-900 mb-4">
+              High-Paying Career Paths in Nepal (2026)
+            </h2>
+            <p className="text-lg text-zinc-600">
+              Discover premium job opportunities from top companies across
+              Nepal.
+            </p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold font-montserrat text-zinc-900 mb-4">
-            High Paying Jobs
-          </h2>
-          <p className="text-lg text-zinc-600">
-            Discover premium job opportunities from top companies across the
-            world.
-          </p>
+          {/* Job Count Badge */}
+          <div className="flex items-center gap-2 mb-8">
+            <div className="px-4 py-2 bg-green-100 rounded-full">
+              <p className="text-sm font-semibold text-green-700 animate-pulse">
+                {jobs.length * 400} total jobs available
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Main Layout - List + Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Jobs List */}
-          <div className="lg:col-span-2">
-            {/* Job Count Badge */}
-            <div className="flex items-center gap-2 mb-8">
-              <div className="px-4 py-2 bg-blue-100 rounded-full">
-                <p className="text-sm font-semibold text-blue-700">
-                  {jobs.length * 400} total jobs available
-                </p>
-              </div>
-            </div>
-
-            {/* Jobs List */}
-            <div className="space-y-4">
-              {jobs.map((job, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl border border-blue-100 p-6 hover:shadow-sm hover:border-blue-400 transition-all duration-300 cursor-pointer group"
-                >
-                  <div className="flex gap-4">
-                    {/* Logo */}
-                    <div
-                      className={`${getLogoColor(index)} w-14 h-14 rounded-lg flex items-center justify-center shrink-0 shadow-sm group-hover:shadow-md transition-shadow`}
-                    >
-                      <span className="text-white font-bold text-lg">
-                        {getInitials(job.id)}
-                      </span>
-                    </div>
-
-                    {/* Job Details */}
-                    <div className="grow">
-                      {/* Title and Time */}
-                      <div className="flex items-start justify-between gap-4 mb-3">
-                        <div>
-                          <h4 className="text-lg font-bold text-zinc-900 group-hover:text-blue-600 transition-colors">
-                            {job.title}
-                          </h4>
-                          <p className="text-sm text-zinc-600 mt-1">
-                            {job.company}
-                          </p>
-                        </div>
-                        <span className="text-xs text-zinc-400 whitespace-nowrap bg-zinc-100 px-3 py-1 rounded-full">
-                          {job.postedTime}
-                        </span>
-                      </div>
-
-                      {/* Details Grid */}
-                      <div className="flex flex-wrap gap-4 mb-4">
-                        <div className="flex items-center gap-1.5">
-                          <Icon
-                            icon="mdi:calendar"
-                            width={16}
-                            height={16}
-                            className="text-zinc-400"
-                          />
-                          <span className="text-xs text-zinc-600">
-                            {job.experience} yrs exp
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <Icon
-                            icon="mdi:currency-usd"
-                            width={16}
-                            height={16}
-                            className="text-green-600"
-                          />
-                          <span className="text-xs font-semibold text-green-600">
-                            {job.salary}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <Icon
-                            icon="mdi:map-marker"
-                            width={16}
-                            height={16}
-                            className="text-zinc-400"
-                          />
-                          <span className="text-xs text-zinc-600">
-                            {job.location}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Tags */}
-                      <div className="flex gap-2 flex-wrap">
-                        <span className="inline-flex items-center gap-1 bg-purple-100 text-purple-700 text-xs font-semibold px-3 py-1.5 rounded-full">
-                          <Icon icon="mdi:clock" width={12} height={12} />
-                          {job.type}
-                        </span>
-                        <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full">
-                          <Icon icon="mdi:tag" width={12} height={12} />
-                          {job.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Arrow */}
-                    <Icon
-                      icon="mdi:chevron-right"
-                      width={24}
-                      height={24}
-                      className="text-blue-300 shrink-0 mt-2 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Load More Button */}
-            <button className="mt-8 w-full py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors flex items-center justify-center gap-2">
-              <span>Load More Jobs</span>
-              <Icon icon="mdi:arrow-down" width={18} height={18} />
-            </button>
-          </div>
-
           {/* Right Sidebar */}
           <div className="lg:col-span-1 space-y-6">
             {/* Newsletter Section */}
             <div className="bg-linear-to-br from-blue-600 to-indigo-600 rounded-xl p-6 shadow-lg border border-blue-400/20">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-3 bg-blue-500/30 rounded-lg">
-                  <Icon
-                    icon="mdi:send"
-                    width={24}
-                    height={24}
-                    className="text-white"
-                  />
+                  <BellRing size={24} className="text-white" />
                 </div>
               </div>
               <h4 className="text-xl font-bold text-white mb-2">Job Alerts</h4>
@@ -232,16 +141,16 @@ export default function JobsSection() {
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="w-full px-4 py-2.5 border border-blue-400/50 bg-white/10 rounded-lg text-sm text-white placeholder-blue-200 focus:outline-none focus:border-white focus:bg-white/20 transition-all mb-3"
+                className="w-full px-4 py-2.5 border border-blue-400/50 bg-white/10 rounded-full text-sm text-white placeholder-blue-200 focus:outline-none focus:border-white focus:bg-white/20 transition-all mb-3"
               />
-              <button className="w-full bg-white hover:bg-blue-50 text-blue-600 font-semibold py-2.5 rounded-lg transition-colors shadow-md hover:shadow-lg">
+              <button className="w-full bg-white hover:bg-blue-50 text-blue-600 font-semibold py-2.5 rounded-full cursor-pointer transition-colors shadow-md hover:shadow-lg">
                 Subscribe Now
               </button>
-              <p className="text-xs text-blue-100 mt-3">
+              <p className="text-xs text-blue-50 mt-3">
                 We care about your data in our{" "}
                 <a
                   href="#"
-                  className="text-blue-200 hover:text-white underline"
+                  className="text-blue-50 font-semibold hover:italic hover:text-white underline"
                 >
                   privacy policy
                 </a>
@@ -251,12 +160,7 @@ export default function JobsSection() {
             {/* Popular Searches */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Icon
-                  icon="mdi:trending-up"
-                  width={20}
-                  height={20}
-                  className="text-blue-600"
-                />
+                <TrendingUp size={20} className="text-blue-600" />
                 <h4 className="text-lg font-bold text-zinc-900">
                   Trending Roles
                 </h4>
@@ -282,19 +186,125 @@ export default function JobsSection() {
             </div>
 
             {/* Quick Stats */}
-            <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
+            <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-300">
               <h4 className="font-bold text-zinc-900 mb-4">Quick Stats</h4>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-zinc-600">Avg. Salary</span>
-                  <span className="font-bold text-blue-600">$120k-$170k</span>
+                  <span className="font-bold text-blue-600">Rs.70k-Rs.400k</span>
                 </div>
-                <div className="w-full bg-zinc-200 rounded-full h-1.5"></div>
+                <div className="w-full bg-yellow-400 rounded-full h-1.5"></div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-zinc-600">Companies</span>
                   <span className="font-bold text-blue-600">500+</span>
                 </div>
               </div>
+            </div>
+          </div>
+          {/* Jobs List */}
+          <div className=" lg:col-span-2">
+            {/* Jobs List */}
+            <div className="space-y-4">
+              {jobs.map((job, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl border border-blue-100 p-6 hover:shadow-sm transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                >
+                  {/* Animated border */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div
+                      className="absolute inset-0 rounded-2xl bg-linear-to-r from-blue-400 via-blue-700 to-sky-500 animate-spin-slow blur-sm"
+                      style={{ animation: "spin 3s linear infinite" }}
+                    />
+                    <div className="absolute inset-0.5 rounded-2xl bg-linear-to-br from-blue-50 to-zinc-50 z-0" />
+                  </div>
+                  <div className="flex gap-4 z-10 relative">
+                    {/* Logo */}
+                    <div
+                      className={` w-20 h-20 rounded-lg flex items-center justify-center shrink-0  group-hover:border transition-shadow`}
+                    >
+                      <Image
+                        src={job.img || `/company-logos/${job.img}.png`}
+                        alt={`${job.company} logo`}
+                        width={56}
+                        height={56}
+                        className="rounded-lg"
+                      />
+                    </div>
+
+                    {/* Job Details */}
+                    <div className="grow">
+                      {/* Title and Time */}
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div>
+                          <h4 className="text-lg font-bold text-zinc-900 group-hover:text-blue-600 transition-colors">
+                            {job.title}
+                          </h4>
+                          <p className="text-sm text-zinc-600 mt-1">
+                            {job.company}
+                          </p>
+                        </div>
+                        <span className="text-xs text-zinc-400 whitespace-nowrap bg-zinc-100 px-3 py-1 rounded-full">
+                          {job.postedTime}
+                        </span>
+                      </div>
+
+                      {/* Details Grid */}
+                      <div className="flex flex-wrap gap-4 mb-4">
+                        <div className="flex items-center gap-1.5">
+                          <Calendar size={16} className="text-zinc-400" />
+                          <span className="text-xs text-zinc-600">
+                            {job.experience} yrs exp
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <DollarSign size={16} className="text-green-600" />
+                          <span className="text-xs font-semibold text-green-600">
+                            {job.salary}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <MapPin size={16} className="text-zinc-400" />
+                          <span className="text-xs text-zinc-600">
+                            {job.location}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Tags */}
+                      <div className="flex gap-2 flex-wrap">
+                        <span className="inline-flex items-center gap-1  text-blue-600 text-xs font-semibold px-3 py-1.5 rounded-full">
+                          <Clock size={12} />
+                          {job.type}
+                        </span>
+                        <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full">
+                          <Tag size={12} />
+                          {job.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Arrow */}
+                    <ChevronRight
+                      size={24}
+                      className="text-blue-300 shrink-0 mt-2 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Load More Button */}
+            <div className="flex justify-between items-center mt-8">
+              <p>
+                <span className="text-zinc-600 font-semibold">
+                  Showing 1-10 of 100 jobs
+                </span>
+              </p>
+              <button className="w-fit px-4 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                <span>View More Jobs</span>
+                <ArrowRight size={18} />
+              </button>
             </div>
           </div>
         </div>

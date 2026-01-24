@@ -1,4 +1,5 @@
 import HeroSection from "./components/home/HeroSection";
+import CategorySection from "./components/home/CategorySection";
 // import FeaturesSection from "./components/home/FeaturesSection";
 import PersonalitySection from "./components/home/PersonalitySection";
 import JobsSection from "./components/home/JobsSection";
@@ -9,11 +10,15 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <HeroSection />
+      <CategorySection />
       {/* <FeaturesSection /> */}
+      <JobsSection />
+      <NewsletterCTA
+        title="Join the class today"
+        imageSrc="/heroImages/woman2.png"
+      />
       <CoursesSection />
       {/* <NewsletterCTA title="Join the class today" imageSrc="/woman2.png" /> */}
-      <JobsSection />
-      <NewsletterCTA title="Join the class today" imageSrc="/heroImages/woman2.png" />
       <PersonalitySection />
       <NewsletterCTA title="Join the class today" imageSrc="/woman2.png" />
     </div>

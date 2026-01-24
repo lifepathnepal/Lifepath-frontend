@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat, Poppins } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import ClickSparkWrapper from "./components/ClickSparkWrapper";
+import SmoothScroll from "./components/SmoothScroll";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -40,13 +40,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${poppins.variable} antialiased bg-white`}
+        className={`${poppins.variable} ${montserrat.variable} antialiased bg-white`}
       >
-        <ClickSparkWrapper>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </ClickSparkWrapper>
+        <SmoothScroll />
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );

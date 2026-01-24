@@ -2,30 +2,42 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Icon } from "@iconify/react";
+import {
+  ChevronDown,
+  BookOpen,
+  Calendar,
+  GraduationCap,
+  Map,
+  Brain,
+  Briefcase,
+  Search,
+  Menu,
+  X,
+} from "lucide-react";
 import { useScrollDirection } from "@/app/hooks/useScrollDirection";
 
 export default function Header() {
   const isVisible = useScrollDirection();
   const [searchValue, setSearchValue] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const resources = [
     {
       label: "Books",
       description: "Career development resources and guides",
-      icon: "mdi:book-multiple",
+      icon: BookOpen,
       href: "#books",
     },
     {
       label: "Events",
       description: "Networking and learning events",
-      icon: "mdi:calendar-multiple",
+      icon: Calendar,
       href: "#events",
     },
     {
       label: "Courses",
       description: "Online courses and skill development",
-      icon: "mdi:graduation-cap",
+      icon: GraduationCap,
       href: "#courses",
     },
   ];
@@ -34,33 +46,33 @@ export default function Header() {
     {
       label: "Roadmap",
       description: "Your personalized career path",
-      icon: "mdi:map",
+      icon: Map,
       href: "#roadmap",
     },
     {
       label: "Personality",
       description: "Self-assessment tools & insights",
-      icon: "mdi:brain",
+      icon: Brain,
       href: "#personality",
     },
     {
       label: "Jobs",
       description: "Browse and apply for opportunities",
-      icon: "mdi:briefcase",
+      icon: Briefcase,
       href: "#jobs",
     },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-[#f5f8ff] transition-transform duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-zinc-200 transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <nav className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="shrink-0">
+          <div className="shrink-0 cursor-pointer">
             <Image
               src="/logo1.png"
               alt="LifePath Logo"
@@ -74,9 +86,9 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-1 ml-10">
             {/* Resources Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-1.5 px-3 py-2 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium text-sm">
+              <button className="flex items-center gap-1.5 px-3 py-2 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium text-sm cursor-pointer">
                 Resources
-                <Icon icon="mdi:chevron-down" width={18} height={18} />
+                <ChevronDown size={18} />
               </button>
 
               {/* Resources Dropdown Menu */}
@@ -93,10 +105,8 @@ export default function Header() {
                       href={item.href}
                       className="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 transition-colors group"
                     >
-                      <Icon
-                        icon={item.icon}
-                        width={24}
-                        height={24}
+                      <item.icon
+                        size={24}
                         className="text-blue-600 shrink-0 mt-0.5 group-hover:text-blue-700"
                       />
                       <div>
@@ -115,9 +125,9 @@ export default function Header() {
 
             {/* Career Tools Dropdown */}
             <div className="relative group">
-              <button className="flex items-center text-sm gap-1.5 px-3 py-2 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium">
+              <button className="flex items-center text-sm gap-1.5 px-3 py-2 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium cursor-pointer">
                 Your Career
-                <Icon icon="mdi:chevron-down" width={18} height={18} />
+                <ChevronDown size={18} />
               </button>
 
               {/* Career Dropdown Menu */}
@@ -134,10 +144,8 @@ export default function Header() {
                       href={item.href}
                       className="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 transition-colors group"
                     >
-                      <Icon
-                        icon={item.icon}
-                        width={24}
-                        height={24}
+                      <item.icon
+                        size={24}
                         className="text-blue-600 shrink-0 mt-0.5 group-hover:text-blue-700"
                       />
                       <div>
@@ -157,52 +165,139 @@ export default function Header() {
             {/* Other Links */}
             <a
               href="#"
-              className="px-3 py-2 text-sm text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium"
+              className="px-3 py-2 text-sm text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium cursor-pointer"
             >
               Blogs
             </a>
             <a
               href="#"
-              className="px-3 py-2 text-sm text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium"
+              className="px-3 py-2 text-sm text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-colors font-medium cursor-pointer"
             >
               About
             </a>
           </div>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-4 ml-auto">
-            {/* Search Bar - Hidden on mobile */}
-            <div className="hidden md:block w-80 relative">
-              <input
-                type="text"
-                placeholder="What do you want to learn?"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                className="w-full px-4 py-2.5 pr-12 bg-zinc-50 border border-blue-200 rounded-full text-sm text-zinc-900 placeholder-zinc-500 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
-              />
-              <button className="absolute right-1.5 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-colors shadow-sm flex items-center justify-center">
-                <Icon icon="mdi:magnify" width={18} height={18} />
-              </button>
-            </div>
+          <div className="flex items-center gap-2 ml-auto">
+            {/* Search Button */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="p-2 text-zinc-700 hover:bg-blue-50 hover:text-blue-600 rounded-full transition-all duration-200 border border-transparent hover:border-blue-200 cursor-pointer"
+              aria-label="Search"
+            >
+              <Search size={20} />
+            </button>
 
             {/* Log In Button */}
-            <button className="hidden sm:inline-block px-5 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-full transition-colors whitespace-nowrap text-sm">
+            <button className="hidden sm:inline-block px-5 py-2 text-blue-600 font-medium hover:bg-blue-50 hover:border-blue-200 border border-transparent rounded-full transition-colors whitespace-nowrap text-sm cursor-pointer">
               Log In
             </button>
 
             {/* Sign Up Button */}
-            <button className="inline-block px-5 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition-colors shadow-sm whitespace-nowrap text-sm">
+            <button className="inline-block px-5 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition-colors shadow-sm whitespace-nowrap text-sm cursor-pointer">
               Join for free
             </button>
 
             {/* Mobile Menu Button */}
-            <button className="lg:hidden p-2 text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors">
-              <Icon icon="mdi:menu" width={24} height={24} />
+            <button className="lg:hidden p-2 text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer">
+              <Menu size={24} />
             </button>
           </div>
         </div>
       </nav>
-      <div className="bg-linear-to-r from-blue-600 via-blue-500 to-indigo-600 text-white text-center py-2.5 px-4 shadow-md">
+
+      {/* Search Modal/Popup */}
+      {isSearchOpen && (
+        <div
+          className="fixed inset-0 bg-black/5 backdrop-blur-xs z-60 flex items-start justify-center pt-16 px-4"
+          onClick={() => setIsSearchOpen(false)}
+        >
+          <div
+            className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl animate-in fade-in slide-in-from-top-5 duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Search Header */}
+            <div className="flex items-center gap-3 p-4 border-b border-zinc-200">
+              <Search size={20} className="text-blue-600" />
+              <input
+                type="text"
+                placeholder="What do you want to learn today?"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                autoFocus
+                className="flex-1 text-lg outline-none placeholder-zinc-400 text-zinc-900"
+              />
+              <button
+                onClick={() => setIsSearchOpen(false)}
+                className="p-2 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer"
+                aria-label="Close search"
+              >
+                <X size={20} className="text-zinc-600" />
+              </button>
+            </div>
+
+            {/* Search Suggestions */}
+            <div className="p-4">
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">
+                Popular Searches
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Frontend Development",
+                  "UX Design",
+                  "Career Guidance",
+                  "Personality Test",
+                  "Interview Tips",
+                  "Job Opportunities",
+                ].map((term) => (
+                  <button
+                    key={term}
+                    onClick={() => setSearchValue(term)}
+                    className="px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm rounded-full transition-colors cursor-pointer"
+                  >
+                    {term}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="p-4 pt-0">
+              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">
+                Quick Links
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  {
+                    label: "All Courses",
+                    icon: GraduationCap,
+                    href: "#courses",
+                  },
+                  { label: "Career Test", icon: Brain, href: "#personality" },
+                  { label: "Job Board", icon: Briefcase, href: "#jobs" },
+                  { label: "Resources", icon: BookOpen, href: "#books" },
+                ].map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setIsSearchOpen(false)}
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors group"
+                  >
+                    <link.icon
+                      size={18}
+                      className="text-blue-600 group-hover:text-blue-700"
+                    />
+                    <span className="text-sm font-medium text-zinc-700 group-hover:text-blue-700">
+                      {link.label}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* <div className="bg-linear-to-r from-blue-600 via-blue-500 to-indigo-600 text-white text-center py-2.5 px-4 shadow-md">
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <Icon
             icon="mdi:star"
@@ -220,7 +315,7 @@ export default function Header() {
             className="text-yellow-300"
           />
         </div>
-      </div>
+      </div> */}
     </header>
   );
 }

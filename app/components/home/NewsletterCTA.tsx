@@ -1,13 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
 
 interface NewsletterCTAProps {
   title?: string;
   description?: string;
-  placeholder?: string;
-  buttonText?: string;
-  subtitle?: string;
   imageSrc?: string;
 }
 
@@ -16,23 +12,10 @@ export default function NewsletterCTA({
   description = "Subscribe to our newsletter and be the first to receive insights, updates, and expert tips on optimizing your career development.",
   imageSrc,
 }: NewsletterCTAProps) {
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    // Add your subscription logic here
-    setTimeout(() => {
-      setIsLoading(false);
-      setEmail("");
-    }, 1000);
-  };
-
   return (
     <section className="">
-      <div className="w-full bg-linear-to-r from-blue-600 via-blue-500 to-indigo-600 text-white">
-        <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto bg-linear-to-r from-blue-600 via-blue-500 to-indigo-600 text-white rounded-2xl px-2 md:px-4 lg:px-6 my-8">
+        <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="">

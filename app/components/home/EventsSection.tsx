@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { CalendarStar, GraduationCap, Handshake } from "lucide-react";
 
 export default function EventsSection() {
   const events = [
@@ -7,21 +7,21 @@ export default function EventsSection() {
       date: "February 15",
       location: "Virtual",
       description: "Industry leaders discussing future of tech careers.",
-      icon: "mdi:calendar-star",
+      icon: CalendarStar,
     },
     {
       title: "Leadership Workshop",
       date: "February 22",
       location: "San Francisco",
       description: "Intensive 2-day workshop on developing leadership skills.",
-      icon: "mdi:school",
+      icon: GraduationCap,
     },
     {
       title: "Networking Mixer",
       date: "March 5",
       location: "New York",
       description: "Connect with professionals from your industry.",
-      icon: "mdi:handshake",
+      icon: Handshake,
     },
   ];
 
@@ -46,12 +46,7 @@ export default function EventsSection() {
               className="px-8 py-8 flex flex-col items-center text-center"
             >
               <div className="bg-purple-500 rounded-2xl p-4 mb-6 flex items-center justify-center">
-                <Icon
-                  icon={event.icon}
-                  width={32}
-                  height={32}
-                  className="text-white"
-                />
+                <event.icon size={32} className="text-white" />
               </div>
               <h4 className="text-lg font-semibold text-zinc-900 mb-3">
                 {event.title}

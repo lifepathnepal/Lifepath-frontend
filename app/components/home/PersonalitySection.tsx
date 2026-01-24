@@ -1,7 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { Icon } from "@iconify/react";
+import {
+  Crown,
+  Lightbulb,
+  Heart,
+  Palette,
+  Users,
+  Star,
+  CheckCircle,
+  Shield,
+  Briefcase,
+  Handshake,
+  Wrench,
+  Camera,
+  Rocket,
+  PartyPopper,
+  ChevronDown,
+  ArrowRight,
+  BookIcon,
+} from "lucide-react";
 
 export default function PersonalitySection() {
   const [expanded, setExpanded] = useState(false);
@@ -12,132 +30,146 @@ export default function PersonalitySection() {
       name: "The Architect",
       description: "Strategic and independent thinker",
       dreamJobs: ["Strategic Consultant", "Software Architect", "Executive"],
-      icon: "mdi:chess-queen",
+      icon: Crown,
     },
     {
       type: "INTP",
       name: "The Logician",
       description: "Curious and analytical problem-solver",
       dreamJobs: ["Data Scientist", "Research Engineer", "Systems Analyst"],
-      icon: "mdi:flask-outline",
+      icon: Lightbulb,
     },
     {
       type: "ENTJ",
       name: "The Commander",
       description: "Natural born leader and organizer",
       dreamJobs: ["CEO", "Project Manager", "Strategy Director"],
-      icon: "mdi:crown",
+      icon: Crown,
     },
     {
       type: "ENTP",
       name: "The Debater",
       description: "Innovative and analytical entrepreneur",
       dreamJobs: ["Entrepreneur", "Product Manager", "Innovation Lead"],
-      icon: "mdi:lightbulb",
+      icon: Lightbulb,
     },
     {
       type: "INFJ",
       name: "The Advocate",
       description: "Compassionate and purpose-driven",
       dreamJobs: ["Counselor", "HR Director", "Social Impact Manager"],
-      icon: "mdi:heart",
+      icon: Heart,
     },
     {
       type: "INFP",
       name: "The Mediator",
       description: "Creative and values-oriented",
       dreamJobs: ["UX Designer", "Content Creator", "Therapist"],
-      icon: "mdi:palette",
+      icon: Palette,
     },
     {
       type: "ENFJ",
       name: "The Protagonist",
       description: "Charismatic and inspiring leader",
       dreamJobs: ["Coach", "Team Lead", "Business Development"],
-      icon: "mdi:people",
+      icon: Users,
     },
     {
       type: "ENFP",
       name: "The Campaigner",
       description: "Enthusiastic and people-focused",
       dreamJobs: ["Marketing Manager", "Event Organizer", "Sales Lead"],
-      icon: "mdi:star",
+      icon: Star,
     },
     {
       type: "ISTJ",
       name: "The Logistician",
       description: "Responsible and detail-oriented",
       dreamJobs: ["Operations Manager", "Auditor", "Project Coordinator"],
-      icon: "mdi:check-circle",
+      icon: CheckCircle,
     },
     {
       type: "ISFJ",
       name: "The Defender",
       description: "Supportive and dedicated professional",
       dreamJobs: ["Nurse", "Administrator", "Customer Support Lead"],
-      icon: "mdi:shield",
+      icon: Shield,
     },
     {
       type: "ESTJ",
       name: "The Executive",
       description: "Practical and results-oriented",
       dreamJobs: ["Operations Director", "Sales Manager", "Administrator"],
-      icon: "mdi:briefcase",
+      icon: Briefcase,
     },
     {
       type: "ESFJ",
       name: "The Consul",
       description: "Sociable and tradition-minded",
       dreamJobs: ["Event Manager", "HR Manager", "Community Manager"],
-      icon: "mdi:handshake",
+      icon: Handshake,
     },
     {
       type: "ISTP",
       name: "The Virtuoso",
       description: "Practical and hands-on problem solver",
       dreamJobs: ["Engineer", "Mechanic", "Technical Support"],
-      icon: "mdi:wrench",
+      icon: Wrench,
     },
     {
       type: "ISFP",
       name: "The Adventurer",
       description: "Artistic and sensitive explorer",
       dreamJobs: ["Designer", "Photographer", "Artist"],
-      icon: "mdi:camera",
+      icon: Camera,
     },
     {
       type: "ESTP",
       name: "The Entrepreneur",
       description: "Energetic and action-oriented",
       dreamJobs: ["Sales Executive", "Trader", "Business Owner"],
-      icon: "mdi:rocket",
+      icon: Rocket,
     },
     {
       type: "ESFP",
       name: "The Entertainer",
       description: "Spontaneous and creative performer",
       dreamJobs: ["Entertainer", "Trainer", "Event Producer"],
-      icon: "mdi:party-popper",
+      icon: PartyPopper,
     },
   ];
 
   const displayedTypes = expanded
     ? personalityTypes
-    : personalityTypes.slice(0, 10);
+    : personalityTypes.slice(0, 6);
 
   return (
-    <section id="personality" className="py-20 bg-white">
+    <section id="personality" className="py-10 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h3 className="text-4xl md:text-4xl font-bold text-zinc-900 mb-4">
-            Do you the job that fits your{" "}
-            <span className="text-blue-600">personality</span>
-          </h3>
-          <p className="text-lg text-zinc-600">
-            Find your MBTI type and explore the best career paths that match
-            your personality
-          </p>
+        <div className="flex justify-between items-center">
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-3">
+              <BookIcon size={32} className="text-blue-600" />
+              <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+                Mastery courses curated for you
+              </span>
+            </div>
+
+            <h3 className="text-4xl md:text-4xl font-bold text-zinc-900 mb-4">
+              Do the job that fits your{" "}
+              <span className="text-blue-600">personality</span>
+            </h3>
+            <p className="text-lg text-zinc-600">
+              Find your MBTI type and explore the best career paths that match
+              your personality
+            </p>
+          </div>
+          {/* Job Count Badge */}
+          <button className="w-fit px-4 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 cursor-pointer">
+            <span>Test your personality</span>
+            <ArrowRight size={18} />
+          </button>
         </div>
 
         {/* Personality Types List */}
@@ -150,12 +182,7 @@ export default function PersonalitySection() {
               {/* Icon */}
               <div className="shrink-0">
                 <div className="bg-blue-100 rounded-lg p-3">
-                  <Icon
-                    icon={personality.icon}
-                    width={24}
-                    height={24}
-                    className="text-blue-600"
-                  />
+                  <personality.icon size={24} className="text-blue-600" />
                 </div>
               </div>
 
@@ -163,7 +190,7 @@ export default function PersonalitySection() {
               <div className="grow">
                 {/* Type and Name */}
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="inline-block bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                  <span className="inline-block bg-yellow-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
                     {personality.type}
                   </span>
                   <h4 className="text-lg font-bold text-zinc-900">
@@ -199,7 +226,7 @@ export default function PersonalitySection() {
               onClick={() => setExpanded(true)}
               className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2 cursor-pointer"
             >
-              <Icon icon="mdi:expand-more" width={20} height={20} />
+              <ChevronDown size={20} />
               View All {personalityTypes.length} Types
             </button>
           </div>

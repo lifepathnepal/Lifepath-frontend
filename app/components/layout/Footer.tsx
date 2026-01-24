@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { ArrowUpRight } from "lucide-react";
 import { IconifyIcon } from "../common/IconifyIcon";
 
 export default function Footer() {
@@ -55,7 +55,6 @@ export default function Footer() {
     <footer className="bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Top Section */}
-        
 
         {/* Divider */}
         <div className="border-t border-zinc-200"></div>
@@ -75,10 +74,8 @@ export default function Footer() {
                       className="text-sm text-zinc-600 hover:text-blue-800 transition-colors flex items-center gap-1 group"
                     >
                       {link.label}
-                      <IconifyIcon
-                        icon={"solar:arrow-right-up-line-duotone"}
-                        width={20}
-                        height={20}
+                      <ArrowUpRight
+                        size={20}
                         className="text-zinc-300 group-hover:text-blue-500 hover-transition-colors duration-300"
                       />
                     </a>

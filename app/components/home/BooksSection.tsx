@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { BookOpenText, Star, ShoppingCart } from "lucide-react";
 
 export default function BooksSection() {
   const books = [
@@ -71,10 +71,8 @@ export default function BooksSection() {
               <div className="relative w-full h-48 bg-linear-to-br from-blue-100 to-blue-50 flex items-center justify-center border-b border-zinc-200 overflow-hidden">
                 {/* Placeholder for book image */}
                 <div className="text-center">
-                  <Icon
-                    icon="mdi:book-open-variant"
-                    width={64}
-                    height={64}
+                  <BookOpenText
+                    size={64}
                     className="text-blue-300 mx-auto mb-2"
                   />
                   <p className="text-xs text-blue-400 font-medium">
@@ -95,14 +93,12 @@ export default function BooksSection() {
                 <div className="flex items-center gap-1 mb-3 pb-3 border-b border-zinc-100">
                   <div className="flex items-center gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <Icon
+                      <Star
                         key={i}
-                        icon="mdi:star"
-                        width={14}
-                        height={14}
+                        size={14}
                         className={
                           i < Math.floor(book.rating)
-                            ? "text-yellow-500"
+                            ? "text-yellow-500 fill-yellow-500"
                             : "text-zinc-300"
                         }
                       />
@@ -129,7 +125,7 @@ export default function BooksSection() {
                 {/* CTA Buttons */}
                 <div className="space-y-2 mt-auto">
                   <button className="w-full px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full cursor-pointer transition-colors flex items-center justify-center gap-1 text-sm">
-                    <Icon icon="mdi:shopping-cart" width={16} height={16} />
+                    <ShoppingCart size={16} />
                     Buy Now
                   </button>
                   <button className="w-full px-3 py-2 border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold rounded-full cursor-pointer transition-colors text-sm">

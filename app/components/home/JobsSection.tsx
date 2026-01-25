@@ -1,19 +1,55 @@
 "use client";
 import {
-  BellRing,
-  TrendingUp,
-  Calendar,
   DollarSign,
   MapPin,
   Clock,
-  Tag,
-  ChevronRight,
   ArrowRight,
   BriefcaseBusiness,
+  Zap,
+  Briefcase,
+  Users,
+  BarChart3,
+  TrendingUpIcon,
+  ShoppingBag,
+  Code,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
+import { useState, useRef } from "react";
 
 export default function JobsSection() {
+  const [activeCategory, setActiveCategory] = useState("Software Developer");
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -200,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 200,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const categories = [
+    { name: "Software Developer", icon: Code },
+    { name: "Finance", icon: DollarSign },
+    { name: "Human Resource", icon: Users },
+    { name: "Management", icon: Briefcase },
+    { name: "Market Research", icon: BarChart3 },
+    { name: "Marketing & Sale", icon: TrendingUpIcon },
+    { name: "Retail & Products", icon: ShoppingBag },
+  ];
+
   const jobs = [
     {
       img: "/company-logo/webx.png",
@@ -25,6 +61,9 @@ export default function JobsSection() {
       type: "Full time",
       category: "Software Developer",
       postedTime: "1 hour ago",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur",
+      skills: ["React", "Node.js", "TypeScript"],
     },
     {
       img: "/company-logo/cursor.svg",
@@ -36,6 +75,9 @@ export default function JobsSection() {
       type: "Full time",
       category: "Product Designer",
       postedTime: "4 hours ago",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur",
+      skills: ["Figma", "Adobe XD", "Sketch"],
     },
     {
       img: "/company-logo/webx.png",
@@ -47,6 +89,9 @@ export default function JobsSection() {
       type: "Full time",
       category: "Branding Designer",
       postedTime: "5 hours ago",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur",
+      skills: ["Photoshop", "Illustrator", "InDesign"],
     },
     {
       img: "/company-logo/cursor.svg",
@@ -58,255 +103,218 @@ export default function JobsSection() {
       type: "Part-time",
       category: "Finance",
       postedTime: "5 hours ago",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur",
+      skills: ["Excel", "QuickBooks", "SAP"],
     },
   ];
 
-  const popularSearches = [
-    { title: "Product Designer", count: "284 jobs" },
-    { title: "Customer Success", count: "301 jobs" },
-    { title: "Product Manager", count: "380 jobs" },
-    { title: "Engineering Manager", count: "64 jobs" },
-  ];
-
-  // const getInitials = (id: string) => id;
-
-  // const getLogoColor = (index: number) => {
-  //   const colors = [
-  //     "bg-linear-to-br from-blue-600 to-blue-700",
-  //     "bg-linear-to-br from-indigo-600 to-indigo-700",
-  //     "bg-linear-to-br from-blue-500 to-blue-600",
-  //     "bg-linear-to-br from-slate-700 to-slate-800",
-  //   ];
-  //   return colors[index % colors.length];
-  // };
+  // const popularSearches = [
+  //   { title: "Product Designer", count: "284 jobs" },
+  //   { title: "Customer Success", count: "301 jobs" },
+  //   { title: "Product Manager", count: "380 jobs" },
+  //   { title: "Engineering Manager", count: "64 jobs" },
+  // ];
 
   return (
-    <section id="jobs" className="py-8">
-      <div className="max-w-6xl mx-auto px-4 lg:px-0">
+    <section
+      id="jobs"
+      className="py-8 bg-linear-to-b from-white to-blue-50/10"
+    >
+      <div className="max-w-6xl mx-auto">
         {/* Header Section */}
-        <div className="flex justify-between items-center">
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-3">
-              <BriefcaseBusiness size={32} className="text-blue-600" />
-              <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
-                Based on 5,000+ Nepali job listings
-              </span>
-            </div>
-            {/* <ShinyText
-              text="High-Paying Career Paths in Nepal (2026)"
-              speed={1}
-              delay={0.5}
-              color="#000000"
-              shineColor="#355CFE"
-              spread={120}
-              direction="left"
-              yoyo={false}
-              pauseOnHover={false}
-              disabled={false}
-              className="text-4xl font-semibold h-fit"
-            /> */}
-            <h2 className="text-4xl md:text-4xl font-bold  text-zinc-900 mb-4">
-              High-Paying Career Paths in Nepal (2026)
-            </h2>
-            <p className="text-lg text-zinc-600">
-              Discover premium job opportunities from top companies across
-              Nepal.
-            </p>
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <BriefcaseBusiness size={32} className="text-blue-600" />
+            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+              Based on 5,000+ Nepali job listings
+            </span>
           </div>
-          {/* Job Count Badge */}
-          <div className="flex items-center gap-2 mb-8">
-            <div className="px-4 py-2 bg-green-100 rounded-full">
-              <p className="text-sm font-semibold text-green-700 animate-pulse">
+          <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 mb-4">
+            High-Paying Career Paths in Nepal (2026)
+          </h2>
+          <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
+            Discover premium job opportunities from top companies across Nepal.
+          </p>
+          <div className="flex justify-center mt-6">
+            <div className="px-5 py-2.5 bg-green-100 rounded-full">
+              <p className="text-sm font-semibold text-green-700">
                 {jobs.length * 400} total jobs available
               </p>
             </div>
           </div>
         </div>
 
-        {/* Main Layout - List + Sidebar */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Right Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Newsletter Section */}
-            <div className="bg-linear-to-br from-blue-600 to-indigo-600 rounded-xl p-6 shadow-lg border border-blue-400/20">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-blue-500/30 rounded-lg">
-                  <BellRing size={24} className="text-white" />
-                </div>
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">Job Alerts</h4>
-              <p className="text-blue-100 text-sm mb-4">
-                Get notified about new opportunities matching your profile.
-              </p>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full px-4 py-2.5 border border-blue-400/50 bg-white/10 rounded-full text-sm text-white placeholder-blue-200 focus:outline-none focus:border-white focus:bg-white/20 transition-all mb-3"
-              />
-              <button className="w-full bg-white hover:bg-blue-50 text-blue-600 font-semibold py-2.5 rounded-full cursor-pointer transition-colors shadow-md hover:shadow-lg">
-                Subscribe Now
-              </button>
-              <p className="text-xs text-blue-50 mt-3">
-                We care about your data in our{" "}
-                <a
-                  href="#"
-                  className="text-blue-50 font-semibold hover:italic hover:text-white underline"
-                >
-                  privacy policy
-                </a>
-              </p>
-            </div>
+        {/* Category Tabs Carousel */}
+        <div className="relative mb-12">
+          {/* Left Arrow */}
+          <button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white border border-zinc-200 rounded-full shadow-lg hover:shadow-xl hover:bg-zinc-50 transition-all duration-300 flex items-center justify-center group cursor-pointer"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft
+              size={20}
+              className="text-zinc-600 group-hover:text-blue-600"
+            />
+          </button>
 
-            {/* Popular Searches */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <TrendingUp size={20} className="text-blue-600" />
-                <h4 className="text-lg font-bold text-zinc-900">
-                  Trending Roles
-                </h4>
-              </div>
-              <div className="space-y-3">
-                {popularSearches.map((search, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    className="flex items-center justify-between p-4 rounded-lg bg-white border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300 group"
-                  >
-                    <div>
-                      <p className="text-sm font-semibold text-zinc-900 group-hover:text-blue-600 transition-colors">
-                        {search.title}
-                      </p>
-                    </div>
-                    <span className="text-xs font-medium text-zinc-500 bg-zinc-100 group-hover:bg-blue-100 group-hover:text-blue-600 px-2.5 py-1 rounded-full transition-colors">
-                      {search.count}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
+          {/* Left Gradient Overlay */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
-            {/* Quick Stats */}
-            <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-300">
-              <h4 className="font-bold text-zinc-900 mb-4">Quick Stats</h4>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-zinc-600">Avg. Salary</span>
-                  <span className="font-bold text-blue-600">Rs.70k-Rs.400k</span>
-                </div>
-                <div className="w-full bg-yellow-400 rounded-full h-1.5"></div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-zinc-600">Companies</span>
-                  <span className="font-bold text-blue-600">500+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Jobs List */}
-          <div className=" lg:col-span-2">
-            {/* Jobs List */}
-            <div className="space-y-4">
-              {jobs.map((job, index) => (
-                <div
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth px-12"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {categories.map((category, index) => {
+              const Icon = category.icon;
+              return (
+                <button
                   key={index}
-                  className="bg-white rounded-2xl border border-blue-100 p-6 hover:shadow-sm transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  onClick={() => setActiveCategory(category.name)}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 whitespace-nowrap shrink-0 cursor-pointer ${
+                    activeCategory === category.name
+                      ? "bg-blue-600 text-white border border-transparent"
+                      : "bg-white text-zinc-700 border border-zinc-200 hover:border-blue-300 "
+                  }`}
                 >
-                  {/* Animated border */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div
-                      className="absolute inset-0 rounded-2xl bg-linear-to-r from-blue-400 via-blue-700 to-sky-500 animate-spin-slow blur-sm"
-                      style={{ animation: "spin 3s linear infinite" }}
+                  <Icon size={16} />
+                  {category.name}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right Gradient Overlay */}
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+
+          {/* Right Arrow */}
+          <button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white border border-zinc-200 rounded-full shadow-lg hover:shadow-xl hover:bg-zinc-50 transition-all duration-300 flex items-center justify-center group cursor-pointer"
+            aria-label="Scroll right"
+          >
+            <ChevronRight
+              size={20}
+              className="text-zinc-600 group-hover:text-blue-600"
+            />
+          </button>
+        </div>
+
+        {/* Jobs Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mb-12">
+          {jobs.map((job, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl border border-zinc-200 p-5 hover:shadow-xl transition-all duration-300 cursor-pointer group relative overflow-hidden"
+            >
+              {/* Animated border on hover */}
+              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div
+                  className="absolute inset-0 rounded-xl bg-linear-to-r from-blue-400 via-indigo-500 to-blue-600 blur-sm"
+                  style={{ animation: "spin 3s linear infinite" }}
+                />
+                <div className="absolute inset-0.5 rounded-xl bg-white" />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                {/* Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-14 h-14 rounded-lg bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-md">
+                    <Image
+                      src={job.img}
+                      alt={`${job.company} logo`}
+                      width={40}
+                      height={40}
+                      className="rounded-md"
                     />
-                    <div className="absolute inset-0.5 rounded-2xl bg-linear-to-br from-blue-50 to-zinc-50 z-0" />
                   </div>
-                  <div className="flex gap-4 z-10 relative">
-                    {/* Logo */}
-                    <div
-                      className={` w-20 h-20 rounded-lg flex items-center justify-center shrink-0  group-hover:border transition-shadow`}
-                    >
-                      <Image
-                        src={job.img || `/company-logos/${job.img}.png`}
-                        alt={`${job.company} logo`}
-                        width={56}
-                        height={56}
-                        className="rounded-lg"
-                      />
-                    </div>
-
-                    {/* Job Details */}
-                    <div className="grow">
-                      {/* Title and Time */}
-                      <div className="flex items-start justify-between gap-4 mb-3">
-                        <div>
-                          <h4 className="text-lg font-bold text-zinc-900 group-hover:text-blue-600 transition-colors">
-                            {job.title}
-                          </h4>
-                          <p className="text-sm text-zinc-600 mt-1">
-                            {job.company}
-                          </p>
-                        </div>
-                        <span className="text-xs text-zinc-400 whitespace-nowrap bg-zinc-100 px-3 py-1 rounded-full">
-                          {job.postedTime}
-                        </span>
-                      </div>
-
-                      {/* Details Grid */}
-                      <div className="flex flex-wrap gap-4 mb-4">
-                        <div className="flex items-center gap-1.5">
-                          <Calendar size={16} className="text-zinc-400" />
-                          <span className="text-xs text-zinc-600">
-                            {job.experience} yrs exp
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <DollarSign size={16} className="text-green-600" />
-                          <span className="text-xs font-semibold text-green-600">
-                            {job.salary}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <MapPin size={16} className="text-zinc-400" />
-                          <span className="text-xs text-zinc-600">
-                            {job.location}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Tags */}
-                      <div className="flex gap-2 flex-wrap">
-                        <span className="inline-flex items-center gap-1  text-blue-600 text-xs font-semibold px-3 py-1.5 rounded-full">
-                          <Clock size={12} />
-                          {job.type}
-                        </span>
-                        <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full">
-                          <Tag size={12} />
-                          {job.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Arrow */}
-                    <ChevronRight
-                      size={24}
-                      className="text-blue-300 shrink-0 mt-2 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"
-                    />
+                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                    <Zap size={16} className="text-green-600" />
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Load More Button */}
-            <div className="flex justify-between items-center mt-8">
-              <p>
-                <span className="text-zinc-600 font-semibold">
-                  Showing 1-10 of 100 jobs
-                </span>
-              </p>
-              <button className="w-fit px-4 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                <span>View More Jobs</span>
-                <ArrowRight size={18} />
-              </button>
+                {/* Company Info */}
+                <div className="mb-3">
+                  <h4 className="font-bold text-zinc-900 text-base mb-1 flex items-center gap-2">
+                    {job.company}
+                    <MapPin size={12} className="text-zinc-400" />
+                    <span className="text-xs font-normal text-zinc-500">
+                      {job.location.split(" ")[0]}
+                    </span>
+                  </h4>
+                </div>
+
+                {/* Job Title */}
+                <h3 className="text-lg font-bold text-zinc-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  {job.title}
+                </h3>
+
+                {/* Job Type & Time */}
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs px-2.5 py-1 bg-zinc-100 text-zinc-700 rounded-md font-medium">
+                    {job.type}
+                  </span>
+                  <span className="text-xs text-zinc-400 flex items-center gap-1">
+                    <Clock size={12} />
+                    Posted {job.postedTime}
+                  </span>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-zinc-600 leading-relaxed mb-4 line-clamp-3">
+                  {job.description}
+                </p>
+
+                {/* Skills Tags */}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {job.skills.map((skill, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs px-2.5 py-1 bg-blue-50 text-blue-600 rounded-md font-medium"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
+                  <div>
+                    <p className="text-lg font-bold text-blue-600">
+                      ${job.salary}
+                    </p>
+                    <p className="text-xs text-zinc-500">/Hour</p>
+                  </div>
+                  <button className="px-4 py-2 bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white font-semibold rounded-lg text-sm transition-all duration-300 group-hover:shadow-md cursor-pointer">
+                    Apply Now
+                  </button>
+                </div>
+
+                {/* Expand Arrow */}
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ArrowRight
+                    size={20}
+                    className="text-blue-600 transform rotate-45"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Load More Section */}
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-zinc-600 font-medium">
+            Showing 1-{jobs.length} of {jobs.length * 400} jobs
+          </p>
+          <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer">
+            <span>View All Jobs</span>
+            <ArrowRight size={18} />
+          </button>
         </div>
       </div>
     </section>

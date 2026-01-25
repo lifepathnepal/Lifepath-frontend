@@ -192,7 +192,7 @@ export default function CoursesSection() {
                 </div>
 
                 {/* What's Included */}
-                <div className="mb-4 bg-yellow-50 border border-yellow-300 rounded-lg p-3.5 grow">
+                <div className="mb-4 bg-blue-50 border border-blue-300 rounded-lg p-3.5 grow">
                   <p className="text-xs font-bold text-zinc-800 mb-3 uppercase tracking-wide">
                     What&apos;s included
                   </p>

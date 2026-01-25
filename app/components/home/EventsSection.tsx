@@ -1,4 +1,4 @@
-import { CalendarStar, GraduationCap, Handshake } from "lucide-react";
+import { Calendar, GraduationCap, Handshake } from "lucide-react";
 
 export default function EventsSection() {
   const events = [
@@ -7,7 +7,7 @@ export default function EventsSection() {
       date: "February 15",
       location: "Virtual",
       description: "Industry leaders discussing future of tech careers.",
-      icon: CalendarStar,
+      icon: Calendar,
     },
     {
       title: "Leadership Workshop",

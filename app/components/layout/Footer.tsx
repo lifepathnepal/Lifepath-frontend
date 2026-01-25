@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import { IconifyIcon } from "../common/IconifyIcon";
 
 export default function Footer() {
   const footerColumns = [

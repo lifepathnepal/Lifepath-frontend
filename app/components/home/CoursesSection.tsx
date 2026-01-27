@@ -105,16 +105,16 @@ export default function CoursesSection() {
   return (
     <section id="courses" className="pb-10">
       <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center">
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-3">
+        <div className="flex justify-center items-center">
+          <div className="mb-12 text-center">
+            <div className="flex justify-center items-center gap-3 mb-3">
               <BookIcon size={32} className="text-blue-600" />
               <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
                 Mastery courses curated for you
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-4xl font-bold  text-zinc-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold  text-zinc-900 mb-4">
               Explore Our Popular Courses
             </h2>
             <p className="text-lg text-zinc-600">
@@ -123,10 +123,10 @@ export default function CoursesSection() {
             </p>
           </div>
           {/* Job Count Badge */}
-          <button className="w-fit px-4 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 cursor-pointer">
+          {/* <button className="w-fit px-4 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 cursor-pointer">
             <span>View More Courses</span>
             <ArrowRight size={18} />
-          </button>
+          </button> */}
         </div>
 
         {/* Courses Grid */}

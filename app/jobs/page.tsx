@@ -82,20 +82,20 @@ export default function JobsPage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="bg-zinc-50 border-b border-zinc-200">
+      <section className="bg-linear-to-r from-black to-blue-700 text-white">
         <div className="max-w-6xl mx-auto py-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-zinc-800 mb-4">
-              Find Your <span className="text-blue-600">Dream Job</span>
+            <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
+              Find Your Dream Job
             </h1>
-            <p className="text-lg text-zinc-600 mb-8">
+            <p className="text-lg text-blue-100 mb-8">
               Discover high-paying opportunities in Nepal and remote positions
             </p>
 
             {/* Search Bar */}
             <div className="relative max-w-xl mx-auto">
               <Search
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400"
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-100"
                 size={20}
               />
               <input
@@ -103,7 +103,7 @@ export default function JobsPage() {
                 placeholder="Search jobs or companies..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 border border-zinc-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                className="w-full pl-12 pr-4 py-4 bg-white/20 border-2 border-white/20 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               />
             </div>
           </div>

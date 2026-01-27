@@ -1,55 +1,14 @@
 "use client";
 import {
-  DollarSign,
   MapPin,
   Clock,
   ArrowRight,
   BriefcaseBusiness,
   Zap,
-  Briefcase,
-  Users,
-  BarChart3,
-  TrendingUpIcon,
-  ShoppingBag,
-  Code,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
-import { useState, useRef } from "react";
 
 export default function JobsSection() {
-  const [activeCategory, setActiveCategory] = useState("Software Developer");
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -200,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 200,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const categories = [
-    { name: "Software Developer", icon: Code },
-    { name: "Finance", icon: DollarSign },
-    { name: "Human Resource", icon: Users },
-    { name: "Management", icon: Briefcase },
-    { name: "Market Research", icon: BarChart3 },
-    { name: "Marketing & Sale", icon: TrendingUpIcon },
-    { name: "Retail & Products", icon: ShoppingBag },
-  ];
-
   const jobs = [
     {
       img: "/company-logo/webx.png",
@@ -66,7 +25,7 @@ export default function JobsSection() {
       skills: ["React", "Node.js", "TypeScript"],
     },
     {
-      img: "/company-logo/cursor.svg",
+      img: "/company-logo/webx.png",
       title: "UI/UX Designer",
       company: "Cursor",
       experience: "1-4",
@@ -91,10 +50,10 @@ export default function JobsSection() {
       postedTime: "5 hours ago",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur",
-      skills: ["Photoshop", "Illustrator", "InDesign"],
+      skills: ["Photoshop", "Ai", "InDesign"],
     },
     {
-      img: "/company-logo/cursor.svg",
+      img: "/company-logo/webx.png",
       title: "Account Executive",
       company: "Nameste",
       experience: "2-6",
@@ -117,10 +76,7 @@ export default function JobsSection() {
   // ];
 
   return (
-    <section
-      id="jobs"
-      className="py-8 bg-linear-to-b from-white to-blue-50/10"
-    >
+    <section id="jobs" className="py-8 bg-linear-to-b from-white to-blue-50/10">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -130,81 +86,23 @@ export default function JobsSection() {
               Based on 5,000+ Nepali job listings
             </span>
           </div>
-          <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 mb-4">
+          <h2 className="text-2xl md:text-5xl font-bold text-black pb-1 mb-4">
             High-Paying Career Paths in Nepal (2026)
           </h2>
           <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
             Discover premium job opportunities from top companies across Nepal.
           </p>
-          <div className="flex justify-center mt-6">
+          {/* <div className="flex justify-center mt-6">
             <div className="px-5 py-2.5 bg-green-100 rounded-full">
               <p className="text-sm font-semibold text-green-700">
                 {jobs.length * 400} total jobs available
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* Category Tabs Carousel */}
-        <div className="relative mb-12">
-          {/* Left Arrow */}
-          <button
-            onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white border border-zinc-200 rounded-full shadow-lg hover:shadow-xl hover:bg-zinc-50 transition-all duration-300 flex items-center justify-center group cursor-pointer"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft
-              size={20}
-              className="text-zinc-600 group-hover:text-blue-600"
-            />
-          </button>
-
-          {/* Left Gradient Overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-
-          {/* Scrollable Container */}
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth px-12"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {categories.map((category, index) => {
-              const Icon = category.icon;
-              return (
-                <button
-                  key={index}
-                  onClick={() => setActiveCategory(category.name)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 whitespace-nowrap shrink-0 cursor-pointer ${
-                    activeCategory === category.name
-                      ? "bg-blue-600 text-white border border-transparent"
-                      : "bg-white text-zinc-700 border border-zinc-200 hover:border-blue-300 "
-                  }`}
-                >
-                  <Icon size={16} />
-                  {category.name}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right Gradient Overlay */}
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
-
-          {/* Right Arrow */}
-          <button
-            onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white border border-zinc-200 rounded-full shadow-lg hover:shadow-xl hover:bg-zinc-50 transition-all duration-300 flex items-center justify-center group cursor-pointer"
-            aria-label="Scroll right"
-          >
-            <ChevronRight
-              size={20}
-              className="text-zinc-600 group-hover:text-blue-600"
-            />
-          </button>
+          </div> */}
         </div>
 
         {/* Jobs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mb-12">
+        <div className="flex gap-2 mb-12">
           {jobs.map((job, index) => (
             <div
               key={index}
@@ -222,12 +120,12 @@ export default function JobsSection() {
               {/* Content */}
               <div className="relative z-10">
                 {/* Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-14 h-14 rounded-lg bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-md">
+                <div className="flex h-full items-start justify-between mb-4">
+                  <div className="w-28 h-14 rounded-lg flex items-center justify-center shadow-md">
                     <Image
                       src={job.img}
                       alt={`${job.company} logo`}
-                      width={40}
+                      width={70}
                       height={40}
                       className="rounded-md"
                     />
@@ -289,17 +187,9 @@ export default function JobsSection() {
                     </p>
                     <p className="text-xs text-zinc-500">/Hour</p>
                   </div>
-                  <button className="px-4 py-2 bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white font-semibold rounded-lg text-sm transition-all duration-300 group-hover:shadow-md cursor-pointer">
+                  <button className="px-4 py-2 bg-zinc-800 text-white hover:bg-blue-600  hover:text-white font-semibold rounded-full text-sm transition-all duration-300 group-hover:shadow-md cursor-pointer">
                     Apply Now
                   </button>
-                </div>
-
-                {/* Expand Arrow */}
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ArrowRight
-                    size={20}
-                    className="text-blue-600 transform rotate-45"
-                  />
                 </div>
               </div>
             </div>

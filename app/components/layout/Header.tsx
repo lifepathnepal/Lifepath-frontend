@@ -20,6 +20,19 @@ export default function Header() {
   const [searchValue, setSearchValue] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const navItems = [
+    { label: "Courses", href: "/courses" },
+    { label: "Find Jobs", href: "/jobs" },
+    { label: "Events", href: "/events" },
+    { label: "Why Lifepath?", href: "/why-lifepath" },
+  ];
+
+  const quickLinks = [
+    { label: "All Courses", icon: GraduationCap, href: "/courses" },
+    { label: "Job Board", icon: Briefcase, href: "/jobs" },
+    { label: "Events", icon: Calendar, href: "/events" },
+  ];
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-zinc-200 transition-transform duration-300 ${
@@ -31,7 +44,7 @@ export default function Header() {
           {/* Logo */}
           <Link href={"/"} className="shrink-0 cursor-pointer">
             <Image
-              src="/logo1.png"
+              src="/main-logo.png"
               alt="LifePath Logo"
               width={120}
               height={48}
@@ -41,36 +54,19 @@ export default function Header() {
 
           {/* Navigation Links - Desktop Only */}
           <div className="hidden lg:flex items-center gap-1 ml-10">
-            <Link
-              href="/courses"
-              className={`px-3 py-2 text-sm font-medium rounded-full transition-colors cursor-pointer ${
-                pathname === "/courses"
-                  ? "bg-blue-100 text-blue-700"
-                  : "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50"
-              }`}
-            >
-              Courses
-            </Link>
-            <Link
-              href="/jobs"
-              className={`px-3 py-2 text-sm font-medium rounded-full transition-colors cursor-pointer ${
-                pathname === "/jobs"
-                  ? "bg-blue-100 text-blue-700"
-                  : "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50"
-              }`}
-            >
-              Find Jobs
-            </Link>
-            <Link
-              href="/events"
-              className={`px-3 py-2 text-sm font-medium rounded-full transition-colors cursor-pointer ${
-                pathname === "/events"
-                  ? "bg-blue-100 text-blue-700"
-                  : "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50"
-              }`}
-            >
-              Events
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`px-3 py-2 text-sm font-medium rounded-full transition-colors cursor-pointer ${
+                  pathname === item.href
+                    ? "bg-blue-100 text-blue-700"
+                    : "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           {/* Right Side Actions */}
@@ -169,15 +165,7 @@ export default function Header() {
                 Quick Links
               </p>
               <div className="grid grid-cols-2 gap-2">
-                {[
-                  {
-                    label: "All Courses",
-                    icon: GraduationCap,
-                    href: "/courses",
-                  },
-                  { label: "Job Board", icon: Briefcase, href: "/jobs" },
-                  { label: "Events", icon: Calendar, href: "/events" },
-                ].map((link) => (
+                {quickLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}

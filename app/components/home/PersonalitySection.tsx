@@ -17,7 +17,6 @@ import {
   Rocket,
   PartyPopper,
   ChevronDown,
-  ArrowRight,
   BookIcon,
 } from "lucide-react";
 
@@ -147,29 +146,16 @@ export default function PersonalitySection() {
     <section id="personality" className="py-10 bg-white">
       <div className="max-w-6xl mx-auto relative">
         {/* Header */}
-        <div className="flex justify-between items-center">
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-3">
-              <BookIcon size={32} className="text-blue-600" />
-              <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
-                Mastery courses curated for you
-              </span>
-            </div>
-
+        <div className="flex justify-center items-center">
+          <div className="mb-12 text-center">
             <h3 className="text-4xl md:text-4xl font-bold text-zinc-900 mb-4">
-              Do the job that fits your{" "}
-              <span className="text-blue-600">personality</span>
+              Other Personality Types and Career Matches
             </h3>
             <p className="text-lg text-zinc-600">
               Find your MBTI type and explore the best career paths that match
               your personality
             </p>
           </div>
-          {/* Job Count Badge */}
-          <button className="w-fit px-4 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 cursor-pointer">
-            <span>Test your personality</span>
-            <ArrowRight size={18} />
-          </button>
         </div>
 
         {/* Personality Types List */}

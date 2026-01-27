@@ -49,7 +49,7 @@ const CategorySection = () => {
       para: "Learn only the skills companies in Nepal are hiring for",
     },
     {
-      title: "Industry Certificati",
+      title: "Industry Certificate",
       icon: GraduationCap,
       para: "Job-ready certifications, not just theory",
     },
@@ -61,7 +61,7 @@ const CategorySection = () => {
   ];
 
   return (
-    <section className="w-full py-8 px-4 bg-white">
+    <section className="w-full px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {categories.map((category, index) => (

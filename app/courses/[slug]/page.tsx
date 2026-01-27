@@ -201,7 +201,7 @@ export default function CourseDetailPage() {
   return (
     <div className="min-h-screen pt-16 pb-10 bg-zinc-50">
       {/* Course Header */}
-      <section className="bg-zinc-900 text-white">
+      <section className="bg-linear-to-r from-black to-blue-700 text-white">
         <div className="max-w-6xl mx-auto py-12">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left: Course Info */}

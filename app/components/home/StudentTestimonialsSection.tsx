@@ -66,8 +66,8 @@ export default function StudentTestimonialsSection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-3">
-            Student <span className="text-blue-600">Success Stories</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-3">
+            Student Success Stories
           </h2>
           <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
             Hear from our students who found their perfect career path through

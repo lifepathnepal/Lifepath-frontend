@@ -1,20 +1,24 @@
 "use client";
+import { ArrowRight, Brain } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface NewsletterCTAProps {
   title?: string;
   description?: string;
   imageSrc?: string;
+  btnText?: string;
 }
 
 export default function NewsletterCTA({
   title = "Subscribe our newsletter",
   description = "Subscribe to our newsletter and be the first to receive insights, updates, and expert tips on optimizing your career development.",
+  btnText = "Take Free Personality Test",
   imageSrc,
 }: NewsletterCTAProps) {
   return (
     <section className="">
-      <div className="max-w-6xl mx-auto bg-linear-to-r from-blue-600 via-blue-500 to-indigo-600 text-white rounded-2xl px-2 md:px-4 lg:px-6 my-8">
+      <div className="max-w-6xl mx-auto bg-linear-to-r from-zinc-900 to-blue-600 text-white rounded-2xl px-2 md:px-4 lg:px-8 my-8">
         <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
@@ -23,6 +27,15 @@ export default function NewsletterCTA({
                 {title}
               </h2>
               <p className="text-lg text-white">{description}</p>
+              <Link href="/personality-test">
+                <button className="px-10 py-3.5 bg-white text-blue-600 font-semibold rounded-full transition-all shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2 mt-6">
+                  {btnText}
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </button>
+              </Link>
             </div>
             {/* Right Image */}
             <div className="flex items-center justify-center">

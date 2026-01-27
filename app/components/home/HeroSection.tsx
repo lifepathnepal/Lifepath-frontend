@@ -1,48 +1,148 @@
 "use client";
 
-import { PlayCircle, ArrowRight, Link } from "lucide-react";
+import { Brain, ArrowRight, CheckCircle, Sparkles } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="pt-16 max-w-6xl mx-auto rounded-bl-2xl rounded-br-2xl overflow-hidden border border-zinc-200">
-      <div className="w-full bg-zinc-50">
-        <div className=" pl-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-            {/* Left Content */}
-            <div>
-              <h2 className="text-4xl md:text-5xl font-semibold text-zinc-800 mb-4">
-                Choose a career that suits you. Learn skills that lead to real
-                jobs.
-              </h2>
-              <p className="text-lg text-zinc-700 mb-6">
-                Because your strengths and personality should shape your
-                learning.
-              </p>
+    <section className="min-h-[95vh] w-full mx-auto overflow-hidden bg-linear-to-br from-white via-blue-50/30 to-white">
+      <div className="max-w-6xl mx-auto pt-16 md:pt-24">
+        <div className="grid md:grid-cols-2 gap-6 items-center">
+          {/* Left Content */}
+          <div className="space-y-6">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full">
+              <Sparkles size={16} className="text-blue-600" />
+              <span className="text-sm font-semibold text-blue-600">
+                Find Your Perfect Career Path
+              </span>
+            </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-2">
-                <button className="px-4 py-3 bg-zinc-700 hover:bg-blue-700 text-white font-semibold rounded-full transition-colors flex items-center justify-center gap-1 cursor-pointer">
-                  <PlayCircle size={18} />
-                  Discover My Career Path
-                </button>
-                <button className="px-4 py-3 border-2 border-blue-600 text-blue-600 hover:bg-blue-100 font-semibold rounded-full transition-colors flex items-center justify-center gap-1 cursor-pointer">
-                  <ArrowRight size={18} />
-                  See How Lifepath Works
-                </button>
+            {/* Main Heading */}
+            <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-zinc-900 leading-tight">
+              Confused About Your <span className="text-blue-600">Career?</span>
+              <br />
+              Let Your Personality Guide You
+            </h1>
+
+            {/* Subheading */}
+            <p className="text-lg md:text-xl font-medium text-zinc-900 leading-relaxed">
+              Take our free personality test and discover careers that match who
+              you truly are. Get personalized course recommendations to start
+              your journey today.
+            </p>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap gap-6 py-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                  <CheckCircle size={18} className="text-green-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-zinc-900">
+                    100% Free
+                  </p>
+                  <p className="text-xs text-zinc-500">No credit card needed</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Brain size={18} className="text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-zinc-900">
+                    40 Questions
+                  </p>
+                  <p className="text-xs text-zinc-500">Takes only 5 minutes</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
+                  <Sparkles size={18} className="text-purple-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-zinc-900">
+                    Instant Results
+                  </p>
+                  <p className="text-xs text-zinc-500">With career matches</p>
+                </div>
               </div>
             </div>
 
-            {/* Right Image */}
-            <div className="flex items-center justify-center">
-              <div className="w-full">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <Link href="/personality-test">
+                <button className="w-full sm:w-auto px-8 py-4 bg-linear-to-r from-black to-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center justify-center gap-2 cursor-pointer group">
+                  <Brain size={20} />
+                  Take Free Personality Test
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </button>
+              </Link>
+              <Link href="#how-it-works">
+                <button className="w-full sm:w-auto px-8 py-4 border-2 border-zinc-300 text-zinc-700 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 font-semibold rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer">
+                  See How It Works
+                </button>
+              </Link>
+            </div>
+
+            {/* Social Proof */}
+            <div className="pt-4">
+              <p className="text-sm font-medium text-zinc-700 mb-2">
+                Trusted by students from:
+              </p>
+              <div className="flex items-center gap-4 text-xs text-zinc-400 font-medium">
+                <span>Kathmandu University</span>
+                <span className="text-blue-600">•</span>
+                <span>Tribhuvan University</span>
+                <span className="text-blue-600">•</span>
+                <span>Pokhara University</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Content - Image/Visual */}
+          <div className="relative">
+            {/* Decorative Background */}
+            <div className="absolute inset-0 bg-linear-to-br from-blue-100 via-purple-100 to-blue-100 rounded-3xl opacity-40 blur-3xl"></div>
+
+            {/* Main Image Container */}
+            <div className="relative bg-white rounded-3xl shadow-lg p-8 border border-zinc-200">
+              {/* Stats Card Overlay */}
+              <div className="absolute -top-4 -right-4 bg-linear-to-tr from-zinc-700 to-gray-500 rounded-2xl shadow-lg p-4 border border-zinc-200 z-10">
+                <p className="text-xs text-zinc-50 mb-1">Success Rate</p>
+                <p className="text-4xl font-bold text-blue-50">95%</p>
+              </div>
+
+              {/* Image */}
+              <div className="relative w-full aspect-video">
                 <Image
-                  src="/heroImages/woman3.png"
-                  alt="Lifepath"
-                  width={600}
-                  height={600}
-                  className="h-100 w-full object-contain object-top"
+                  src="/heroImages/psycho.png"
+                  alt="Find Your Career Path"
+                  width={500}
+                  height={500}
+                  className="w-full h-full object-contain"
+                  priority
                 />
+              </div>
+
+              {/* Bottom Stats */}
+              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-zinc-200">
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-zinc-900">16</p>
+                  <p className="text-xs text-zinc-500">Personality Types</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-zinc-900">50+</p>
+                  <p className="text-xs text-zinc-500">Career Paths</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-zinc-900">20+</p>
+                  <p className="text-xs text-zinc-500">Courses</p>
+                </div>
               </div>
             </div>
           </div>

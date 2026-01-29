@@ -96,13 +96,13 @@ export default function Footer() {
         </div>
 
         {/* Large Background Text */}
-        <div className="relative py-10 overflow-hidden">
+        <div className="relative py-10 overflow-hidden w-fit mx-auto">
           <div className="text-center">
             <h2
               className="text-9xl md:text-[220px] font-black text-transparent"
               style={
                 {
-                  WebkitTextStroke: "2px #E0E2FE",
+                  WebkitTextStroke: "2px #2b37e3",
                   letterSpacing: "-0.05em",
                   lineHeight: "0.9",
                 } as React.CSSProperties

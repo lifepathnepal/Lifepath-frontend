@@ -36,6 +36,7 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const isAuthPage = pathname === "/login" || pathname === "/signup";
+  const isLearnPage = pathname?.includes("/learn");
 
   return (
     <html lang="en">
@@ -60,9 +61,9 @@ export default function RootLayout({
         className={`${poppins.variable} ${montserrat.variable} antialiased bg-white`}
       >
         <SmoothScroll />
-        {!isAuthPage && <Header />}
+        {!isAuthPage && !isLearnPage && <Header />}
         <main className="min-h-screen">{children}</main>
-        {!isAuthPage && <Footer />}
+        {!isAuthPage && !isLearnPage && <Footer />}
       </body>
     </html>
   );

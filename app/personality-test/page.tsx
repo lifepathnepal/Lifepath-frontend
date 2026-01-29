@@ -8,11 +8,9 @@ import {
   CheckCircle,
   Clock,
   User,
-  PlayCircle,
-  Check,
 } from "lucide-react";
 import Link from "next/link";
-import PersonalitySection from "../components/home/PersonalitySection";
+import { getPersonalityType } from "./personalityData";
 
 type Question = {
   id: number;
@@ -312,196 +310,6 @@ const questions: Question[] = [
   },
 ];
 
-const personalityTypes = {
-  INTJ: {
-    name: "The Architect",
-    description:
-      "Strategic, analytical, and innovative. You excel at developing long-term plans and solving complex problems.",
-    careers: ["Software Developer", "Data Scientist", "Strategic Planner"],
-  },
-  INTP: {
-    name: "The Logician",
-    description:
-      "Curious, inventive, and logical. You love exploring theories and solving intellectual challenges.",
-    careers: ["Researcher", "Software Engineer", "Analyst"],
-  },
-  ENTJ: {
-    name: "The Commander",
-    description:
-      "Bold, decisive, and natural leaders. You excel at organizing people and resources toward goals.",
-    careers: ["Executive", "Entrepreneur", "Project Manager"],
-  },
-  ENTP: {
-    name: "The Debater",
-    description:
-      "Quick-witted, clever, and innovative. You love intellectual challenges and brainstorming ideas.",
-    careers: ["Entrepreneur", "Marketing Strategist", "Consultant"],
-  },
-  INFJ: {
-    name: "The Advocate",
-    description:
-      "Insightful, principled, and idealistic. You're driven to help others and make a positive impact.",
-    careers: ["Counselor", "Writer", "HR Manager"],
-  },
-  INFP: {
-    name: "The Mediator",
-    description:
-      "Creative, empathetic, and idealistic. You seek meaning and authenticity in your work.",
-    careers: ["Writer", "Designer", "Therapist"],
-  },
-  ENFJ: {
-    name: "The Protagonist",
-    description:
-      "Charismatic, inspiring, and empathetic. You naturally motivate and guide others.",
-    careers: ["Teacher", "HR Manager", "Life Coach"],
-  },
-  ENFP: {
-    name: "The Campaigner",
-    description:
-      "Enthusiastic, creative, and sociable. You're passionate about new ideas and helping people.",
-    careers: ["Marketing Manager", "Creative Director", "Trainer"],
-  },
-  ISTJ: {
-    name: "The Logistician",
-    description:
-      "Practical, organized, and reliable. You excel at creating order and following through.",
-    careers: ["Accountant", "Project Manager", "Administrator"],
-  },
-  ISFJ: {
-    name: "The Defender",
-    description:
-      "Caring, dedicated, and detail-oriented. You protect and support those around you.",
-    careers: ["Nurse", "Teacher", "Administrator"],
-  },
-  ESTJ: {
-    name: "The Executive",
-    description:
-      "Organized, practical, and decisive. You excel at managing people and processes.",
-    careers: ["Business Manager", "Administrator", "Operations Manager"],
-  },
-  ESFJ: {
-    name: "The Consul",
-    description:
-      "Warm, caring, and organized. You create harmony and help others feel valued.",
-    careers: ["Event Coordinator", "HR Specialist", "Teacher"],
-  },
-  ISTP: {
-    name: "The Virtuoso",
-    description:
-      "Bold, practical, and hands-on. You excel at understanding how things work.",
-    careers: ["Engineer", "Mechanic", "Developer"],
-  },
-  ISFP: {
-    name: "The Adventurer",
-    description:
-      "Flexible, artistic, and sensitive. You appreciate beauty and live in the moment.",
-    careers: ["Designer", "Artist", "Chef"],
-  },
-  ESTP: {
-    name: "The Entrepreneur",
-    description:
-      "Energetic, perceptive, and action-oriented. You thrive on excitement and solving problems.",
-    careers: ["Sales Manager", "Entrepreneur", "Marketing Manager"],
-  },
-  ESFP: {
-    name: "The Entertainer",
-    description:
-      "Outgoing, spontaneous, and enthusiastic. You love entertaining and helping others.",
-    careers: ["Event Planner", "Performer", "Sales Representative"],
-  },
-};
-
-const recommendedCourses = [
-  {
-    id: 1,
-    slug: "web-development-bootcamp",
-    title: "Frontend Mastery-2026 (Beginner)",
-    instructor: "by Uchero D. Lucky",
-    duration: "8hr 25min",
-    lessons: "14 lessons",
-    price: "5200",
-    originalPrice: "5200",
-    includes: [
-      "Psychology class",
-      "Personality Development",
-      "Life Books",
-      "Personal Guidance",
-      "Interview Practice",
-      "100% Placement",
-    ],
-  },
-  {
-    slug: "ux-designer-bootcamp",
-    id: 2,
-    title: "Become a UX Designer in 2025 (Beginner)",
-    instructor: "by Uchero D. Lucky",
-    duration: "8hr 25min",
-    lessons: "14 lessons",
-    price: "5200",
-    originalPrice: "5200",
-    includes: [
-      "Psychology class",
-      "Personality Development",
-      "Life Books",
-      "Personal Guidance",
-    ],
-  },
-  {
-    slug: "mern-stack-mastery",
-    id: 3,
-    title: "MERN-Stack Mastery-2026 (Beginner)",
-    instructor: "by Uchero D. Lucky",
-    duration: "8hr 25min",
-    lessons: "14 lessons",
-    price: "5200",
-    originalPrice: "5200",
-    includes: ["Psychology class", "Personality Development", "Life Books"],
-  },
-  {
-    id: 4,
-    slug: "data-science-python",
-    title: "Data Science with Python (Advanced)",
-    instructor: "by Uchero D. Lucky",
-    duration: "16hr 30min",
-    lessons: "24 lessons",
-    price: "7200",
-    originalPrice: "8000",
-    includes: [
-      "Personality Development",
-      "Life Books",
-      "Personal Guidance",
-      "100% Placement",
-    ],
-  },
-  {
-    id: 5,
-    slug: "mobile-app-development",
-    title: "Mobile App Development (Intermediate)",
-    instructor: "by Uchero D. Lucky",
-    duration: "12hr 45min",
-    lessons: "18 lessons",
-    price: "6200",
-    originalPrice: "7000",
-    includes: ["Psychology class", "Personal Guidance", "Interview Practice"],
-  },
-  {
-    slug: "digital-marketing-mastery",
-    id: 6,
-    title: "Digital Marketing Mastery (Beginner)",
-    instructor: "by Uchero D. Lucky",
-    duration: "10hr 15min",
-    lessons: "16 lessons",
-    price: "4800",
-    originalPrice: "5500",
-    includes: [
-      "Personality Development",
-      "Life Books",
-      "Interview Practice",
-      "100% Placement",
-    ],
-  },
-];
-
 export default function PersonalityTestPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<{ [key: number]: number }>({});
@@ -569,13 +377,17 @@ export default function PersonalityTestPage() {
   };
 
   if (showResult && result) {
-    const personality =
-      personalityTypes[result as keyof typeof personalityTypes];
+    const personality = getPersonalityType(result);
+
+    if (!personality) {
+      return null;
+    }
+
     return (
       <div className="min-h-screen pt-16 pb-12 bg-white">
-        {/* Hero Section */}
-        <section className="bg-linear-to-r from-black to-blue-700 text-white">
-          <div className="max-w-6xl mx-auto py-3 relative">
+        {/* Hero Section - Enhanced Banner */}
+        <section className="bg-linear-to-r from-black  to-blue-600 relative overflow-hidden">
+          <div className="max-w-6xl mx-auto py-16 md:py-8 relative">
             {/* Back Button */}
             <button
               onClick={() => {
@@ -584,285 +396,474 @@ export default function PersonalityTestPage() {
                 setAnswers({});
                 setResult(null);
               }}
-              className="absolute top-3 left-6 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-full transition-colors shadow-md cursor-pointer flex items-center gap-1"
+              className="absolute top-6 left-4 sm:left-6 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/20 hover:border-white/30 transition-all shadow-lg hover:shadow-xl cursor-pointer flex items-center gap-2"
             >
-              <ArrowLeft size={14} />
-              Back to Test
+              <ArrowLeft size={16} />
+              <span className="hidden sm:inline">Back</span>
             </button>
 
+            {/* Article Header */}
             <div className="text-center max-w-3xl mx-auto">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <CheckCircle size={32} className="text-white" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-semibold mb-6 border border-white/20">
+                <CheckCircle size={16} />
+                Test Completed
               </div>
-              <h1 className="text-lg md:text-2xl font-bold text-white mb-1">
-                Test Completed!
+
+              <h1 className="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                You&apos;re {personality.name}
               </h1>
-              <p className="text-sm text-blue-100">
-                Your personality profile and recommendations
+
+              <div className="inline-flex items-center gap-3 mb-6">
+                <div className="px-8 py-3 bg-white text-blue-600 text-2xl md:text-3xl font-bold rounded-lg shadow-2xl">
+                  {result}
+                </div>
+              </div>
+
+              <p className="text-lg md:text-xl text-blue-50 leading-relaxed mb-8">
+                {personality.tagline}
               </p>
             </div>
           </div>
         </section>
 
-        <div className="max-w-6xl mx-auto py-6">
-          <div className="bg-white rounded-2xl p-6 md:p-8 border border-zinc-200 shadow-sm">
-            <div className="flex items-center justify-center mb-4">
-              <CheckCircle
-                size={48}
-                className="text-blue-600"
-                strokeWidth={2}
-              />
+        {/* Blog Content */}
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+          {/* Introduction */}
+          <div className="prose prose-lg max-w-none mb-8">
+            <p className="text-2xl md:text-3xl text-zinc-800 leading-relaxed mb-8 first-letter:text-7xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-3 first-letter:float-left first-letter:leading-none">
+              {personality.description}
+            </p>
+            <p className="text-xl text-zinc-700 leading-loose mb-6">
+              {personality.detailedDescription}
+            </p>
+            <div className="mt-10 p-6 border-l-4 border-blue-600 bg-blue-50 rounded-r-xl">
+              <p className="text-lg italic text-zinc-800 font-medium">
+                💡 <strong>Here&apos;s the thing:</strong> Understanding your
+                personality type isn&apos;t about putting yourself in a
+                box—it&apos;s about unlocking the door to your potential.
+              </p>
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-center text-zinc-900 mb-2">
-              Your Personality Type
-            </h1>
-            <div className="text-center mb-6">
-              <span className="inline-block px-5 py-2 bg-blue-600 text-white text-2xl font-bold rounded-lg">
-                {result}
-              </span>
-              <h2 className="text-lg md:text-xl font-semibold text-blue-600 mt-3">
-                {personality.name}
-              </h2>
-            </div>
+          </div>
 
-            <div className="space-y-4">
-              <div className="bg-zinc-50 rounded-lg p-4 border border-zinc-200">
-                <h3 className="text-base font-semibold text-zinc-900 mb-2">
-                  About You
-                </h3>
-                <p className="text-sm text-zinc-700 leading-relaxed">
-                  {personality.description}
+          {/* Feature Image/Illustration */}
+          <div className="mb-16">
+            <div className="relative h-64 md:h-80 bg-blue-100 rounded-2xl overflow-hidden border border-blue-200">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Brain
+                  size={120}
+                  className="text-blue-600/20"
+                  strokeWidth={1}
+                />
+              </div>
+              <div className="absolute bottom-8 left-8 right-8">
+                <p className="text-lg font-medium text-zinc-800 italic leading-relaxed">
+                  &quot;Understanding your personality is the first step to
+                  finding your true path.&quot;
                 </p>
               </div>
+            </div>
+          </div>
 
-              <div className="bg-zinc-50 rounded-lg p-4 border border-zinc-200">
-                <h3 className="text-base font-semibold text-zinc-900 mb-2">
-                  Recommended Career Paths
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {personality.careers.map((career, index) => (
-                    <span
-                      key={index}
-                      className="px-4 py-2 bg-white text-blue-600 rounded-full text-sm font-medium border border-zinc-200"
-                    >
-                      {career}
-                    </span>
-                  ))}
+          {/* Strengths Section - Blog Style */}
+          <section className="mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
+              ✨ What Makes You Shine
+            </h2>
+            <p className="text-xl text-zinc-700 leading-loose mb-4">
+              These aren&apos;t just skills—they&apos;re your{" "}
+              <strong className="text-blue-600">superpowers</strong>. The things
+              that come so naturally, you might not even realize how special
+              they are.
+            </p>
+            <p className="text-lg text-zinc-600 leading-loose mb-10">
+              When you lean into these strengths, success doesn&apos;t feel like
+              a struggle. It feels like <em>coming home</em>.
+            </p>
+
+            <div className="space-y-3">
+              {personality.strengths.map((strength, idx) => (
+                <div
+                  key={idx}
+                  className="group flex items-start gap-4 p-5 bg-white rounded-xl border-l-4 border-blue-600 shadow-sm hover:shadow-lg hover:border-blue-700 transition-all"
+                >
+                  <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <CheckCircle
+                      size={20}
+                      className="text-white"
+                      strokeWidth={2.5}
+                    />
+                  </div>
+                  <p className="text-lg text-zinc-800 leading-loose">
+                    {strength}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Pull Quote */}
+            <div className="mt-10 text-center">
+              <blockquote className="text-2xl md:text-3xl font-bold text-zinc-900 italic">
+                &quot;Your strengths are where effort meets ease.&quot;
+              </blockquote>
+            </div>
+          </section>
+
+          {/* Divider with Icon */}
+          <div className="flex items-center justify-center my-16">
+            <div className="h-px bg-blue-200 flex-1"></div>
+            <div className="px-6">
+              <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center">
+                <Brain size={24} className="text-blue-600" />
+              </div>
+            </div>
+            <div className="h-px bg-blue-200 flex-1"></div>
+          </div>
+
+          {/* Growth Areas Section - Blog Style */}
+          <section className="mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
+              🌱 Room to Grow
+            </h2>
+            <p className="text-xl text-zinc-700 leading-loose mb-4">
+              Nobody&apos;s perfect—and that&apos;s{" "}
+              <strong className="text-blue-600">perfectly okay</strong>. These
+              are the areas where you might need to put in a little extra
+              effort.
+            </p>
+            <p className="text-lg text-zinc-600 leading-loose mb-10">
+              <strong>The good news?</strong> Awareness is half the battle.
+              Understanding these helps you prepare, adapt, and thrive even in
+              challenging situations.
+            </p>
+
+            <div className="space-y-3">
+              {personality.weaknesses.map((weakness, idx) => (
+                <div
+                  key={idx}
+                  className="group flex items-start gap-4 p-5 bg-blue-50 rounded-xl border-l-4 border-blue-400 shadow-sm hover:shadow-lg hover:border-blue-500 transition-all"
+                >
+                  <div className="w-9 h-9 rounded-full bg-blue-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <ArrowRight
+                      size={20}
+                      className="text-white"
+                      strokeWidth={2.5}
+                    />
+                  </div>
+                  <p className="text-lg text-zinc-800 leading-loose">
+                    {weakness}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Encouraging Note */}
+            <div className="mt-10 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200">
+              <p className="text-lg text-zinc-800 leading-loose">
+                <strong className="text-blue-700">Remember:</strong> These
+                aren&apos;t flaws—they&apos;re simply areas where you can level
+                up. Every personality type has them, and yours don&apos;t define
+                you. They&apos;re just helpful signposts on your growth journey.
+              </p>
+            </div>
+          </section>
+
+          {/* Image Break */}
+          <div className="mb-16">
+            <div className="relative h-56 md:h-72 bg-blue-100 rounded-2xl overflow-hidden border border-blue-200">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center px-8">
+                  <p className="text-2xl md:text-3xl font-bold text-zinc-900 mb-4 leading-tight">
+                    How You Work Best
+                  </p>
+                  <p className="text-base md:text-lg text-zinc-700 leading-loose">
+                    {personality.workStyle}
+                  </p>
                 </div>
               </div>
             </div>
-
-            <div className="mt-6 flex flex-col sm:flex-row gap-2 justify-center">
-              <button
-                onClick={() => {
-                  setShowResult(false);
-                  setCurrentQuestion(0);
-                  setAnswers({});
-                  setResult(null);
-                }}
-                className="px-5 py-2 border border-zinc-300 text-zinc-700 text-sm font-medium rounded-full hover:bg-zinc-50 transition-colors cursor-pointer"
-              >
-                Retake Test
-              </button>
-              <button className="px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
-                Explore Career Paths
-              </button>
-            </div>
           </div>
 
-          {/* Recommended Courses Section */}
-          <div className="mt-8 h-auto">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl md:text-2xl font-bold text-zinc-900">
-                Recommended Courses For You
-              </h2>
-              <Link
-                href="/courses"
-                className="text-sm text-blue-600 hover:text-blue-700 font-medium cursor-pointer"
-              >
-                View All →
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4">
-              {recommendedCourses.slice(0, 3).map((course) => (
-                <Link
-                  key={course.id}
-                  href={`/courses/${course.slug}`}
-                  className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 border border-zinc-200 flex flex-col"
-                >
-                  {/* Course Info */}
-                  <div className="p-4 flex flex-col h-full group cursor-pointer">
-                    {/* Title */}
-                    <h4 className="text-lg font-semibold text-zinc-900 mb-2 line-clamp-2 leading-tight group-hover:underline group-hover:text-blue-500">
-                      {course.title}
-                    </h4>
+          {/* Career Section - Blog Style */}
+          <section className="mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
+              💼 Careers Where You&apos;ll Thrive
+            </h2>
+            <p className="text-xl text-zinc-700 leading-loose mb-4">
+              These aren&apos;t just job suggestions—they&apos;re{" "}
+              <strong className="text-blue-600">
+                paths where your natural talents can flourish
+              </strong>
+              .
+            </p>
+            <p className="text-lg text-zinc-600 leading-loose mb-10">
+              Imagine waking up excited to work because what you do aligns
+              perfectly with who you are. That&apos;s what these careers offer.
+              Not just a paycheck, but <em>purpose</em>.
+            </p>
 
-                    {/* Instructor */}
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-                        <User size={12} className="text-white" />
-                      </div>
-                      <p className="text-xs text-zinc-600">
-                        {course.instructor}
-                      </p>
+            <div className="bg-blue-50 rounded-2xl p-6 md:p-8 border border-blue-200">
+              <div className="grid sm:grid-cols-2 gap-4">
+                {personality.careers.map((career, index) => (
+                  <div
+                    key={index}
+                    className="group flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer border border-blue-100 hover:border-blue-600"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                      <CheckCircle
+                        size={20}
+                        className="text-blue-600 group-hover:text-white transition-colors"
+                      />
                     </div>
-
-                    {/* Duration and Lessons */}
-                    <div className="flex items-center gap-3 text-xs text-zinc-600 mb-2 pb-2 border-b border-zinc-200">
-                      <span className="flex items-center gap-1">
-                        <Clock size={12} />
-                        {course.duration}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <PlayCircle size={12} />
-                        {course.lessons}
-                      </span>
-                    </div>
-
-                    {/* What's Included */}
-                    <div className="mb-3 bg-blue-50 border border-blue-300 rounded-lg p-2.5 grow">
-                      <p className="text-[10px] font-bold text-zinc-800 mb-2 uppercase tracking-wide">
-                        What&apos;s included
-                      </p>
-                      <div className="flex flex-col gap-1.5">
-                        {course.includes.slice(0, 4).map((item, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-center gap-1.5 text-[10px] text-zinc-700 hover:text-blue-600 transition-colors"
-                          >
-                            <div className="bg-green-500 rounded-full p-0.5 shrink-0">
-                              <Check size={8} className="text-white" />
-                            </div>
-                            <span className="font-medium leading-tight">
-                              {item}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Pricing */}
-                    <div className="mb-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-base font-bold text-blue-800">
-                          Rs.{course.price}
-                        </span>
-                        <span className="text-xs text-zinc-500 line-through">
-                          {course.originalPrice}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Buttons */}
-                    <div className="flex gap-2 items-center justify-between w-full mt-auto">
-                      <button className="w-full px-3 py-3 bg-zinc-100 text-blue-500 border cursor-pointer hover:bg-zinc-50 hover:text-blue-700 hover:border-blue-600 font-semibold rounded-full transition-colors text-xs">
-                        View course
-                      </button>
-                      <button className="w-full px-3 py-3 bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-semibold rounded-full transition-colors text-xs">
-                        Enroll Now
-                      </button>
-                    </div>
+                    <span className="text-base font-semibold text-zinc-800 group-hover:text-blue-600 transition-colors">
+                      {career}
+                    </span>
                   </div>
-                </Link>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
+          </section>
+
+          {/* Call to Action - Blog Style */}
+          <section className="mb-16">
+            <div className="bg-blue-600 rounded-2xl p-8 md:p-12 text-center text-white">
+              <div className="relative z-10">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                  Ready to Turn Insight into Action?
+                </h2>
+                <p className="text-lg text-blue-50 mb-8 max-w-2xl mx-auto leading-loose">
+                  Now that you know who you are, it&apos;s time to discover what
+                  you can become. Explore courses designed specifically for{" "}
+                  {personality.name} personalities like you.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <button
+                    onClick={() => {
+                      setShowResult(false);
+                      setCurrentQuestion(0);
+                      setAnswers({});
+                      setResult(null);
+                    }}
+                    className="px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-full transition-all cursor-pointer flex items-center gap-2 border border-blue-500"
+                  >
+                    <ArrowLeft size={18} />
+                    Retake Test
+                  </button>
+                  <Link href="/courses">
+                    <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl cursor-pointer flex items-center gap-2">
+                      Explore Your Courses
+                      <ArrowRight size={18} />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* More Insights Section */}
+          <section className="mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-3 text-center">
+              Want to Dive Deeper?
+            </h2>
+            <p className="text-center text-lg text-zinc-700 mb-10 leading-loose">
+              Explore more frameworks to uncover every dimension of your
+              personality
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <button className="group p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-600 hover:shadow-md transition-all cursor-pointer text-left">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center shrink-0">
+                    <Brain size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-zinc-900 mb-1">
+                      OCEAN Analysis
+                    </h3>
+                    <p className="text-sm text-zinc-700 mb-2 leading-relaxed">
+                      Big Five personality traits breakdown
+                    </p>
+                    <span className="text-xs text-blue-600 font-semibold">
+                      Coming Soon →
+                    </span>
+                  </div>
+                </div>
+              </button>
+
+              <button className="group p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-600 hover:shadow-md transition-all cursor-pointer text-left">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center shrink-0">
+                    <User size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-zinc-900 mb-1">
+                      DISC Profile
+                    </h3>
+                    <p className="text-sm text-zinc-700 mb-2 leading-relaxed">
+                      Communication & behavior insights
+                    </p>
+                    <span className="text-xs text-blue-600 font-semibold">
+                      Coming Soon →
+                    </span>
+                  </div>
+                </div>
+              </button>
+
+              <button className="group p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-600 hover:shadow-md transition-all cursor-pointer text-left">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center shrink-0">
+                    <ArrowRight size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-zinc-900 mb-1">
+                      Career Roadmap
+                    </h3>
+                    <p className="text-sm text-zinc-700 mb-2 leading-relaxed">
+                      Detailed career paths & industries
+                    </p>
+                    <span className="text-xs text-blue-600 font-semibold">
+                      Coming Soon →
+                    </span>
+                  </div>
+                </div>
+              </button>
+
+              <button className="group p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-600 hover:shadow-md transition-all cursor-pointer text-left">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center shrink-0">
+                    <CheckCircle size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-zinc-900 mb-1">
+                      Relationships
+                    </h3>
+                    <p className="text-sm text-zinc-700 mb-2 leading-relaxed">
+                      Compatibility with other types
+                    </p>
+                    <span className="text-xs text-blue-600 font-semibold">
+                      Coming Soon →
+                    </span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </section>
+        </article>
       </div>
     );
   }
 
   return (
-    <div className=" pt-16 pb-4 bg-white overflow-hidden">
+    <div className="min-h-screen pt-16 pb-12 bg-gradient-to-b from-white via-blue-50/30 to-white overflow-hidden">
       {/* Hero Section */}
-      <section className="bg-linear-to-r from-black to-blue-700 text-white">
-        <div className="max-w-6xl mx-auto py-3 relative">
+      <section className="bg-gradient-to-r from-black to-blue-600 text-white relative overflow-hidden">
+        {/* Decorative gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent pointer-events-none"></div>
+
+        <div className="max-w-6xl mx-auto py-8 md:py-12 px-4 relative">
           {/* Test Toggle Button */}
           <button
             onClick={jumpToResults}
-            className="absolute top-3 right-6 px-3 py-1.5 bg-yellow-400 hover:bg-yellow-500 text-black text-xs font-semibold rounded-lg transition-colors shadow-md cursor-pointer"
+            className="absolute top-4 right-4 px-4 py-2 bg-yellow-400 hover:bg-yellow-500 text-black text-xs font-bold rounded-full transition-all shadow-lg hover:shadow-xl cursor-pointer"
           >
-            🧪 Jump to Results (Test)
+            🧪 Jump to Results
           </button>
 
           <div className="text-center max-w-3xl mx-auto">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <Brain size={28} className="text-white" />
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <Brain size={32} className="text-white" />
+              </div>
             </div>
-            <h1 className="text-lg md:text-2xl font-bold text-white mb-1">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-3">
               Discover Your Personality Type
             </h1>
-            <p className="text-sm text-blue-100">40-question MBTI assessment</p>
+            <p className="text-base md:text-lg text-blue-100 mb-4">
+              Take our comprehensive 40-question MBTI assessment
+            </p>
+            <div className="flex items-center justify-center gap-4 text-sm text-blue-200">
+              <span className="flex items-center gap-2">
+                <CheckCircle size={16} />
+                100% Free
+              </span>
+              <span className="text-blue-400">•</span>
+              <span className="flex items-center gap-2">
+                <Clock size={16} />5 Minutes
+              </span>
+              <span className="text-blue-400">•</span>
+              <span>Instant Results</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Test Section */}
-      <section className="max-w-4xl mx-auto px-6 py-4 overflow-y-auto">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
         {/* Progress Bar */}
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-1">
-            <span className="text-xs font-medium text-zinc-600">
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-sm font-semibold text-zinc-700">
               Question {currentQuestion + 1} of {questions.length}
             </span>
-            <span className="text-xs font-medium text-blue-600">
+            <span className="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
               {Math.round(progress)}%
             </span>
           </div>
-          <div className="w-full bg-zinc-200 rounded-full h-1.5">
+          <div className="w-full bg-zinc-200 rounded-full h-2.5 shadow-inner">
             <div
-              className="bg-blue-600 h-1.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 h-2.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-600/30"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
         </div>
 
         {/* Question Card */}
-        <div className="bg-white rounded-xl p-4 md:p-6 border border-zinc-200 shadow-sm">
-          <h2 className="text-base md:text-lg font-semibold text-zinc-900 mb-4 text-center">
+        <div className="bg-white rounded-2xl p-6 md:p-8 border border-zinc-200 shadow-xl">
+          <h2 className="text-lg md:text-2xl font-bold text-zinc-900 mb-8 text-center leading-relaxed">
             {questions[currentQuestion].question}
           </h2>
 
           {/* Scale Options */}
-          <div className="space-y-3 mb-4">
+          <div className="space-y-5 mb-6">
             {/* Option A Label */}
-            <div className="bg-blue-50 rounded-lg p-2.5 border border-blue-200">
-              <p className="text-xs font-medium text-blue-900 mb-0.5">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border-2 border-blue-200 shadow-sm">
+              <p className="text-xs font-bold text-blue-700 mb-1 uppercase tracking-wide">
                 Option A
               </p>
-              <p className="text-xs md:text-sm font-medium text-zinc-900">
+              <p className="text-sm md:text-base font-semibold text-zinc-900">
                 {questions[currentQuestion].optionA}
               </p>
             </div>
 
             {/* 5-point Scale with clear labels */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-[10px] text-zinc-500 px-1">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-xs font-medium text-zinc-600 px-2">
                 <span>← Strongly A</span>
-                <span>Neutral</span>
+                <span className="text-zinc-500">Neutral</span>
                 <span>Strongly B →</span>
               </div>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-1.5 md:gap-2">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
                 {[1, 2, 3, 4, 5].map((value) => (
                   <button
                     key={value}
                     onClick={() => handleAnswer(value)}
-                    className={`flex flex-col items-center justify-center w-full md:w-16 h-16 md:h-18 rounded-lg border-2 transition-all cursor-pointer ${
+                    className={`flex flex-col items-center justify-center w-full md:w-20 h-20 md:h-24 rounded-xl border-2 transition-all cursor-pointer transform hover:scale-105 ${
                       currentAnswer === value
-                        ? "border-blue-600 bg-blue-600 text-white"
-                        : "border-zinc-200 bg-white hover:border-blue-300 hover:bg-zinc-50"
+                        ? "border-blue-600 bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-600/30"
+                        : "border-zinc-300 bg-white hover:border-blue-400 hover:bg-blue-50 hover:shadow-md"
                     }`}
                   >
                     <div
-                      className={`text-xl font-bold mb-0.5 ${
-                        currentAnswer === value ? "text-white" : "text-zinc-700"
+                      className={`text-2xl font-bold mb-1 ${
+                        currentAnswer === value ? "text-white" : "text-zinc-800"
                       }`}
                     >
                       {value}
                     </div>
                     <div
-                      className={`text-[10px] font-medium text-center px-1 ${
-                        currentAnswer === value ? "text-white" : "text-zinc-500"
+                      className={`text-[10px] font-semibold text-center px-1 ${
+                        currentAnswer === value
+                          ? "text-blue-100"
+                          : "text-zinc-600"
                       }`}
                     >
                       {value === 1 && "Very A"}
@@ -877,53 +878,61 @@ export default function PersonalityTestPage() {
             </div>
 
             {/* Option B Label */}
-            <div className="bg-purple-50 rounded-lg p-2.5 border border-purple-200">
-              <p className="text-xs font-medium text-purple-900 mb-0.5">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border-2 border-blue-200 shadow-sm">
+              <p className="text-xs font-bold text-blue-700 mb-1 uppercase tracking-wide">
                 Option B
               </p>
-              <p className="text-xs md:text-sm font-medium text-zinc-900">
+              <p className="text-sm md:text-base font-semibold text-zinc-900">
                 {questions[currentQuestion].optionB}
               </p>
             </div>
           </div>
 
           {/* Helper Text */}
-          <p className="text-center text-xs text-zinc-600 mb-3 bg-zinc-50 rounded-lg p-2 border border-zinc-200">
-            <span className="font-medium">How it works:</span> Select{" "}
-            <span className="font-semibold text-blue-600">1-2</span> if you
-            relate more to{" "}
-            <span className="font-semibold text-blue-600">Option A</span>,{" "}
-            <span className="font-semibold text-zinc-700">3</span> if
-            you&apos;re in between, or{" "}
-            <span className="font-semibold text-purple-600">4-5</span> if you
-            relate more to{" "}
-            <span className="font-semibold text-purple-600">Option B</span>
-          </p>
+          <div className="bg-gradient-to-r from-zinc-50 to-blue-50 rounded-xl p-4 border border-zinc-200 mb-6">
+            <p className="text-center text-sm text-zinc-700">
+              <span className="font-bold text-zinc-900">How to answer:</span>{" "}
+              Choose <span className="font-bold text-blue-600">1-2</span> if you
+              strongly relate to{" "}
+              <span className="font-bold text-blue-600">Option A</span>,{" "}
+              <span className="font-bold text-zinc-700">3</span> if neutral, or{" "}
+              <span className="font-bold text-indigo-600">4-5</span> if you
+              relate more to{" "}
+              <span className="font-bold text-indigo-600">Option B</span>
+            </p>
+          </div>
 
           {/* Navigation Buttons */}
           <div className="flex justify-between items-center">
             <button
               onClick={handlePrevious}
               disabled={currentQuestion === 0}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all ${
                 currentQuestion === 0
                   ? "bg-zinc-100 text-zinc-400 cursor-not-allowed"
-                  : "bg-white border border-zinc-300 text-zinc-700 hover:bg-zinc-50 cursor-pointer"
+                  : "bg-white border-2 border-zinc-300 text-zinc-700 hover:bg-zinc-50 hover:border-zinc-400 hover:shadow-md cursor-pointer"
               }`}
             >
-              <ArrowLeft size={16} />
+              <ArrowLeft size={18} />
               <span className="hidden sm:inline">Previous</span>
             </button>
 
-            <div className="text-xs text-zinc-500">{isAnswered && "✓"}</div>
+            <div className="flex items-center gap-2">
+              {isAnswered && (
+                <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
+                  <CheckCircle size={16} />
+                  <span className="hidden sm:inline">Answered</span>
+                </div>
+              )}
+            </div>
 
             <button
               onClick={handleNext}
               disabled={!isAnswered}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all ${
                 !isAnswered
-                  ? "bg-zinc-100 text-zinc-400 cursor-not-allowed"
-                  : "bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"
+                  ? "bg-zinc-200 text-zinc-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 cursor-pointer"
               }`}
             >
               <span className="hidden sm:inline">
@@ -936,7 +945,6 @@ export default function PersonalityTestPage() {
             </button>
           </div>
         </div>
-        <PersonalitySection />
       </section>
     </div>
   );

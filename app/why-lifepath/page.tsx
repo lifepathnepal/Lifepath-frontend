@@ -58,8 +58,16 @@ export default function WhyLifePathPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-32 pb-16 px-4 bg-linear-to-r from-black to-blue-700 text-white">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative h-[90vh] flex items-center justify-center pb-16 px-4 text-white overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/heroImages/life.png')" }}
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-linear-to-r from-black/90 to-blue-700/80" />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Career Clarity Through <br />
             <span className="text-blue-300">Personality Understanding</span>

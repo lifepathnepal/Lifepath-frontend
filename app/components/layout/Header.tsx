@@ -2,36 +2,34 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { usePathname } from "next/navigation";
 import {
-  Search,
   Menu,
-  X,
-  GraduationCap,
-  Briefcase,
-  Calendar,
+  Sparkles,
+  // GraduationCap,
+  // Briefcase,
+  // Calendar,
 } from "lucide-react";
 import { useScrollDirection } from "@/app/hooks/useScrollDirection";
 
 export default function Header() {
   const isVisible = useScrollDirection();
   const pathname = usePathname();
-  const [searchValue, setSearchValue] = useState("");
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  // const [searchValue, setSearchValue] = useState("");
+  // const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
     { label: "Courses", href: "/courses" },
     { label: "Find Jobs", href: "/jobs" },
-    { label: "Events", href: "/events" },
-    { label: "Why Lifepath?", href: "/why-lifepath" },
+    // { label: "Events", href: "/events" },
+    { label: "Our Story", href: "/why-lifepath" },
   ];
 
-  const quickLinks = [
-    { label: "All Courses", icon: GraduationCap, href: "/courses" },
-    { label: "Job Board", icon: Briefcase, href: "/jobs" },
-    { label: "Events", icon: Calendar, href: "/events" },
-  ];
+  // const quickLinks = [
+  //   { label: "All Courses", icon: GraduationCap, href: "/courses" },
+  //   { label: "Job Board", icon: Briefcase, href: "/jobs" },
+  //   { label: "Events", icon: Calendar, href: "/events" },
+  // ];
 
   return (
     <header
@@ -72,13 +70,13 @@ export default function Header() {
           {/* Right Side Actions */}
           <div className="flex items-center gap-2 ml-auto">
             {/* Search Button */}
-            <button
+            {/* <button
               onClick={() => setIsSearchOpen(true)}
               className="p-2 text-zinc-700 hover:bg-blue-50 hover:text-blue-600 rounded-full transition-all duration-200 border border-transparent hover:border-blue-200 cursor-pointer"
               aria-label="Search"
             >
               <Search size={20} />
-            </button>
+            </button> */}
 
             {/* Log In Button */}
             {/* <Link
@@ -88,24 +86,32 @@ export default function Header() {
               Log In
             </Link> */}
 
-            {/* Sign Up Button */}
+            {/* Personality test btn */}
+
             <Link
               href="/personality-test"
-              className="inline-block px-5 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition-colors shadow-sm whitespace-nowrap text-sm cursor-pointer"
+              className="relative flex items-center justify-center gap-1 px-5 py-2 text-white font-medium rounded-full whitespace-nowrap text-sm cursor-pointer overflow-hidden group"
             >
-              Find My Lifepath
+              <div
+                className="absolute inset-0 bg-linear-to-r from-black via-blue-600 to-black animate-[gradient_3s_ease-in-out_infinite] group-hover:paused "
+                style={{ backgroundSize: "200% 100%" }}
+              />
+              <span className="relative z-10 flex items-center gap-1">
+                <Sparkles size={16}/>
+                Know yourself
+              </span>
             </Link>
-
-            {/* Mobile Menu Button */}
-            <button className="lg:hidden p-2 text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer">
-              <Menu size={24} />
-            </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button className="lg:hidden p-2 text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer">
+            <Menu size={24} />
+          </button>
         </div>
       </nav>
 
       {/* Search Modal/Popup */}
-      {isSearchOpen && (
+      {/* {isSearchOpen && (
         <div
           className="fixed inset-0 bg-black/5 backdrop-blur-xs z-60 flex items-start justify-center pt-16 px-4"
           onClick={() => setIsSearchOpen(false)}
@@ -114,7 +120,6 @@ export default function Header() {
             className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl animate-in fade-in slide-in-from-top-5 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Search Header */}
             <div className="flex items-center gap-3 p-4 border-b border-zinc-200">
               <Search size={20} className="text-blue-600" />
               <input
@@ -134,7 +139,6 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Search Suggestions */}
             <div className="p-4">
               <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">
                 Popular Searches
@@ -159,7 +163,6 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Quick Links */}
             <div className="p-4 pt-0">
               <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">
                 Quick Links
@@ -185,7 +188,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </header>
   );
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-[95vh] w-full mx-auto overflow-hidden bg-linear-to-br from-white via-blue-50/30 to-white">
+    <section className="min-h-[95vh] w-full mx-auto overflow-hidden bg-white">
       <div className="max-w-6xl mx-auto pt-16 md:pt-24">
         <div className="grid md:grid-cols-2 gap-6 items-center">
           {/* Left Content */}
@@ -20,18 +20,23 @@ export default function HeroSection() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-zinc-900 leading-tight">
-              Confused About Your <span className="text-blue-600">Career?</span>
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
+              Discover Yourself.
               <br />
-              Let Your Personality Guide You
+              Design Your Future.
             </h1>
 
             {/* Subheading */}
-            <p className="text-lg md:text-xl font-medium text-zinc-900 leading-relaxed">
+            <p className="text-lg md:text-xl font-medium text-zinc-600 leading-relaxed">
+              Most Nepali students choose careers under pressure, confusion, or
+              trends. LifePath helps you know yourself first — then learn skills
+              that match your natural strengths.
+            </p>
+            {/* <p className="text-lg md:text-xl font-medium text-zinc-600 leading-relaxed">
               Take our free personality test and discover careers that match who
               you truly are. Get personalized course recommendations to start
               your journey today.
-            </p>
+            </p> */}
 
             {/* Trust Indicators */}
             <div className="flex flex-wrap gap-6 py-4">
@@ -110,7 +115,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 bg-linear-to-br from-blue-100 via-purple-100 to-blue-100 rounded-3xl opacity-40 blur-3xl"></div>
 
             {/* Main Image Container */}
-            <div className="relative bg-white rounded-3xl shadow-lg p-8 border border-zinc-200">
+            <div className="relative bg-white rounded-3xl border border-zinc-200">
               {/* Stats Card Overlay */}
               <div className="absolute -top-4 -right-4 bg-linear-to-tr from-zinc-700 to-gray-500 rounded-2xl shadow-lg p-4 border border-zinc-200 z-10">
                 <p className="text-xs text-zinc-50 mb-1">Success Rate</p>
@@ -118,19 +123,19 @@ export default function HeroSection() {
               </div>
 
               {/* Image */}
-              <div className="relative w-full aspect-video">
+              <div className="relative w-full aspect-square rounded-xl overflow-hidden">
                 <Image
-                  src="/heroImages/psycho.png"
+                  src="/image-icons/mirror.png"
                   alt="Find Your Career Path"
                   width={500}
                   height={500}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover "
                   priority
                 />
               </div>
 
               {/* Bottom Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-zinc-200">
+              {/* <div className="grid grid-cols-3 gap-4 pt-6 border-t border-zinc-200">
                 <div className="text-center">
                   <p className="text-2xl font-bold text-zinc-900">16</p>
                   <p className="text-xs text-zinc-500">Personality Types</p>
@@ -143,7 +148,7 @@ export default function HeroSection() {
                   <p className="text-2xl font-bold text-zinc-900">20+</p>
                   <p className="text-xs text-zinc-500">Courses</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

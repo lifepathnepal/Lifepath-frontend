@@ -17,7 +17,6 @@ import {
   Rocket,
   PartyPopper,
   ChevronDown,
-  BookIcon,
 } from "lucide-react";
 
 export default function PersonalitySection() {

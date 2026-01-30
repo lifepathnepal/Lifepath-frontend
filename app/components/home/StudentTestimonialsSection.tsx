@@ -8,8 +8,7 @@ const testimonials = [
     id: 1,
     name: "Priya Sharma",
     role: "Software Engineer",
-    video: "/testimonials/student1.mp4",
-    thumbnail: "/heroImages/woman2.png",
+    video: "/videos/krish.mp4",
     quote: "LifePath helped me discover my true potential",
     caption: "I found my dream career path through LifePath",
   },
@@ -17,8 +16,7 @@ const testimonials = [
     id: 2,
     name: "Rajesh Kumar",
     role: "UX Designer",
-    video: "/testimonials/student2.mp4",
-    thumbnail: "/heroImages/woman2.png",
+    video: "/videos/Alish.mp4",
     quote: "The personality test was eye-opening",
     caption: "First of all, it's safe and accurate",
   },
@@ -26,8 +24,7 @@ const testimonials = [
     id: 3,
     name: "Anita Thapa",
     role: "Data Analyst",
-    video: "/testimonials/student3.mp4",
-    thumbnail: "/heroImages/woman2.png",
+    video: "/videos/krish.mp4",
     quote: "Career guidance at its best",
     caption: "The concept of LifePath changed my life",
   },
@@ -35,8 +32,7 @@ const testimonials = [
     id: 4,
     name: "Deepak Rai",
     role: "Marketing Manager",
-    video: "/testimonials/student4.mp4",
-    thumbnail: "/heroImages/woman2.png",
+    video: "/videos/Alish.mp4",
     quote: "Found clarity in my career choices",
     caption: "I am now confident about my future",
   },
@@ -63,17 +59,20 @@ export default function StudentTestimonialsSection() {
 
   return (
     <section className="py-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto ">
         {/* Section Header */}
-        {/* <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-3">
-            Student Success Stories
-          </h2>
-          <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
-            Hear from our students who found their perfect career path through
-            LifePath
+        <div className="text-center max-w-3xl mx-auto pb-16">
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-blue-500/80">
+            What people trust us for
           </p>
-        </div> */}
+          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
+            Built by people who <br />questioned their own path.
+          </h2>
+          <p className="text-sm md:text-base text-zinc-600 mt-4">
+            We focus on honest guidance, not hype or quick fixes and our
+            students feel the difference.
+          </p>
+        </div>
 
         {/* Testimonial Carousel */}
         <div className="relative">
@@ -119,13 +118,17 @@ export default function StudentTestimonialsSection() {
                   style={{ width: `calc(${100 / itemsPerView}% - 1rem)` }}
                 >
                   <div className="group relative h-125 rounded-3xl overflow-hidden bg-zinc-900 cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-blue-600/20">
-                    {/* Video/Image Background */}
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                      style={{
-                        backgroundImage: `url(${testimonial.thumbnail})`,
-                      }}
-                    >
+                    {/* Video Background */}
+                    <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-110">
+                      <video
+                        src={testimonial.video}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        muted
+                        loop
+                        playsInline
+                        autoPlay
+                      />
+
                       {/* Enhanced Overlay */}
                       <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/50 to-black/20"></div>
 

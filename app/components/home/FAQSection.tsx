@@ -55,8 +55,8 @@ export default function FAQSection() {
       <div className="max-w-4xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-3">
-            Frequently Asked <span className="text-blue-600">Questions</span>
+          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
+            Frequently Asked Questions
           </h2>
           <p className="text-lg text-zinc-600">
             Got questions? We&apos;ve got answers
@@ -102,9 +102,9 @@ export default function FAQSection() {
         <div className="mt-12 text-center">
           <p className="text-zinc-600 mb-4">Still have questions?</p>
           <Link href="/contact">
-          <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-sm cursor-pointer">
-            Contact Support
-          </button>
+            <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-sm cursor-pointer">
+              Contact Support
+            </button>
           </Link>
         </div>
       </div>

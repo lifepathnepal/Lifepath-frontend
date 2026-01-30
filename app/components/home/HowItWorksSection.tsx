@@ -21,28 +21,23 @@ export default function HowItWorksSection() {
           .
         </>
       ),
-      position: "left",
     },
     {
       number: "02",
       title: "Understand Yourself Better",
       description:
         "Strengths, blind spots, work styles, and ideal environments.",
-      position: "right",
     },
     {
       number: "03",
       title: "Explore Career Matches",
       description:
         "Roles mapped to your personality type with real-world insights.",
-      position: "left",
-      indent: true,
     },
     {
       number: "04",
       title: "Get a Clear Direction & Action Plan",
       description: "Skills, paths, and focus areas tailored to you.",
-      position: "right",
     },
   ];
 
@@ -54,79 +49,44 @@ export default function HowItWorksSection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold  text-zinc-900 mb-4">
+          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
             How Lifepath Works?
           </h2>
           <p className="text-lg text-zinc-600">
-            A simple 4-step process to discover your  ideal career path
-            and <br />the right courses for you.
+            A simple 4-step process to discover your ideal career path and{" "}
+            <br />
+            the right courses for you.
           </p>
         </div>
 
-        {/* Steps in Zigzag Layout */}
+        {/* Steps in Clean Editorial Layout */}
         <div className="relative max-w-6xl mx-auto mb-20">
-          {steps.map((step, index) => (
-            <div key={step.number} className="grid md:grid-cols-2 gap-8 mb-16">
-              {step.position === "left" && (
-                <>
-                  <div
-                    className={`flex gap-4 ${step.indent ? "md:ml-16" : ""}`}
-                  >
-                    <div className="shrink-0 relative">
-                      <div className="text-6xl md:text-7xl font-bold text-blue-600">
-                        {step.number}
-                      </div>
-                      {index < steps.length - 1 && (
-                        <div className="absolute top-full left-4 md:left-6 w-0.5 h-24 md:h-32 bg-blue-600/30"></div>
-                      )}
-                    </div>
-                    <div className="pt-2 md:pt-4">
-                      <h3 className="text-lg md:text-2xl font-bold text-zinc-800 mb-2 md:mb-3">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-zinc-600 leading-relaxed">
-                        {step.description}
-                      </p>
-                      {step.extraText && (
-                        <p className="text-sm md:text-base text-zinc-600 leading-relaxed mt-2">
-                          {step.extraText}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <div></div>
-                </>
-              )}
-              {step.position === "right" && (
-                <>
-                  <div></div>
-                  <div className="flex gap-4">
-                    <div className="shrink-0 relative">
-                      <div className="text-6xl md:text-7xl font-bold text-blue-600">
-                        {step.number}
-                      </div>
-                      {index < steps.length - 1 && (
-                        <div className="absolute top-full left-4 md:left-6 w-0.5 h-24 md:h-32 bg-blue-600/30"></div>
-                      )}
-                    </div>
-                    <div className="pt-2 md:pt-4">
-                      <h3 className="text-lg md:text-2xl font-bold text-zinc-800 mb-2 md:mb-3">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-zinc-600 leading-relaxed">
-                        {step.description}
-                      </p>
-                      {step.extraText && (
-                        <p className="text-sm md:text-base text-zinc-600 leading-relaxed mt-2">
-                          {step.extraText}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            {steps.map((step, index) => (
+              <div
+                key={step.number}
+                className={`relative pl-6 md:pl-8 ${index === 1 ? "lg:mt-40" : ""} ${index === 2 ? "lg:mt-80" : ""} ${index === 3 ? "lg:mt-120" : ""}`}
+              >
+                <div className="absolute left-0 top-0 h-full w-px bg-zinc-300/70"></div>
+                <div className="text-2xl md:text-5xl font-semibold tracking-tight text-blue-600">
+                  {step.number}
+                </div>
+                <h3 className="text-base md:text-2xl font-semibold text-zinc-800 mt-3">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-zinc-600 leading-relaxed mt-2 max-w-[220px]">
+                  {step.description}
+                </p>
+                {step.extraText && (
+                  <p className="text-sm text-zinc-600 leading-relaxed mt-2 max-w-[220px]">
+                    {step.extraText}
+                  </p>
+                )}
+
+             
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* CTA Section */}

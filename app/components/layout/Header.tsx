@@ -102,7 +102,7 @@ export default function Header() {
                 Best Jobs
               </span>
             </Link>
-            <Link
+            {/* <Link
               href="/personality-test"
               className="relative flex items-center justify-center gap-1 px-5 py-2 text-white font-medium rounded-full whitespace-nowrap text-sm cursor-pointer overflow-hidden group"
             >
@@ -114,7 +114,7 @@ export default function Header() {
                 <Sparkles size={16} />
                 Know yourself
               </span>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Mobile Menu Button */}

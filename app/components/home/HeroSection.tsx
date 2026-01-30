@@ -20,7 +20,7 @@ export default function HeroSection() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
+            <h1 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
               Discover Yourself.
               <br />
               Design Your Future.
@@ -28,53 +28,14 @@ export default function HeroSection() {
 
             {/* Subheading */}
             <p className="text-lg md:text-xl font-medium text-zinc-600 leading-relaxed">
-              Most Nepali students choose careers under pressure, confusion, or
-              trends. LifePath helps you know yourself first — then learn skills
-              that match your natural strengths.
+              In under 10 minutes, understand how your personality aligns with
+              real careers.
             </p>
             {/* <p className="text-lg md:text-xl font-medium text-zinc-600 leading-relaxed">
               Take our free personality test and discover careers that match who
               you truly are. Get personalized course recommendations to start
               your journey today.
             </p> */}
-
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap gap-6 py-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                  <CheckCircle size={18} className="text-green-600" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-zinc-900">
-                    100% Free
-                  </p>
-                  <p className="text-xs text-zinc-500">No credit card needed</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                  <Brain size={18} className="text-blue-600" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-zinc-900">
-                    40 Questions
-                  </p>
-                  <p className="text-xs text-zinc-500">Takes only 5 minutes</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
-                  <Sparkles size={18} className="text-purple-600" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-zinc-900">
-                    Instant Results
-                  </p>
-                  <p className="text-xs text-zinc-500">With career matches</p>
-                </div>
-              </div>
-            </div>
-
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link href="/personality-test">
@@ -93,9 +54,45 @@ export default function HeroSection() {
                 </button>
               </Link>
             </div>
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap gap-6 py-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                  <CheckCircle size={18} className="text-green-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-zinc-900">
+                    Free starter insights
+                  </p>
+                  <p className="text-xs text-zinc-500">No credit card needed</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Brain size={18} className="text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-zinc-900">
+                    40 Questions
+                  </p>
+                  <p className="text-xs text-zinc-500">Takes ~8-10 minutes</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
+                  <Sparkles size={18} className="text-purple-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-zinc-900">
+                    Instant Results
+                  </p>
+                  <p className="text-xs text-zinc-500">With career matches</p>
+                </div>
+              </div>
+            </div>
 
             {/* Social Proof */}
-            <div className="pt-4">
+            {/* <div className="pt-4">
               <p className="text-sm font-medium text-zinc-700 mb-2">
                 Trusted by students from:
               </p>
@@ -106,7 +103,7 @@ export default function HeroSection() {
                 <span className="text-blue-600">•</span>
                 <span>Pokhara University</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Content - Image/Visual */}

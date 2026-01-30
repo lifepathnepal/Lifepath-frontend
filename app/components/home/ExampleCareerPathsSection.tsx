@@ -31,7 +31,7 @@ export default function ExampleCareerPathsSection() {
           <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-blue-500/80">
             Example Career Paths
           </p>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-zinc-900 mt-4">
+          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
             Proof through specificity
           </h2>
           <p className="text-sm md:text-base text-zinc-600 mt-4">

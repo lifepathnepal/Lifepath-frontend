@@ -4,7 +4,6 @@ import CategorySection from "./components/home/CategorySection";
 import MBTISection from "./components/home/MBTISection";
 import HowItWorksSection from "./components/home/HowItWorksSection";
 import ExampleCareerPathsSection from "./components/home/ExampleCareerPathsSection";
-import TrustCredibilitySection from "./components/home/TrustCredibilitySection";
 import StudentTestimonialsSection from "./components/home/StudentTestimonialsSection";
 import FAQSection from "./components/home/FAQSection";
 import NewsletterCTA from "./components/home/NewsletterCTA";
@@ -18,14 +17,14 @@ export default function Home() {
       <MBTISection />
       <HowItWorksSection />
       <ExampleCareerPathsSection />
-      <TrustCredibilitySection />
       <StudentTestimonialsSection />
+      <FAQSection />
       <NewsletterCTA
+        title="Clarity changes everything."
         btnText="Subscribe"
         imageSrc="/heroImages/woman2.png"
-        description="Join our newsletter to get the latest career tips and resources delivered straight to your inbox."
+        description="Build a career that fits you — one insight at a time."
       />
-      <FAQSection />
     </div>
   );
 }

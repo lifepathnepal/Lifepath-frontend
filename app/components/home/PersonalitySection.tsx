@@ -145,7 +145,7 @@ export default function PersonalitySection() {
     <section id="personality" className="py-10 bg-white">
       <div className="max-w-6xl mx-auto relative">
         {/* Header */}
-        <div className="flex justify-center items-center">
+        {/* <div className="flex justify-center items-center">
           <div className="mb-12 text-center">
             <h3 className="text-4xl md:text-4xl font-bold text-zinc-900 mb-4">
               Other Personality Types and Career Matches
@@ -155,7 +155,7 @@ export default function PersonalitySection() {
               your personality
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Personality Types List */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">

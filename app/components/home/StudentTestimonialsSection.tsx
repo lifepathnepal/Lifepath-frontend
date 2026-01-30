@@ -65,7 +65,7 @@ export default function StudentTestimonialsSection() {
     <section className="py-8">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        {/* <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-3">
             Student Success Stories
           </h2>
@@ -73,7 +73,7 @@ export default function StudentTestimonialsSection() {
             Hear from our students who found their perfect career path through
             LifePath
           </p>
-        </div>
+        </div> */}
 
         {/* Testimonial Carousel */}
         <div className="relative">
@@ -153,6 +153,19 @@ export default function StudentTestimonialsSection() {
                         </div>
                       </div>
                     </button>
+
+                    {isPlaying === testimonial.id && (
+                      <div className="absolute inset-0 z-20 bg-black/60">
+                        <video
+                          src={testimonial.video}
+                          className="absolute inset-0 h-full w-full object-cover"
+                          controls
+                          autoPlay
+                          playsInline
+                          onEnded={() => setIsPlaying(null)}
+                        />
+                      </div>
+                    )}
 
                     {/* Quote Badge */}
                     <div className="absolute top-6 left-6 px-4 py-2 bg-blue-600/90 backdrop-blur-sm rounded-full">

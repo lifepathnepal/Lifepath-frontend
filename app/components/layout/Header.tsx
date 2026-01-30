@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  BriefcaseBusiness,
   Menu,
   Sparkles,
   // GraduationCap,
@@ -93,11 +94,24 @@ export default function Header() {
               className="relative flex items-center justify-center gap-1 px-5 py-2 text-white font-medium rounded-full whitespace-nowrap text-sm cursor-pointer overflow-hidden group"
             >
               <div
+                className="absolute inset-0 bg-linear-to-r from-blue-600 to-blue-600 animate-[gradient_3s_ease-in-out_infinite] group-hover:paused "
+                style={{ backgroundSize: "200% 100%" }}
+              />
+              <span className="relative z-10 flex items-center gap-1">
+                <BriefcaseBusiness size={16} />
+                Best Jobs
+              </span>
+            </Link>
+            <Link
+              href="/personality-test"
+              className="relative flex items-center justify-center gap-1 px-5 py-2 text-white font-medium rounded-full whitespace-nowrap text-sm cursor-pointer overflow-hidden group"
+            >
+              <div
                 className="absolute inset-0 bg-linear-to-r from-black via-blue-600 to-black animate-[gradient_3s_ease-in-out_infinite] group-hover:paused "
                 style={{ backgroundSize: "200% 100%" }}
               />
               <span className="relative z-10 flex items-center gap-1">
-                <Sparkles size={16}/>
+                <Sparkles size={16} />
                 Know yourself
               </span>
             </Link>

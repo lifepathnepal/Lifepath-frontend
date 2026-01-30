@@ -1,15 +1,14 @@
 "use client";
 
-import { ArrowRight, Brain } from "lucide-react";
 import Link from "next/link";
 
 export default function HowItWorksSection() {
   const steps = [
     {
       number: "01",
-      title: "Take the Personality Test",
+      title: "Discover Your Type with MBTI",
       description:
-        "Answer 40 quick questions about your preferences, strengths, and interests. Discover your unique personality type in just 5 minutes.",
+        "Quick assessment or guided input to identify your unique personality type based on the MBTI framework.",
       extraText: (
         <>
           Know your personality already? Skip this step and{" "}
@@ -26,24 +25,23 @@ export default function HowItWorksSection() {
     },
     {
       number: "02",
-      title: "Discover Your Career Matches",
+      title: "Understand Yourself Better",
       description:
-        "Get instant results showing careers that perfectly align with your personality type. Find paths that match your natural strengths and passions.",
+        "Strengths, blind spots, work styles, and ideal environments.",
       position: "right",
     },
     {
       number: "03",
-      title: "Explore Personalized Courses",
+      title: "Explore Career Matches",
       description:
-        "Browse curated course recommendations designed specifically for your career path. Learn the skills that matter most for your future.",
+        "Roles mapped to your personality type with real-world insights.",
       position: "left",
       indent: true,
     },
     {
       number: "04",
-      title: "Start Your Journey",
-      description:
-        "Enroll in courses, gain practical skills, and get guidance from expert mentors. Land your dream job with confidence and clarity.",
+      title: "Get a Clear Direction & Action Plan",
+      description: "Skills, paths, and focus areas tailored to you.",
       position: "right",
     },
   ];
@@ -56,12 +54,12 @@ export default function HowItWorksSection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold  text-zinc-900 mb-4">
-            How It Works?
+          <h2 className="text-4xl md:text-5xl font-semibold  text-zinc-900 mb-4">
+            How Lifepath Works?
           </h2>
           <p className="text-lg text-zinc-600">
-            A simple 4-step process to discover your <br /> ideal career path
-            and the right courses for you.
+            A simple 4-step process to discover your  ideal career path
+            and <br />the right courses for you.
           </p>
         </div>
 

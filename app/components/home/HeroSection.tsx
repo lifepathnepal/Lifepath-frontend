@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-[95vh] w-full mx-auto overflow-hidden bg-white">
+    <section className="min-h-screen w-full mx-auto overflow-hidden bg-white">
       <div className="max-w-6xl mx-auto pt-16 md:pt-24">
         <div className="grid md:grid-cols-2 gap-6 items-center">
           {/* Left Content */}
@@ -78,9 +78,9 @@ export default function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link href="/personality-test">
-                <button className="w-full sm:w-auto px-8 py-4 bg-linear-to-r from-black to-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center justify-center gap-2 cursor-pointer group">
+                <button className="w-full sm:w-auto px-8 py-4 bg-linear-to-r from-blue-600 to-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center justify-center gap-2 cursor-pointer group">
                   <Brain size={20} />
-                  Take Free Personality Test
+                  Discover Your Career Path
                   <ArrowRight
                     size={18}
                     className="group-hover:translate-x-1 transition-transform"

@@ -52,14 +52,14 @@ export default function Footer() {
 
   return (
     <footer className="bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Section */}
 
         {/* Divider */}
         <div className="border-t border-zinc-200"></div>
 
         {/* Footer Links */}
-        <div className="py-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {footerColumns.map((column, index) => (
             <div key={index}>
               <h4 className="font-semibold text-blue-600 mb-6">
@@ -89,17 +89,17 @@ export default function Footer() {
         <div className="border-t border-zinc-200"></div>
 
         {/* Copyright */}
-        <div className="py-8 text-center">
+        <div className="py-6 md:py-8 text-center">
           <p className="text-sm text-zinc-500">
             © 2026 LifePath Career Platform. All rights reserved.
           </p>
         </div>
 
         {/* Large Background Text */}
-        <div className="relative py-10 overflow-hidden w-fit mx-auto">
+        <div className="relative py-8 md:py-10 overflow-hidden w-full mx-auto">
           <div className="text-center">
             <h2
-              className="text-9xl md:text-[220px] font-black text-transparent"
+              className="text-[64px] sm:text-[90px] md:text-[160px] lg:text-[220px] font-black text-transparent"
               style={
                 {
                   WebkitTextStroke: "2px #2b37e3",

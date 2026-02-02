@@ -7,8 +7,8 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section className="min-h-screen w-full mx-auto overflow-hidden bg-white">
-      <div className="max-w-6xl mx-auto pt-16 md:pt-24">
-        <div className="grid md:grid-cols-2 gap-6 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6">
             {/* Badge */}
@@ -105,16 +105,18 @@ export default function HeroSection() {
           </div>
 
           {/* Right Content - Image/Visual */}
-          <div className="relative">
+          <div className="relative mt-6 md:mt-0">
             {/* Decorative Background */}
             <div className="absolute inset-0 bg-linear-to-br from-blue-100 via-purple-100 to-blue-100 rounded-3xl opacity-40 blur-3xl"></div>
 
             {/* Main Image Container */}
             <div className="relative bg-white rounded-3xl border border-zinc-200">
               {/* Stats Card Overlay */}
-              <div className="absolute -top-4 -right-4 bg-linear-to-tr from-zinc-700 to-gray-500 rounded-2xl shadow-lg p-4 border border-zinc-200 z-10">
+              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 bg-linear-to-tr from-zinc-700 to-gray-500 rounded-2xl shadow-lg p-3 md:p-4 border border-zinc-200 z-10">
                 <p className="text-xs text-zinc-50 mb-1">Success Rate</p>
-                <p className="text-4xl font-bold text-blue-50">95%</p>
+                <p className="text-3xl md:text-4xl font-bold text-blue-50">
+                  95%
+                </p>
               </div>
 
               {/* Image */}

@@ -10,10 +10,12 @@ import {
   // Calendar,
 } from "lucide-react";
 import { useScrollDirection } from "@/app/hooks/useScrollDirection";
+import { useState } from "react";
 
 export default function Header() {
   const isVisible = useScrollDirection();
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const [searchValue, setSearchValue] = useState("");
   // const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -37,8 +39,8 @@ export default function Header() {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between h-16">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 gap-3">
           {/* Logo */}
           <Link href={"/"} className="shrink-0 cursor-pointer">
             <Image
@@ -90,7 +92,7 @@ export default function Header() {
 
             <Link
               href="/personality-test"
-              className="relative flex items-center justify-center gap-1 px-5 py-2 text-white font-medium rounded-full whitespace-nowrap text-sm cursor-pointer overflow-hidden group"
+              className="relative flex items-center justify-center gap-1 px-4 sm:px-5 py-2 text-white font-medium rounded-full whitespace-nowrap text-sm cursor-pointer overflow-hidden group"
             >
               <div
                 className="absolute inset-0 bg-linear-to-r from-blue-600 to-blue-600 animate-[gradient_3s_ease-in-out_infinite] group-hover:paused "
@@ -116,11 +118,44 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="lg:hidden p-2 text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer">
+          <button
+            className="lg:hidden p-2 text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer"
+            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
             <Menu size={24} />
           </button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden border-t border-zinc-200 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={`block px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                  pathname === item.href
+                    ? "bg-blue-50 text-blue-700"
+                    : "text-zinc-700 hover:bg-zinc-50"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="/personality-test"
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-center px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700"
+            >
+              Find your Lifepath
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* Search Modal/Popup */}
       {/* {isSearchOpen && (

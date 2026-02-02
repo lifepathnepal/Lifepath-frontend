@@ -1,5 +1,6 @@
 import HeroSection from "./components/home/HeroSection";
 import StorySection from "./components/home/StorySection";
+import PathCardsSection from "./components/home/PathCardsSection";
 import CategorySection from "./components/home/CategorySection";
 import MBTISection from "./components/home/MBTISection";
 import HowItWorksSection from "./components/home/HowItWorksSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <HeroSection />
       <CategorySection />
       <StorySection />
+      <PathCardsSection />
       <MBTISection />
       <HowItWorksSection />
       <ExampleCareerPathsSection />

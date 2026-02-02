@@ -1,36 +1,24 @@
-import Image from "next/image";
+import { GraduationCap, Laptop, Palette, Repeat } from "lucide-react";
 
 interface CategoryCardProps {
   title: string;
-  imageSrc: string;
-  imageAlt: string;
-  para?: string;
+  Icon: typeof GraduationCap;
 }
 
-const CategoryCard = ({
-  title,
-  imageSrc,
-  imageAlt,
-  para,
-}: CategoryCardProps) => {
+const CategoryCard = ({ title, Icon }: CategoryCardProps) => {
   return (
-    <div className="group rounded-2xl bg-white transition-all duration-300 border border-slate-200 hover:border-blue-200 hover:shadow-lg overflow-hidden">
-      <div className="flex items-stretch gap-4">
-        <div className="shrink-0 bg-blue-50 ring-1 ring-blue-100 flex items-center justify-center w-20 md:w-44 md:h-44 p-4">
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            width={56}
-            height={56}
-            className="h-full w-full object-contain"
-          />
+    <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl">
+      <div className="absolute inset-0 bg-linear-to-br from-blue-50/40 via-white to-white opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="relative">
+        <div className="mb-3 h-10 w-10 rounded-xl bg-blue-600/10 text-blue-700 flex items-center justify-center">
+          <Icon size={20} className="text-blue-700" />
         </div>
-        <div className="flex-1 py-4 md:py-5">
-          <h3 className="text-base md:text-2xl font-semibold text-slate-900 leading-tight">
-            {title}
-          </h3>
-          <p className="text-sm text-slate-600 mt-1.5">{para}</p>
-        </div>
+        <h3 className="text-base md:text-xl font-semibold text-slate-900 leading-tight">
+          {title}
+        </h3>
+        <p className="text-sm text-slate-600 mt-2">
+          Personalized guidance to move forward with clarity and confidence.
+        </p>
       </div>
     </div>
   );
@@ -39,45 +27,36 @@ const CategoryCard = ({
 const CategorySection = () => {
   const categories = [
     {
-      title: "Choosing careers based on salary or pressure",
-      imageSrc: "/problem/pressure.png",
-      imageAlt: "Salary pressure",
-      para: "It feels safe, but it rarely feels right.",
+      title: "Students confused after +2",
+      Icon: GraduationCap,
     },
     {
-      title: "Feeling capable but directionless",
-      imageSrc: "/problem/directionless.png",
-      imageAlt: "Directionless",
-      para: "You know you can do more, but the path is foggy.",
+      title: "Beginners wanting tech skills",
+      Icon: Laptop,
     },
     {
-      title: "Switching paths without understanding why",
-      imageSrc: "/problem/switching.png",
-      imageAlt: "Switching paths",
-      para: "Change after change, yet the same uncertainty remains.",
+      title: "Creative minds wanting income",
+      Icon: Palette,
     },
     {
-      title: "Advice that ignores personality",
-      imageSrc: "/problem/ignore.png",
-      imageAlt: "Personality ignored",
-      para: "Generic tips don't match who you are.",
+      title: "Career switchers",
+      Icon: Repeat,
     },
   ];
 
   return (
-    <section className="w-full px-4 bg-linear-to-b from-blue-50 to-zinc-50">
-      <div className="max-w-6xl mx-auto py-14">
-        <div className="text-center mb-10">
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-blue-500/80">
-            The Problem
-          </p>
-          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
-            Most people don&apos;t fail <br />
-            they&apos;re just on the wrong path.
+    <section className="w-full px-4 bg-linear-to-b from-blue-50 via-white to-zinc-50">
+      <div className="max-w-6xl mx-auto py-16">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-semibold text-blue-700">
+            Designed for real people
+          </div>
+          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-slate-900 mt-4">
+            Who Is Lifepath For?
           </h2>
-          <p className="text-sm md:text-base text-zinc-700 mt-3">
-            This is where emotional trust begins — acknowledging the common
-            struggles our users face.
+          <p className="text-sm md:text-base text-slate-600 mt-3 max-w-2xl mx-auto">
+            Clear paths, real outcomes, and guidance that matches your
+            personality and goals.
           </p>
         </div>
 
@@ -86,9 +65,7 @@ const CategorySection = () => {
             <CategoryCard
               key={index}
               title={category.title}
-              imageSrc={category.imageSrc}
-              imageAlt={category.imageAlt}
-              para={category.para}
+              Icon={category.Icon}
             />
           ))}
         </div>

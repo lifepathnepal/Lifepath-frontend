@@ -1,4 +1,3 @@
-import Link from "next/link";
 import PersonalitySection from "./PersonalitySection";
 
 // const mbtiTypes = [

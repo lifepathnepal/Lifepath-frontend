@@ -4,9 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  BriefcaseBusiness,
   Menu,
-  Sparkles,
   // GraduationCap,
   // Briefcase,
   // Calendar,
@@ -20,10 +18,11 @@ export default function Header() {
   // const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
-    { label: "Courses", href: "/courses" },
-    { label: "Find Jobs", href: "/jobs" },
+    { label: "Guide Books", href: "/guide-books" },
+    { label: "Job Training", href: "/job-training" },
+    { label: "Best Jobs", href: "/jobs" },
     // { label: "Events", href: "/events" },
-    { label: "Our Story", href: "/why-lifepath" },
+    // { label: "Our Story", href: "/why-lifepath" },
   ];
 
   // const quickLinks = [
@@ -98,8 +97,7 @@ export default function Header() {
                 style={{ backgroundSize: "200% 100%" }}
               />
               <span className="relative z-10 flex items-center gap-1">
-                <BriefcaseBusiness size={16} />
-                Best Jobs
+                Find your Lifepath
               </span>
             </Link>
             {/* <Link

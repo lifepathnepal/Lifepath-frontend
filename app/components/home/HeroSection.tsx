@@ -20,16 +20,15 @@ export default function HeroSection() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
-              Discover Yourself.
-              <br />
-              Design Your Future.
+            <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
+              Find the right career path. Not just another course.
             </h1>
 
             {/* Subheading */}
             <p className="text-lg md:text-xl font-medium text-zinc-600 leading-relaxed">
-              In under 10 minutes, understand how your personality aligns with
-              real careers.
+              Lifepath helps students choose, learn, and grow in high-demand
+              skills like Web Development, Graphic Design, and more — with real
+              guidance, not confusion.
             </p>
             {/* <p className="text-lg md:text-xl font-medium text-zinc-600 leading-relaxed">
               Take our free personality test and discover careers that match who
@@ -40,7 +39,6 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link href="/personality-test">
                 <button className="w-full sm:w-auto px-8 py-4 bg-linear-to-r from-blue-600 to-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center justify-center gap-2 cursor-pointer group">
-                  <Brain size={20} />
                   Discover Your Career Path
                   <ArrowRight
                     size={18}
@@ -50,7 +48,7 @@ export default function HeroSection() {
               </Link>
               <Link href="#how-it-works">
                 <button className="w-full sm:w-auto px-8 py-4 border-2 border-zinc-300 text-zinc-700 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 font-semibold rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer">
-                  See How It Works
+                  Talk to a Mentor
                 </button>
               </Link>
             </div>
@@ -122,7 +120,7 @@ export default function HeroSection() {
               {/* Image */}
               <div className="relative w-full aspect-square rounded-xl overflow-hidden">
                 <Image
-                  src="/image-icons/mirror.png"
+                  src="/heroImages/yess.png"
                   alt="Find Your Career Path"
                   width={500}
                   height={500}

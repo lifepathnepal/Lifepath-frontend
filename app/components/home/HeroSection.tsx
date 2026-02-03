@@ -7,28 +7,28 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section className="min-h-screen w-full mx-auto overflow-hidden bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="max-w-6xl mx-auto pt-16 md:pt-24">
+        <div className="grid md:grid-cols-2 gap-3 lg:gap-8 items-center">
           {/* Left Content */}
           <div className="space-y-6">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full">
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full">
               <Sparkles size={16} className="text-blue-600" />
               <span className="text-sm font-semibold text-blue-600">
                 Find Your Perfect Career Path
               </span>
-            </div>
+            </div> */}
 
             {/* Main Heading */}
             <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
-              Find the right career path. Not just another course.
+              Discover Yourself. Train Smart. Build Your Future.
             </h1>
 
             {/* Subheading */}
             <p className="text-lg md:text-xl font-medium text-zinc-600 leading-relaxed">
-              Lifepath helps students choose, learn, and grow in high-demand
-              skills like Web Development, Graphic Design, and more — with real
-              guidance, not confusion.
+              We help you understand yourself, choose a career that fits your
+              personality, and get job-ready skills that companies actually
+              need.
             </p>
             {/* <p className="text-lg md:text-xl font-medium text-zinc-600 leading-relaxed">
               Take our free personality test and discover careers that match who
@@ -48,12 +48,12 @@ export default function HeroSection() {
               </Link>
               <Link href="#how-it-works">
                 <button className="w-full sm:w-auto px-8 py-4 border-2 border-zinc-300 text-zinc-700 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 font-semibold rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer">
-                  Talk to a Mentor
+                  Explore Job Training
                 </button>
               </Link>
             </div>
             {/* Trust Indicators */}
-            <div className="flex flex-wrap gap-6 py-4">
+            {/* <div className="flex flex-wrap gap-6 py-4">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
                   <CheckCircle size={18} className="text-green-600" />
@@ -87,7 +87,7 @@ export default function HeroSection() {
                   <p className="text-xs text-zinc-500">With career matches</p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Social Proof */}
             {/* <div className="pt-4">
@@ -111,14 +111,6 @@ export default function HeroSection() {
 
             {/* Main Image Container */}
             <div className="relative bg-white rounded-3xl border border-zinc-200">
-              {/* Stats Card Overlay */}
-              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 bg-linear-to-tr from-zinc-700 to-gray-500 rounded-2xl shadow-lg p-3 md:p-4 border border-zinc-200 z-10">
-                <p className="text-xs text-zinc-50 mb-1">Success Rate</p>
-                <p className="text-3xl md:text-4xl font-bold text-blue-50">
-                  95%
-                </p>
-              </div>
-
               {/* Image */}
               <div className="relative w-full aspect-square rounded-xl overflow-hidden">
                 <Image

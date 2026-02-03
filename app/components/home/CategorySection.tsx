@@ -27,19 +27,23 @@ const CategoryCard = ({ title, Icon }: CategoryCardProps) => {
 const CategorySection = () => {
   const categories = [
     {
-      title: "Students confused after +2",
+      title: "Students confused about careers",
       Icon: GraduationCap,
     },
     {
-      title: "Beginners wanting tech skills",
+      title: "Graduates without job‑ready skills",
       Icon: Laptop,
     },
     {
-      title: "Creative minds wanting income",
+      title: "Career switchers",
       Icon: Palette,
     },
     {
-      title: "Career switchers",
+      title: "Creatives who don’t fit traditional paths",
+      Icon: Repeat,
+    },
+    {
+      title: "Anyone tired of random advice",
       Icon: Repeat,
     },
   ];

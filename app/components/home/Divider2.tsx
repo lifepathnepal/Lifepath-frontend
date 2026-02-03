@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const TEXT =
-  "Your success is  not delayed by your weaknesses, but by not knowing your strengths.";
+  "We start with your psychology and strengths, help you build practical skills, and prepare you for future job demand.";
 
 export default function StorySection() {
   const containerRef = useRef<HTMLDivElement | null>(null);

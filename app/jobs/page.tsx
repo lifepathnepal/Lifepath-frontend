@@ -93,18 +93,17 @@ export default function JobsPage() {
             </p>
 
             {/* Search Bar */}
-            <div className="relative max-w-xl mx-auto">
-              <Search
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-100"
-                size={20}
-              />
-              <input
-                type="text"
-                placeholder="Search jobs or companies..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white/20 border-2 border-white/20 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              />
+            <div className="flex items-center justify-center">
+              <div className="inline-flex rounded-full bg-white/20 border-2 border-white/20 p-1">
+              <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-blue-700 font-semibold shadow-sm">
+                <MapPin size={18} />
+                Nepal
+              </button>
+              <button className="flex items-center gap-2 px-5 py-2.5 rounded-full text-white/90 font-semibold hover:text-white">
+                <Search size={18} />
+                Global
+              </button>
+              </div>
             </div>
           </div>
         </div>
@@ -112,89 +111,9 @@ export default function JobsPage() {
 
       {/* Main Layout - List + Sidebar */}
       <section className="max-w-6xl mx-auto py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Newsletter Section */}
-            <div className="bg-linear-to-br from-blue-600 to-indigo-600 rounded-xl p-6 shadow-lg border border-blue-400/20">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-blue-500/30 rounded-lg">
-                  <BellRing size={24} className="text-white" />
-                </div>
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">Job Alerts</h4>
-              <p className="text-blue-100 text-sm mb-4">
-                Get notified about new opportunities matching your profile.
-              </p>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full px-4 py-2.5 border border-blue-400/50 bg-white/10 rounded-full text-sm text-white placeholder-blue-200 focus:outline-none focus:border-white focus:bg-white/20 transition-all mb-3"
-              />
-              <button className="w-full bg-white hover:bg-blue-50 text-blue-600 font-semibold py-2.5 rounded-full cursor-pointer transition-colors shadow-md hover:shadow-lg">
-                Subscribe Now
-              </button>
-              <p className="text-xs text-blue-50 mt-3">
-                We care about your data in our{" "}
-                <a
-                  href="#"
-                  className="text-blue-50 font-semibold hover:italic hover:text-white underline"
-                >
-                  privacy policy
-                </a>
-              </p>
-            </div>
-
-            {/* Popular Searches */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <TrendingUp size={20} className="text-blue-600" />
-                <h4 className="text-lg font-bold text-zinc-900">
-                  Trending Roles
-                </h4>
-              </div>
-              <div className="space-y-3">
-                {popularSearches.map((search, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    className="flex items-center justify-between p-4 rounded-lg bg-white border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300 group"
-                  >
-                    <div>
-                      <p className="text-sm font-semibold text-zinc-900 group-hover:text-blue-600 transition-colors">
-                        {search.title}
-                      </p>
-                    </div>
-                    <span className="text-xs font-medium text-zinc-500 bg-zinc-100 group-hover:bg-blue-100 group-hover:text-blue-600 px-2.5 py-1 rounded-full transition-colors">
-                      {search.count}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-300">
-              <h4 className="font-bold text-zinc-900 mb-4">Quick Stats</h4>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-zinc-600">Avg. Salary</span>
-                  <span className="font-bold text-blue-600">
-                    Rs.70k-Rs.400k
-                  </span>
-                </div>
-                <div className="w-full bg-yellow-400 rounded-full h-1.5"></div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-zinc-600">Companies</span>
-                  <span className="font-bold text-blue-600">500+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Jobs List */}
-          <div className="lg:col-span-2">
-            <div className="space-y-4">
+        <div className="flex flex-col gap-8">{/* Jobs List */}
+          <div className="">
+            <div className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredJobs.map((job) => (
                 <div
                   key={job.id}
@@ -273,6 +192,86 @@ export default function JobsPage() {
               </button>
             </div>
           </div>
+          {/* Left Sidebar */}
+          <div className="flex justify-between">
+            {/* Newsletter Section */}
+            <div className="bg-linear-to-br from-blue-600 to-indigo-600 rounded-xl p-6 shadow-lg border border-blue-400/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-blue-500/30 rounded-lg">
+                  <BellRing size={24} className="text-white" />
+                </div>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-2">Job Alerts</h4>
+              <p className="text-blue-100 text-sm mb-4">
+                Get notified about new opportunities matching your profile.
+              </p>
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="w-full px-4 py-2.5 border border-blue-400/50 bg-white/10 rounded-full text-sm text-white placeholder-blue-200 focus:outline-none focus:border-white focus:bg-white/20 transition-all mb-3"
+              />
+              <button className="w-full bg-white hover:bg-blue-50 text-blue-600 font-semibold py-2.5 rounded-full cursor-pointer transition-colors shadow-md hover:shadow-lg">
+                Subscribe Now
+              </button>
+              <p className="text-xs text-blue-50 mt-3">
+                We care about your data in our{" "}
+                <a
+                  href="#"
+                  className="text-blue-50 font-semibold hover:italic hover:text-white underline"
+                >
+                  privacy policy
+                </a>
+              </p>
+            </div>
+
+            {/* Popular Searches */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <TrendingUp size={20} className="text-blue-600" />
+                <h4 className="text-lg font-bold text-zinc-900">
+                  Trending Roles
+                </h4>
+              </div>
+              <div className="space-y-3">
+                {popularSearches.map((search, index) => (
+                  <a
+                    key={index}
+                    href="#"
+                    className="flex items-center justify-between p-4 rounded-lg bg-white border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300 group"
+                  >
+                    <div>
+                      <p className="text-sm font-semibold text-zinc-900 group-hover:text-blue-600 transition-colors">
+                        {search.title}
+                      </p>
+                    </div>
+                    <span className="text-xs font-medium text-zinc-500 bg-zinc-100 group-hover:bg-blue-100 group-hover:text-blue-600 px-2.5 py-1 rounded-full transition-colors">
+                      {search.count}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-300">
+              <h4 className="font-bold text-zinc-900 mb-4">Quick Stats</h4>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-zinc-600">Avg. Salary</span>
+                  <span className="font-bold text-blue-600">
+                    Rs.70k-Rs.400k
+                  </span>
+                </div>
+                <div className="w-full bg-yellow-400 rounded-full h-1.5"></div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-zinc-600">Companies</span>
+                  <span className="font-bold text-blue-600">500+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
         </div>
       </section>
     </div>

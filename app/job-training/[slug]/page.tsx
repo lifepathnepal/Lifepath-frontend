@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
-import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 import {
   Clock,
   Users,
@@ -15,6 +14,9 @@ import {
   ChevronDown,
   CheckCheck,
   Play,
+  Verified,
+  ArrowLeft,
+  ClockAlert,
 } from "lucide-react";
 
 type Instructor = {
@@ -61,19 +63,19 @@ const courseData: Record<string, Course> = {
     slug: "graphic-designing-bootcamp",
     description:
       "Master visual design with real-world projects. Learn branding, layout, typography, and design systems to build a standout portfolio.",
-    price: 5200,
-    originalPrice: 7200,
+    price: 40000,
+    originalPrice: 52000,
     rating: 4.7,
     totalRatings: 842,
     students: 3120,
-    duration: "9 hours",
+    duration: "3 months",
     level: "Beginner to Intermediate",
     language: "English/Nepali",
     instructor: {
-      name: "Uchero D. Lucky",
-      title: "Senior Visual Designer",
-      bio: "8+ years of experience in brand identity and product design for global and local startups.",
-      students: 9000,
+      name: "Krishna G. Mul",
+      title: "Creative Director & Brand Designer",
+      bio: "8+ years of experience in brand identity and product design at Logolab Global pvt. ltd.",
+      students: 500,
       courses: 6,
     },
     whatYouLearn: [
@@ -134,6 +136,9 @@ const courseData: Record<string, Course> = {
       "A computer with internet connection",
       "Willingness to practice and create projects",
       "No prior design experience required",
+      "Artistic mindset and creativity",
+      "Problem-solving attitude toward design challenges",
+      "Basic understanding of design software is a plus but not required",
     ],
     notForYou: [
       "You are not ready to practice regularly",
@@ -141,7 +146,7 @@ const courseData: Record<string, Course> = {
       "You are unwilling to take feedback",
     ],
     features: [
-      "9 hours of video content",
+      "3 months of video content",
       "Downloadable templates",
       "Portfolio review sessions",
       "Certificate of completion",
@@ -167,7 +172,7 @@ const courseData: Record<string, Course> = {
     rating: 4.8,
     totalRatings: 1234,
     students: 5678,
-    duration: "12 hours",
+    duration: "3 months",
     level: "Beginner to Advanced",
     language: "English/Nepali",
     instructor: {
@@ -191,7 +196,7 @@ const courseData: Record<string, Course> = {
       {
         title: "Introduction to Web Development",
         lessons: 8,
-        duration: "2 hours",
+        duration: "2 weeks",
         lectures: [
           "Course Overview",
           "Setting up Development Environment",
@@ -202,7 +207,7 @@ const courseData: Record<string, Course> = {
       {
         title: "HTML & CSS Fundamentals",
         lessons: 15,
-        duration: "5 hours",
+        duration: "5 weeks",
         lectures: [
           "HTML5 Semantic Elements",
           "CSS Box Model",
@@ -214,7 +219,7 @@ const courseData: Record<string, Course> = {
       {
         title: "JavaScript Essentials",
         lessons: 20,
-        duration: "8 hours",
+        duration: "8 weeks",
         lectures: [
           "Variables and Data Types",
           "Functions and Scope",
@@ -226,7 +231,7 @@ const courseData: Record<string, Course> = {
       {
         title: "React Development",
         lessons: 18,
-        duration: "7 hours",
+        duration: "7 weeks",
         lectures: [
           "React Components",
           "Props and State",
@@ -238,7 +243,7 @@ const courseData: Record<string, Course> = {
       {
         title: "Backend with Node.js",
         lessons: 16,
-        duration: "6 hours",
+        duration: "6 weeks",
         lectures: [
           "Node.js Basics",
           "Express Framework",
@@ -250,7 +255,7 @@ const courseData: Record<string, Course> = {
       {
         title: "Final Project & Deployment",
         lessons: 12,
-        duration: "5 hours",
+        duration: "5 weeks",
         lectures: [
           "Project Planning",
           "Building Full Stack App",
@@ -298,7 +303,7 @@ const courseData: Record<string, Course> = {
     rating: 4.6,
     totalRatings: 702,
     students: 2890,
-    duration: "8 hours",
+    duration: "3 months",
     level: "Beginner to Intermediate",
     language: "English/Nepali",
     instructor: {
@@ -320,7 +325,7 @@ const courseData: Record<string, Course> = {
       {
         title: "Marketing Foundations",
         lessons: 6,
-        duration: "1.5 hours",
+        duration: "1.5 weeks",
         lectures: [
           "Understanding Audiences",
           "Positioning & Messaging",
@@ -331,7 +336,7 @@ const courseData: Record<string, Course> = {
       {
         title: "Content & Social Strategy",
         lessons: 8,
-        duration: "2.5 hours",
+        duration: "2.5 weeks",
         lectures: [
           "Content Calendar",
           "Social Media Playbooks",
@@ -342,7 +347,7 @@ const courseData: Record<string, Course> = {
       {
         title: "Paid Ads & Performance",
         lessons: 9,
-        duration: "2.5 hours",
+        duration: "2.5 weeks",
         lectures: [
           "Meta Ads Basics",
           "Google Ads Basics",
@@ -353,7 +358,7 @@ const courseData: Record<string, Course> = {
       {
         title: "Analytics & Reporting",
         lessons: 5,
-        duration: "1.5 hours",
+        duration: "1.5 weeks",
         lectures: [
           "UTM Tracking",
           "Dashboards",
@@ -373,7 +378,7 @@ const courseData: Record<string, Course> = {
       "You are not ready to iterate and improve",
     ],
     features: [
-      "8 hours of video content",
+      "3 months of video content",
       "Campaign templates",
       "Ad copy swipe files",
       "Certificate of completion",
@@ -392,6 +397,7 @@ const courseData: Record<string, Course> = {
 
 export default function JobTrainingSlugPage() {
   const params = useParams();
+  const router = useRouter();
   const slugParam = params?.slug;
   const slug = Array.isArray(slugParam) ? slugParam[0] : slugParam;
   const [openModule, setOpenModule] = useState<number | null>(0);
@@ -412,13 +418,27 @@ export default function JobTrainingSlugPage() {
   }
 
   return (
-    <div className="min-h-screen pt-16 pb-10 bg-zinc-50">
+    <div className="min-h-screen pt-16 pb-10 bg-zinc-100">
       {/* Course Header */}
       <section className="bg-linear-to-r from-black to-blue-700 text-white">
         <div className="max-w-6xl mx-auto py-12">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left: Course Info */}
             <div className="lg:col-span-2 flex flex-col justify-center">
+              <div
+                className="cursor-pointer mb-4 flex items-center gap-1 text-zinc-300 hover:text-zinc-100 transition-colors duration-200"
+                onClick={() => router.back()}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    router.back();
+                  }
+                }}
+              >
+                <ArrowLeft size={16} />
+                Back
+              </div>
               <h1 className="text-3xl md:text-6xl font-bold mb-4">
                 {course.title}
               </h1>
@@ -465,26 +485,48 @@ export default function JobTrainingSlugPage() {
             {/* Right: Price Card */}
             <div className="lg:col-span-1">
               <div className="bg-white rounded-2xl p-6 text-zinc-900 shadow-xl sticky top-24">
-                <div className="mb-4">
+                <div className="mb-4 pb-4 border-b border-zinc-200 space-y-2">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-1">
+                      {" "}
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          className="text-blue-600 text-lg"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M12.65 3.797c.487.131.908.458 1.42.854l.297.23c.243.187.301.23.359.261a1 1 0 0 0 .196.081c.063.019.134.03.438.07l.373.047c.642.082 1.17.149 1.607.4c.383.22.7.537.92.92c.251.436.318.965.4 1.607l.048.373c.039.304.05.375.069.438q.03.102.08.196c.032.058.075.116.262.359l.23.297c.396.512.723.933.854 1.42a2.5 2.5 0 0 1 0 1.3c-.131.487-.458.908-.854 1.42l-.23.297c-.187.243-.23.301-.261.359q-.051.094-.081.196c-.019.063-.03.134-.07.438l-.047.373c-.082.642-.149 1.17-.4 1.607a2.5 2.5 0 0 1-.92.92c-.436.251-.965.318-1.607.4l-.373.048c-.304.039-.375.05-.438.069q-.102.03-.196.08c-.058.032-.116.075-.359.262l-.297.23c-.512.396-.933.723-1.42.854a2.5 2.5 0 0 1-1.3 0c-.487-.131-.908-.458-1.42-.854l-.297-.23c-.243-.187-.301-.23-.359-.261a1 1 0 0 0-.196-.081c-.063-.019-.134-.03-.438-.07l-.373-.047c-.642-.082-1.17-.149-1.607-.4a2.5 2.5 0 0 1-.92-.92c-.251-.436-.318-.965-.4-1.607l-.048-.373c-.039-.304-.05-.375-.069-.438a1 1 0 0 0-.08-.196c-.032-.058-.075-.116-.262-.359l-.23-.297c-.396-.512-.723-.933-.854-1.42a2.5 2.5 0 0 1 0-1.3c.131-.487.458-.908.854-1.42l.23-.297c.187-.243.23-.301.261-.359a1 1 0 0 0 .081-.196c.019-.063.03-.134.07-.438l.047-.373c.082-.642.149-1.17.4-1.607a2.5 2.5 0 0 1 .92-.92c.436-.251.965-.318 1.607-.4l.373-.048c.304-.039.375-.05.438-.069a1 1 0 0 0 .196-.08c.058-.032.116-.075.359-.262l.297-.23c.512-.396.933-.723 1.42-.854a2.5 2.5 0 0 1 1.3 0m3.057 5.496a1 1 0 0 0-1.414 0L11 12.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0 0-1.414"
+                          />
+                        </svg>
+                      </div>
+                      <p className="text-lg font-semibold text-blue-600">
+                        Job Guarantee
+                      </p>
+                    </div>
+                  </div>
                   <div className="flex items-baseline gap-2 mb-2">
                     <span className="text-3xl font-bold">
-                      रू {course.price.toLocaleString()}
+                      Rs. {course.price.toLocaleString()}
                     </span>
                     <span className="text-lg text-zinc-400 line-through">
-                      रू {course.originalPrice.toLocaleString()}
+                      Rs. {course.originalPrice.toLocaleString()}
                     </span>
                   </div>
-                  <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
-                    {Math.round(
-                      ((course.originalPrice - course.price) /
-                        course.originalPrice) *
-                        100,
-                    )}
-                    % OFF
-                  </span>
+                  <div className="flex items-center gap-2 text-orange-500">
+                    <ClockAlert size={16} />
+                    <p className="text-sm font-semibold">
+                      2 days left at this price!
+                    </p>
+                  </div>
                 </div>
-
-                <div className="mt-4 pt-4 border-t border-zinc-200">
+                <button className="w-full py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors">
+                  Join Now
+                </button>
+                <div className="pt-4">
                   <p className="text-sm font-semibold mb-3">
                     This course includes:
                   </p>
@@ -497,9 +539,6 @@ export default function JobTrainingSlugPage() {
                     ))}
                   </div>
                 </div>
-                <button className="w-full py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors mt-4">
-                  Enroll Now
-                </button>
               </div>
             </div>
           </div>
@@ -508,68 +547,22 @@ export default function JobTrainingSlugPage() {
 
       <div className="max-w-6xl mx-auto py-12">
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-20 space-y-2">
-              {/* Instructor */}
-              <div className="bg-white rounded-2xl overflow-hidden border border-zinc-200">
-                {/* Instructor Avatar - Full Width */}
-                <div className="w-full h-48 relative overflow-hidden">
-                  <Image
-                    src="/heroImages/mentor.png"
-                    alt={course.instructor.name}
-                    fill
-                    className="object-cover object-top"
-                  />
-                  <h3 className="font-bold text-blue-600 mb-4 absolute top-4 left-4 bg-blue-100 bg-opacity-80 px-3 py-1 rounded-full text-sm">
-                    Your Instructor
-                  </h3>
-                </div>
-
-                <div className="p-6">
-                  <h4 className="font-semibold text-lg text-zinc-900 mb-1">
-                    {course.instructor.name}
-                  </h4>
-                  <p className="text-sm text-blue-600 mb-4">
-                    {course.instructor.title}
-                  </p>
-                  <p className="text-sm text-zinc-600 mb-4">
-                    {course.instructor.bio}
-                  </p>
-                  <div className="flex justify-between gap-6 text-sm text-zinc-600 pt-4 border-t border-zinc-200">
-                    <div className="flex flex-col">
-                      <div className="font-bold text-lg text-zinc-900">
-                        {course.instructor.students.toLocaleString()}
-                      </div>
-                      <div>Students</div>
-                    </div>
-                    <div className="flex flex-col items-end">
-                      <div className="font-bold text-lg text-zinc-900">
-                        {course.instructor.courses}
-                      </div>
-                      <div>Courses</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          {" "}
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* What You'll Learn */}
+            {/* What you will learn */}
             <div>
               <h2 className="text-2xl font-bold text-zinc-900 mb-6">
-                What You&apos;ll Learn
+                What you will learn
               </h2>
               <div className="grid md:grid-cols-2 gap-2">
                 {course.whatYouLearn.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-3 bg-zinc-100 p-4 rounded-lg"
+                    className="flex items-start gap-3 bg-white p-4 rounded-lg"
                   >
-                    <CheckCheck
-                      size={20}
+                    <Check
+                      size={18}
                       className="text-blue-600 shrink-0 mt-0.5"
                     />
                     <span className="text-zinc-800 font-medium">{item}</span>
@@ -577,23 +570,56 @@ export default function JobTrainingSlugPage() {
                 ))}
               </div>
             </div>
-
-            {/* Course Curriculum */}
-            <div className="bg-white rounded-2xl p-8 border border-zinc-200">
+            {/* This course includes: */}
+            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+              <h2 className="text-2xl font-bold text-blue-600 mb-6">
+                This course includes:
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-4 text-sm text-zinc-700">
+                {[
+                  {
+                    label: `${course.duration} on-demand video`,
+                    icon: <Play size={18} />,
+                  },
+                  { label: "Assignments", icon: <BookOpen size={18} /> },
+                  { label: "13 articles", icon: <Check size={18} /> },
+                  {
+                    label: "15 downloadable resources",
+                    icon: <Check size={18} />,
+                  },
+                  {
+                    label: "Access on mobile and TV",
+                    icon: <Globe size={18} />,
+                  },
+                  { label: "Closed captions", icon: <Verified size={18} /> },
+                  {
+                    label: "Certificate of completion",
+                    icon: <Check size={18} />,
+                  },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center gap-3">
+                    <span className="text-blue-600">{item.icon}</span>
+                    <span>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Table of content */}
+            <div className="">
               <h2 className="text-2xl font-bold text-zinc-900 mb-6">
-                Course Curriculum
+                Table of content
               </h2>
               <div className="space-y-3">
                 {course.curriculum.map((module, index) => (
                   <div
                     key={index}
-                    className="border border-zinc-200 rounded-xl overflow-hidden"
+                    className="bg-white border border-zinc-200 rounded-xl overflow-hidden"
                   >
                     <button
                       onClick={() =>
                         setOpenModule(openModule === index ? null : index)
                       }
-                      className="w-full px-6 py-4 flex items-center justify-between hover:bg-zinc-50 transition-colors"
+                      className="w-full px-6 py-4 flex items-center justify-between hover:bg-blue-50 transition-colors"
                     >
                       <div className="flex items-center gap-3 text-left">
                         <PlayCircle
@@ -635,130 +661,197 @@ export default function JobTrainingSlugPage() {
                 ))}
               </div>
             </div>
-
-            {/* Small CTA Section */}
-            <div className="bg-blue-600 rounded-2xl pl-6 p-4 text-white flex flex-col md:flex-row items-center justify-between gap-4">
-              <h2 className="text-2xl font-bold">
-                Ready to start your journey?
-              </h2>
-              <Link
-                href={`/job-training/${course.slug}/learn`}
-                className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors cursor-pointer"
-              >
-                <Play size={16} className="inline-block mr-2" />
-                Start Learning
-              </Link>
-            </div>
-
-            {/* Main Learning Page (Isolated) */}
-            <div className="bg-white rounded-2xl p-8 border border-zinc-200">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div>
-                  <h2 className="text-2xl font-bold text-zinc-900">
-                    Next: Main Learning Page
-                  </h2>
-                  <p className="text-sm text-zinc-600">
-                    Your step-by-step learning hub with modules, tasks, and
-                    progress tracking in one place.
-                  </p>
-                </div>
-                <Link
-                  href={`/job-training/${course.slug}/learn`}
-                  className="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors"
-                >
-                  Go to Learning Page
-                </Link>
-              </div>
-              <div className="mt-6 grid sm:grid-cols-2 gap-3">
-                {[
-                  "Module roadmap and outcomes",
-                  "Weekly tasks & checkpoints",
-                  "Resources and project files",
-                  "Progress & completion tracking",
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 border border-zinc-200 rounded-xl px-4 py-3"
-                  >
-                    <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                    <p className="text-sm font-medium text-zinc-800">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Course Documents */}
-            <div className="bg-white rounded-2xl p-8 border border-zinc-200">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-                <div>
-                  <h2 className="text-2xl font-bold text-zinc-900">
-                    Course Documents
-                  </h2>
-                  <p className="text-sm text-zinc-600">
-                    Downloadable resources to support your learning and
-                    practice.
-                  </p>
-                </div>
-                <button className="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors">
-                  Access All Resources
-                </button>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-3">
-                {course.documents.map((doc, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between gap-4 border border-zinc-200 rounded-xl px-4 py-3 hover:shadow-sm transition-shadow"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center">
-                        <BookOpen size={18} className="text-blue-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-zinc-900">
-                          {doc.title}
-                        </p>
-                        <p className="text-xs text-zinc-500">
-                          {doc.type} • {doc.size}
-                        </p>
-                      </div>
-                    </div>
-                    <button className="text-sm font-semibold text-blue-600 hover:text-blue-700">
-                      View
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Requirements */}
             <div className="bg-blue-50 rounded-2xl p-8 border border-blue-200">
-              <h2 className="text-2xl font-bold text-blue-700 mb-6">
+              <h2 className="text-2xl font-semibold text-blue-700 mb-2 ">
                 Requirements
               </h2>
               <ul className="space-y-2">
                 {course.requirements.map((req, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0"></div>
-                    <span className="text-blue-700">{req}</span>
+                    <span className="text-zin-700 text-sm">{req}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Not for you if */}
-            <div className="bg-orange-50 rounded-2xl p-8 border border-orange-200">
-              <h2 className="text-2xl font-bold text-orange-500 mb-6">
-                This path is NOT for you if you&apos;re:
+            {/* What you'll be */}
+            <div className="">
+              <h2 className="text-2xl font-bold text-zinc-900 mb-4">
+                What you&apos;ll become
+              </h2>
+              <p className="text-zinc-600 mb-6">
+                With our market-leading teaching style and refined design sense,
+                you&apos;ll graduate with confident skills and a portfolio that
+                reflects real-world standards.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {[
+                  {
+                    title: "Brand Designer",
+                    desc: "Create cohesive visual identities, logos, and brand systems.",
+                  },
+                  {
+                    title: "Digital Visual Designer",
+                    desc: "Design high-impact visuals for web, social, and campaigns.",
+                  },
+                  {
+                    title: "Layout & Typography Specialist",
+                    desc: "Craft clear, balanced layouts with professional type systems.",
+                  },
+                  {
+                    title: "Portfolio-Ready Creative",
+                    desc: "Present client-ready case studies that stand out to employers.",
+                  },
+                  {
+                    title: "Logo Designer",
+                    desc: "Design distinctive logos that effectively represent brands.",
+                  },
+                  {
+                    title: "Leanding Visual Designer",
+                    desc: "Create engaging visuals for landing pages that convert visitors.",
+                  },
+                ].map((role) => (
+                  <div
+                    key={role.title}
+                    className="bg-white flex items-start gap-3 p-4 rounded-xl border border-zinc-200"
+                  >
+                    <Check
+                      size={18}
+                      className="text-blue-600 shrink-0 mt-0.5"
+                    />
+                    <div>
+                      <h3 className="font-semibold text-zinc-900">
+                        {role.title}
+                      </h3>
+                      <p className="text-sm text-zinc-600 mt-1">{role.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Future job demands rate */}
+            <div className="bg-blue-50 rounded-2xl p-8 border border-blue-200">
+              <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-yellow-600 text-white px-4 py-1 text-sm font-semibold">
+                High Demand
+              </div>
+              <h2 className="text-2xl font-bold text-blue-700 mb-4">
+                Future job demand for Graphic Designers
+              </h2>
+              <p className="text-zinc-700 text-sm mb-6">
+                Opportunities are growing across national and international
+                companies hiring for branding, UI, marketing, and product
+                design.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-white rounded-xl p-4 border border-blue-100">
+                  <h3 className="font-semibold text-blue-700 mb-2">National</h3>
+                  <ul className="space-y-2 text-sm text-zinc-700">
+                    {[
+                      "Digital agencies",
+                      "Marketing firms",
+                      "E-commerce brands",
+                      "Media and publishing houses",
+                      "Startups and tech companies",
+                      "Education and training institutes",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCheck
+                          size={16}
+                          className="text-blue-600 mt-0.5"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-blue-100">
+                  <h3 className="font-semibold text-blue-700 mb-2">
+                    International
+                  </h3>
+                  <ul className="space-y-2 text-sm text-zinc-700">
+                    {[
+                      "Global design studios",
+                      "SaaS product companies",
+                      "Marketing agencies",
+                      "E-commerce marketplaces",
+                      "Content and media platforms",
+                      "Remote freelance clients",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCheck
+                          size={16}
+                          className="text-blue-600 mt-0.5"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* This path is not for */}
+            <div className="">
+              <h2 className="text-2xl font-semibold text-orange-500 mb-2">
+                This path is not for:
               </h2>
               <ul className="space-y-2">
                 {course.notForYou.map((req, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-orange-400 mt-2 shrink-0"></div>
-                    <span className="text-orange-700">{req}</span>
+                    <span className="text-zinc-700 text-sm">{req}</span>
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-20 space-y-2">
+              {/* Instructor */}
+              <div className="bg-white rounded-2xl overflow-hidden border border-zinc-200">
+                {/* Instructor Avatar - Full Width */}
+                <div className="w-full h-70 relative overflow-hidden">
+                  <Image
+                    src="/job-training/graphics/Krishna.png"
+                    alt={course.instructor.name}
+                    fill
+                    className="object-cover object-top"
+                  />
+                  <h3 className="font-bold text-blue-600 mb-4 absolute top-4 left-4 bg-blue-100 bg-opacity-80 px-3 py-1 rounded-full text-sm">
+                    Your Instructor
+                  </h3>
+                </div>
+
+                <div className="p-6">
+                  <h4 className="font-semibold text-lg text-zinc-900 mb-1">
+                    {course.instructor.name}
+                  </h4>
+                  <p className="text-sm text-blue-600 mb-4">
+                    {course.instructor.title}
+                  </p>
+                  <p className="text-sm text-zinc-600 mb-4">
+                    {course.instructor.bio}
+                  </p>
+                  <div className="flex justify-between gap-6 text-sm text-zinc-600 pt-4 border-t border-zinc-200">
+                    <div className="flex flex-col">
+                      <div className="font-bold text-lg text-zinc-900">
+                        {course.instructor.students.toLocaleString()}
+                      </div>
+                      <div>Students</div>
+                    </div>
+                    <div className="flex flex-col items-end">
+                      <div className="font-bold text-lg text-zinc-900">
+                        {course.instructor.courses}
+                      </div>
+                      <div>Courses</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

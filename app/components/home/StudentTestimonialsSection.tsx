@@ -62,16 +62,23 @@ export default function StudentTestimonialsSection() {
       <div className="max-w-6xl mx-auto ">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto pb-16">
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-blue-500/80">
-            What people trust us for
+          <p className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-semibold text-blue-700">
+            Why Student trust Lifepath?
           </p>
           <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
-            Built by people who <br />questioned their own path.
+            Because we don&apos;t ask: <br />
+            &quot;What do you want to study?&quot; We ask: <br />
+            &quot;Who are you becoming?&quot;
           </h2>
-          <p className="text-sm md:text-base text-zinc-600 mt-4">
-            We focus on honest guidance, not hype or quick fixes and our
-            students feel the difference.
-          </p>
+          <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-3 text-sm text-slate-700">
+            <span>Built for Nepali youth</span>
+            <span className="hidden md:inline text-blue-500 text-lg">•</span>
+            <span>Learn in psychology</span>
+            <span className="hidden md:inline text-blue-500 text-lg">•</span>
+            <span>Focused on future demand</span>
+            <span className="hidden md:inline text-blue-500 text-lg">•</span>
+            <span>Designed for you</span>
+          </div>
         </div>
 
         {/* Testimonial Carousel */}

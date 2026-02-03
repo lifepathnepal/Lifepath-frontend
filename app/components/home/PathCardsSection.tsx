@@ -1,93 +1,91 @@
-import Link from "next/link";
-import { Code, Palette, Megaphone, ArrowRight } from "lucide-react";
-
-const paths = [
-  {
-    title: "Web Development",
-    tagline: "Build modern websites & apps",
-    duration: "4–6 months",
-    href: "/job-training/web-development-bootcamp",
-    Icon: Code,
-    roadmap: ["HTML/CSS foundations", "JavaScript + React", "Backend + Deploy"],
-  },
-  {
-    title: "Graphic Designing",
-    tagline: "Turn creativity into income",
-    duration: "3–5 months",
-    href: "/job-training/graphic-designing-bootcamp",
-    Icon: Palette,
-    roadmap: ["Design basics", "Brand identity", "Portfolio projects"],
-  },
-  {
-    title: "Digital Marketing",
-    tagline: "Grow brands, earn online",
-    duration: "3–4 months",
-    href: "/job-training/digital-marketing-bootcamp",
-    Icon: Megaphone,
-    roadmap: ["Strategy & funnels", "Content & ads", "Analytics & growth"],
-  },
-];
+import { Cross, Crosshair, CrossIcon, X } from "lucide-react";
 
 export default function PathCardsSection() {
+  const problems = [
+    "Too many courses, no direction",
+    "No clarity before enrolling",
+    "Learn skills but don't know what to do next",
+    "No real guidance or roadmap",
+  ];
+
+  const solutions = [
+    "Career-first approach",
+    "Skill roadmap before learning",
+    "Mentorship & direction",
+    "Practical, job-ready learning",
+  ];
+
   return (
     <section className="w-full px-4 bg-white">
       <div className="max-w-6xl mx-auto py-16">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-semibold text-blue-700">
-            Career paths
+        {/* Story Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
+            Why LifePath is different
           </div>
-          <h2 className="text-3xl md:text-5xl font-semibold text-slate-900 mt-4">
-            Choose your path with clarity
+          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
+            What if you didn&apos;t start with a course?
+            <br />A career path should feel focused, guided, and job‑ready. Here
+            is how LifePath does it.
           </h2>
-          <p className="text-sm md:text-base text-slate-600 mt-3 max-w-2xl mx-auto">
-            Outcome-focused learning paths with a roadmap preview on hover.
-          </p>
+          <p className="text-slate-600 mt-3 max-w-2xl mx-auto"></p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {paths.map((path) => (
-            <Link
-              key={path.title}
-              href={path.href}
-              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-blue-50/40 via-white to-white opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="relative">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600/10 text-blue-700">
-                  <path.Icon size={20} />
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900">
-                  {path.title}
-                </h3>
-                <p className="text-sm text-slate-600 mt-2">{path.tagline}</p>
-                <p className="text-xs text-slate-500 mt-3">
-                  🕒 {path.duration}
+        {/* Problems vs Solutions */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Problems */}
+          <div className="rounded-2xl border border-rose-200 bg-rose-50/40 p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-rose-600/10 text-rose-700 text-sm font-bold">
+                <X size={12} />
+              </span>
+              <div>
+                <p className="text-lg font-semibold text-rose-700 uppercase tracking-wide">
+                  Problems
                 </p>
+                <p className="text-rose-600 text-sm">What learners face</p>
+              </div>
+            </div>
 
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700">
-                  View Path
-                  <ArrowRight
-                    size={16}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
+            <div className="space-y-3">
+              {problems.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-rose-200 bg-white px-4 py-3"
+                >
+                  <p className="text-rose-900 font-normal">{item}</p>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
 
-              <div className="pointer-events-none absolute inset-x-6 bottom-6 translate-y-4 rounded-xl border border-blue-100 bg-white/90 p-3 text-xs text-slate-600 opacity-0 shadow-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                <p className="font-semibold text-slate-800 mb-2">
-                  Roadmap preview
+          {/* Solutions */}
+          <div className="rounded-2xl border border-green-200 bg-green-50/40 p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-600/10 text-green-700 text-sm font-bold">
+                ✓
+              </span>
+              <div>
+                <p className="text-lg font-semibold text-green-700 uppercase tracking-wide">
+                  Lifepath solution
                 </p>
-                <ul className="space-y-1">
-                  {path.roadmap.map((item) => (
-                    <li key={item} className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-green-600 font-normal text-sm">
+                  Confident direction
+                </p>
               </div>
-            </Link>
-          ))}
+            </div>
+
+            <div className="space-y-3">
+              {solutions.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-green-200 bg-white px-4 py-3"
+                >
+                  <p className="text-green-900 font-normal">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

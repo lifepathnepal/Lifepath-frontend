@@ -20,9 +20,9 @@ export default function Header() {
   // const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
-    { label: "Guide Books", href: "/guide-books" },
     { label: "Job Training", href: "/job-training" },
     { label: "Best Jobs", href: "/jobs" },
+    { label: "Success Stories", href: "/success-stories" },
     // { label: "Events", href: "/events" },
     // { label: "Our Story", href: "/why-lifepath" },
   ];
@@ -39,7 +39,7 @@ export default function Header() {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between h-16 gap-3">
           {/* Logo */}
           <Link href={"/"} className="shrink-0 cursor-pointer">

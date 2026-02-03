@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const TEXT =
-  "Your success is  not delayed by your weaknesses, but by not knowing your strengths.";
+  "Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.- Albert Einstein.";
 
 export default function StorySection() {
   const containerRef = useRef<HTMLDivElement | null>(null);

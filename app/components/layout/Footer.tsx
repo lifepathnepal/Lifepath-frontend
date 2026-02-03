@@ -52,12 +52,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Section */}
-
-        {/* Divider */}
-        <div className="border-t border-zinc-200"></div>
-
+      <div className="max-w-6xl mx-auto">
         {/* Footer Links */}
         <div className="py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {footerColumns.map((column, index) => (

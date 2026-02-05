@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import {
   Clock,
@@ -13,7 +14,6 @@ import {
   Globe,
   ChevronDown,
   CheckCheck,
-  Play,
   Verified,
   ArrowLeft,
   ClockAlert,
@@ -25,6 +25,7 @@ type Instructor = {
   bio: string;
   students: number;
   courses: number;
+  image?: string;
 };
 
 type CurriculumModule = {
@@ -34,11 +35,25 @@ type CurriculumModule = {
   lectures: string[];
 };
 
+type CareerRole = {
+  title: string;
+  desc: string;
+};
+
+type DemandInfo = {
+  badge: string;
+  title: string;
+  intro: string;
+  national: string[];
+  international: string[];
+};
+
 type Course = {
   id: number;
   title: string;
   slug: string;
   description: string;
+  image?: string;
   price: number;
   originalPrice: number;
   rating: number;
@@ -54,15 +69,19 @@ type Course = {
   notForYou: string[];
   features: string[];
   documents: { title: string; type: string; size: string }[];
+  outcomesIntro: string;
+  roles: CareerRole[];
+  demand: DemandInfo;
 };
 
 const courseData: Record<string, Course> = {
   "graphic-designing-bootcamp": {
     id: 1,
-    title: "Complete Graphic Designing Bootcamp",
+    title: "Graphic Designer",
     slug: "graphic-designing-bootcamp",
     description:
       "Master visual design with real-world projects. Learn branding, layout, typography, and design systems to build a standout portfolio.",
+    image: "/job-training/graphic.png",
     price: 40000,
     originalPrice: 52000,
     rating: 4.7,
@@ -77,6 +96,7 @@ const courseData: Record<string, Course> = {
       bio: "8+ years of experience in brand identity and product design at Logolab Global pvt. ltd.",
       students: 500,
       courses: 6,
+      image: "/job-training/graphics/Krishna.png",
     },
     whatYouLearn: [
       "Design principles: balance, contrast, and hierarchy",
@@ -85,6 +105,13 @@ const courseData: Record<string, Course> = {
       "Layout design for posters, social media, and UI",
       "Mastering tools like Figma and Adobe Suite",
       "Build a portfolio with client-ready case studies",
+      "Effective client communication and feedback incorporation",
+      "Prepare for design interviews and freelance work",
+      "Create real-world design projects",
+      "Develop a personal design style",
+      "Understand user-centered design",
+      "Learn design thinking process",
+      "Work with grids and alignment",
     ],
     curriculum: [
       {
@@ -160,13 +187,64 @@ const courseData: Record<string, Course> = {
       { title: "Portfolio Case Study Template", type: "FIG", size: "1.8 MB" },
       { title: "Client Brief Samples", type: "DOCX", size: "900 KB" },
     ],
+    outcomesIntro:
+      "With our market-leading teaching style and refined design sense, you’ll graduate with confident skills and a portfolio that reflects real-world standards.",
+    roles: [
+      {
+        title: "Brand Designer",
+        desc: "Create cohesive visual identities, logos, and brand systems.",
+      },
+      {
+        title: "Digital Visual Designer",
+        desc: "Design high-impact visuals for web, social, and campaigns.",
+      },
+      {
+        title: "Layout & Typography Specialist",
+        desc: "Craft clear, balanced layouts with professional type systems.",
+      },
+      {
+        title: "Portfolio-Ready Creative",
+        desc: "Present client-ready case studies that stand out to employers.",
+      },
+      {
+        title: "Logo Designer",
+        desc: "Design distinctive logos that effectively represent brands.",
+      },
+      {
+        title: "Landing Page Visual Designer",
+        desc: "Create engaging visuals for landing pages that convert visitors.",
+      },
+    ],
+    demand: {
+      badge: "High Demand",
+      title: "Future job demand for Graphic Designers",
+      intro:
+        "Opportunities are growing across national and international companies hiring for branding, UI, marketing, and product design.",
+      national: [
+        "Digital agencies",
+        "Marketing firms",
+        "E-commerce brands",
+        "Media and publishing houses",
+        "Startups and tech companies",
+        "Education and training institutes",
+      ],
+      international: [
+        "Global design studios",
+        "SaaS product companies",
+        "Marketing agencies",
+        "E-commerce marketplaces",
+        "Content and media platforms",
+        "Remote freelance clients",
+      ],
+    },
   },
   "web-development-bootcamp": {
     id: 2,
-    title: "Complete Web Development Bootcamp",
+    title: "Web Designer",
     slug: "web-development-bootcamp",
     description:
       "Master full-stack web development from scratch. Learn HTML, CSS, JavaScript, React, Node.js, and MongoDB to build real-world applications.",
+    image: "/job-training/webdev.png",
     price: 6200,
     originalPrice: 8200,
     rating: 4.8,
@@ -181,6 +259,7 @@ const courseData: Record<string, Course> = {
       bio: "10+ years of experience in web development. Worked with top tech companies.",
       students: 12000,
       courses: 8,
+      image: "/job-training/webdev.png",
     },
     whatYouLearn: [
       "Build responsive websites using HTML5 and CSS3",
@@ -291,13 +370,64 @@ const courseData: Record<string, Course> = {
       { title: "API Design Checklist", type: "PDF", size: "1.2 MB" },
       { title: "Deployment Guide", type: "PDF", size: "2.0 MB" },
     ],
+    outcomesIntro:
+      "Graduate with a portfolio of real-world web projects and the confidence to design and build responsive, production-ready interfaces.",
+    roles: [
+      {
+        title: "Front-End Developer",
+        desc: "Build responsive user interfaces with HTML, CSS, and JavaScript.",
+      },
+      {
+        title: "UI Developer",
+        desc: "Translate designs into polished, accessible UI components.",
+      },
+      {
+        title: "React Developer",
+        desc: "Create interactive web apps with React and modern tooling.",
+      },
+      {
+        title: "Web Designer",
+        desc: "Design and build user-friendly websites that convert visitors.",
+      },
+      {
+        title: "Junior Full Stack Developer",
+        desc: "Work across front-end and back-end for end-to-end features.",
+      },
+      {
+        title: "Freelance Web Developer",
+        desc: "Deliver client-ready websites and web applications.",
+      },
+    ],
+    demand: {
+      badge: "High Demand",
+      title: "Future job demand for Web Designers",
+      intro:
+        "Companies are hiring web designers and front-end developers to modernize digital experiences and improve conversion rates.",
+      national: [
+        "Software and IT companies",
+        "Digital agencies",
+        "E-commerce businesses",
+        "Educational platforms",
+        "Startups and tech teams",
+        "Corporate marketing departments",
+      ],
+      international: [
+        "SaaS product teams",
+        "Remote product companies",
+        "Global agencies",
+        "Freelance marketplaces",
+        "E-commerce platforms",
+        "Open-source communities",
+      ],
+    },
   },
   "digital-marketing-bootcamp": {
     id: 3,
-    title: "Digital Marketing Bootcamp",
+    title: "Social Media Manager",
     slug: "digital-marketing-bootcamp",
     description:
       "Learn to grow brands with content, ads, and analytics. Build marketing campaigns that drive real results.",
+    image: "/job-training/digital.png",
     price: 4800,
     originalPrice: 6800,
     rating: 4.6,
@@ -312,6 +442,7 @@ const courseData: Record<string, Course> = {
       bio: "7+ years of experience in performance marketing and brand strategy.",
       students: 6400,
       courses: 5,
+      image: "/job-training/social.png",
     },
     whatYouLearn: [
       "Build marketing funnels that convert",
@@ -392,6 +523,521 @@ const courseData: Record<string, Course> = {
       { title: "SEO Quick Guide", type: "PDF", size: "1.9 MB" },
       { title: "Content Calendar", type: "XLSX", size: "700 KB" },
     ],
+    outcomesIntro:
+      "Master content strategy, social campaigns, and analytics to grow brands and communities with measurable results.",
+    roles: [
+      {
+        title: "Social Media Manager",
+        desc: "Plan, publish, and optimize content across platforms.",
+      },
+      {
+        title: "Content Strategist",
+        desc: "Create content frameworks that grow engagement and reach.",
+      },
+      {
+        title: "Community Manager",
+        desc: "Build and nurture online communities for brands.",
+      },
+      {
+        title: "Performance Marketing Associate",
+        desc: "Run paid social campaigns and optimize for ROAS.",
+      },
+      {
+        title: "Brand Growth Associate",
+        desc: "Support brand growth with data-driven marketing initiatives.",
+      },
+      {
+        title: "Digital Marketing Executive",
+        desc: "Coordinate multi-channel marketing programs.",
+      },
+    ],
+    demand: {
+      badge: "High Demand",
+      title: "Future job demand for Social Media Managers",
+      intro:
+        "Brands are investing heavily in social presence, performance campaigns, and community growth across platforms.",
+      national: [
+        "Marketing agencies",
+        "E-commerce companies",
+        "Media and entertainment brands",
+        "Retail and FMCG brands",
+        "Hospitality and travel",
+        "Education and training institutes",
+      ],
+      international: [
+        "Global D2C brands",
+        "Content-led startups",
+        "SaaS and tech companies",
+        "Remote social media agencies",
+        "Influencer networks",
+        "Freelance clients worldwide",
+      ],
+    },
+  },
+  "sales-manager": {
+    id: 4,
+    title: "Sales Executive",
+    slug: "sales-manager",
+    description:
+      "Build core sales skills with real-world practice. Learn prospecting, pitching, negotiation, and relationship management to close deals consistently.",
+    image: "/job-training/sales.png",
+    price: 6200,
+    originalPrice: 8200,
+    rating: 4.5,
+    totalRatings: 518,
+    students: 2140,
+    duration: "3 months",
+    level: "Beginner to Intermediate",
+    language: "English/Nepali",
+    instructor: {
+      name: "Amit Shrestha",
+      title: "Sales Lead & Growth Strategist",
+      bio: "9+ years in B2B and B2C sales, leading revenue teams across Nepal and India.",
+      students: 3200,
+      courses: 4,
+      image: "/job-training/sales.png",
+    },
+    whatYouLearn: [
+      "Prospecting and lead qualification",
+      "Sales pipeline and CRM management",
+      "Cold outreach and follow-ups",
+      "Discovery calls and needs analysis",
+      "Pitching and objection handling",
+      "Negotiation and closing techniques",
+      "Account management and upselling",
+      "Sales metrics and performance tracking",
+    ],
+    curriculum: [
+      {
+        title: "Sales Foundations",
+        lessons: 6,
+        duration: "1.5 weeks",
+        lectures: [
+          "Understanding the Sales Process",
+          "Target Customer Profiles",
+          "Sales Ethics and Mindset",
+          "Communication Basics",
+        ],
+      },
+      {
+        title: "Prospecting & Outreach",
+        lessons: 8,
+        duration: "2 weeks",
+        lectures: [
+          "Lead Generation",
+          "Cold Emailing",
+          "Cold Calling",
+          "Follow-up Sequences",
+        ],
+      },
+      {
+        title: "Pitching & Negotiation",
+        lessons: 9,
+        duration: "2.5 weeks",
+        lectures: [
+          "Discovery Calls",
+          "Pitch Structure",
+          "Handling Objections",
+          "Negotiation Frameworks",
+        ],
+      },
+      {
+        title: "Closing & Account Growth",
+        lessons: 6,
+        duration: "2 weeks",
+        lectures: [
+          "Closing Techniques",
+          "Contract Basics",
+          "Onboarding Clients",
+          "Retention & Upsells",
+        ],
+      },
+    ],
+    requirements: [
+      "A computer or smartphone with internet",
+      "Willingness to practice sales conversations",
+      "Basic communication skills",
+    ],
+    notForYou: [
+      "You are uncomfortable speaking with clients",
+      "You avoid feedback and role-play",
+      "You expect results without practice",
+    ],
+    features: [
+      "3 months of guided training",
+      "Role-play sessions",
+      "Sales scripts and templates",
+      "Certificate of completion",
+      "Access on mobile and desktop",
+      "30-day money-back guarantee",
+    ],
+    documents: [
+      { title: "Sales Script Library", type: "PDF", size: "1.3 MB" },
+      { title: "Lead Tracking Sheet", type: "XLSX", size: "700 KB" },
+      { title: "Objection Handling Guide", type: "PDF", size: "1.1 MB" },
+      { title: "Discovery Call Checklist", type: "DOCX", size: "650 KB" },
+      { title: "Negotiation Playbook", type: "PDF", size: "1.6 MB" },
+    ],
+    outcomesIntro:
+      "Become confident in the complete sales cycle and graduate with practical, repeatable selling frameworks.",
+    roles: [
+      {
+        title: "Sales Executive",
+        desc: "Drive new business through outbound and inbound sales.",
+      },
+      {
+        title: "Business Development Associate",
+        desc: "Identify leads, qualify prospects, and book meetings.",
+      },
+      {
+        title: "Account Executive",
+        desc: "Manage deals from discovery to close.",
+      },
+      {
+        title: "Inside Sales Representative",
+        desc: "Engage prospects through calls, emails, and demos.",
+      },
+      {
+        title: "Client Relationship Officer",
+        desc: "Maintain client relationships and drive renewals.",
+      },
+      {
+        title: "Sales Operations Associate",
+        desc: "Track performance and improve sales processes.",
+      },
+    ],
+    demand: {
+      badge: "High Demand",
+      title: "Future job demand for Sales Executives",
+      intro:
+        "Growing businesses need strong sales teams to acquire customers and drive revenue.",
+      national: [
+        "Telecom and ISP companies",
+        "FMCG and retail brands",
+        "Education and training institutes",
+        "Banking and fintech",
+        "Tech startups",
+        "Real estate and construction",
+      ],
+      international: [
+        "SaaS companies",
+        "Global sales agencies",
+        "Remote B2B teams",
+        "E-commerce brands",
+        "Freelance sales roles",
+        "International service providers",
+      ],
+    },
+  },
+  "full-stack-web-development-bootcamp": {
+    id: 5,
+    title: "Full Stack Web Developer",
+    slug: "full-stack-web-development-bootcamp",
+    description:
+      "Become a job-ready full stack developer. Build complete web apps with modern front-end and back-end technologies.",
+    image: "/job-training/fullstack.png",
+    price: 6200,
+    originalPrice: 8200,
+    rating: 4.7,
+    totalRatings: 986,
+    students: 4210,
+    duration: "5 months",
+    level: "Beginner to Advanced",
+    language: "English/Nepali",
+    instructor: {
+      name: "Ramesh Sharma",
+      title: "Senior Full Stack Developer",
+      bio: "10+ years of experience in building scalable web products and mentoring developers.",
+      students: 12000,
+      courses: 8,
+      image: "/job-training/fullstack.png",
+    },
+    whatYouLearn: [
+      "Build responsive front-end UIs",
+      "Create RESTful APIs and services",
+      "Work with databases and data modeling",
+      "Authentication and authorization",
+      "Deploy full stack applications",
+      "Write clean, maintainable code",
+      "Testing and debugging workflows",
+      "Version control with Git",
+    ],
+    curriculum: [
+      {
+        title: "Front-End Foundations",
+        lessons: 12,
+        duration: "4 weeks",
+        lectures: [
+          "HTML & CSS",
+          "JavaScript Fundamentals",
+          "Responsive Design",
+          "UI Architecture",
+        ],
+      },
+      {
+        title: "React & State Management",
+        lessons: 14,
+        duration: "5 weeks",
+        lectures: [
+          "Components and Props",
+          "Hooks",
+          "Routing",
+          "State Management",
+        ],
+      },
+      {
+        title: "Backend Development",
+        lessons: 14,
+        duration: "5 weeks",
+        lectures: [
+          "Node.js & Express",
+          "API Design",
+          "Authentication",
+          "Database Integration",
+        ],
+      },
+      {
+        title: "Capstone Project",
+        lessons: 10,
+        duration: "4 weeks",
+        lectures: [
+          "Project Planning",
+          "Implementation",
+          "Testing",
+          "Deployment",
+        ],
+      },
+    ],
+    requirements: [
+      "A computer with internet connection",
+      "Basic computer knowledge",
+      "Willingness to practice coding regularly",
+    ],
+    notForYou: [
+      "You avoid hands-on practice",
+      "You expect quick results without projects",
+      "You are not interested in debugging",
+    ],
+    features: [
+      "5 months of video content",
+      "Project code templates",
+      "Portfolio guidance",
+      "Certificate of completion",
+      "Access on mobile and desktop",
+      "30-day money-back guarantee",
+    ],
+    documents: [
+      { title: "React Project Starter", type: "ZIP", size: "6.2 MB" },
+      { title: "API Testing Guide", type: "PDF", size: "1.6 MB" },
+      { title: "Database Schema Templates", type: "PDF", size: "1.9 MB" },
+      { title: "Deployment Checklist", type: "PDF", size: "1.4 MB" },
+      { title: "Code Review Guide", type: "PDF", size: "1.0 MB" },
+    ],
+    outcomesIntro:
+      "Build end-to-end web applications and graduate with a full stack portfolio that demonstrates real-world capability.",
+    roles: [
+      {
+        title: "Full Stack Developer",
+        desc: "Build complete web applications from front to back.",
+      },
+      {
+        title: "Front-End Developer",
+        desc: "Focus on UI implementation and user experience.",
+      },
+      {
+        title: "Back-End Developer",
+        desc: "Create scalable APIs and backend services.",
+      },
+      {
+        title: "Junior Software Engineer",
+        desc: "Contribute to product development in agile teams.",
+      },
+      {
+        title: "Web Application Developer",
+        desc: "Build and maintain production web apps.",
+      },
+      {
+        title: "Freelance Developer",
+        desc: "Deliver custom web solutions for clients.",
+      },
+    ],
+    demand: {
+      badge: "High Demand",
+      title: "Future job demand for Full Stack Developers",
+      intro:
+        "Businesses need developers who can ship features across the entire web stack.",
+      national: [
+        "Tech startups",
+        "Software companies",
+        "Digital agencies",
+        "E-commerce platforms",
+        "Education technology",
+        "Fintech companies",
+      ],
+      international: [
+        "Global SaaS teams",
+        "Remote product companies",
+        "Open-source organizations",
+        "International agencies",
+        "Freelance marketplaces",
+        "Outsourcing firms",
+      ],
+    },
+  },
+  "advanced-digital-marketing-bootcamp": {
+    id: 6,
+    title: "Brand Developer",
+    slug: "advanced-digital-marketing-bootcamp",
+    description:
+      "Strengthen brand strategy and digital growth. Learn positioning, messaging, and campaign execution for long-term impact.",
+    image: "/job-training/brand.png",
+    price: 6200,
+    originalPrice: 8200,
+    rating: 4.6,
+    totalRatings: 604,
+    students: 2560,
+    duration: "5 months",
+    level: "Intermediate",
+    language: "English/Nepali",
+    instructor: {
+      name: "Maya Karki",
+      title: "Growth Marketing Lead",
+      bio: "7+ years of experience in performance marketing and brand strategy.",
+      students: 6400,
+      courses: 5,
+      image: "/job-training/brand.png",
+    },
+    whatYouLearn: [
+      "Brand positioning and messaging",
+      "Customer research and insights",
+      "Campaign planning and execution",
+      "Content strategy and storytelling",
+      "Performance marketing basics",
+      "Analytics and reporting",
+      "Creative brief development",
+      "Go-to-market planning",
+    ],
+    curriculum: [
+      {
+        title: "Brand Strategy",
+        lessons: 8,
+        duration: "3 weeks",
+        lectures: [
+          "Brand Fundamentals",
+          "Positioning",
+          "Value Propositions",
+          "Messaging Frameworks",
+        ],
+      },
+      {
+        title: "Content & Campaigns",
+        lessons: 10,
+        duration: "4 weeks",
+        lectures: [
+          "Content Systems",
+          "Creative Direction",
+          "Campaign Planning",
+          "Channel Strategy",
+        ],
+      },
+      {
+        title: "Growth & Analytics",
+        lessons: 8,
+        duration: "3 weeks",
+        lectures: [
+          "Performance Marketing",
+          "Funnel Optimization",
+          "Analytics Dashboards",
+          "Reporting",
+        ],
+      },
+      {
+        title: "Brand Portfolio",
+        lessons: 6,
+        duration: "3 weeks",
+        lectures: [
+          "Case Study Building",
+          "Presentation Skills",
+          "Portfolio Review",
+          "Interview Prep",
+        ],
+      },
+    ],
+    requirements: [
+      "A computer with internet connection",
+      "Basic marketing knowledge is helpful",
+      "Willingness to work on brand projects",
+    ],
+    notForYou: [
+      "You prefer theory without execution",
+      "You avoid experimentation",
+      "You are not ready to iterate on feedback",
+    ],
+    features: [
+      "5 months of video content",
+      "Campaign templates",
+      "Brand strategy frameworks",
+      "Certificate of completion",
+      "Access on mobile and desktop",
+      "30-day money-back guarantee",
+    ],
+    documents: [
+      { title: "Brand Strategy Template", type: "PDF", size: "1.5 MB" },
+      { title: "Creative Brief Guide", type: "DOCX", size: "850 KB" },
+      { title: "Campaign Planner", type: "PDF", size: "1.4 MB" },
+      { title: "Marketing KPI Sheet", type: "XLSX", size: "720 KB" },
+      { title: "Case Study Outline", type: "PDF", size: "1.1 MB" },
+    ],
+    outcomesIntro:
+      "Develop strategic brand skills and present a portfolio that showcases measurable growth initiatives.",
+    roles: [
+      {
+        title: "Brand Strategist",
+        desc: "Shape brand identity and market positioning.",
+      },
+      {
+        title: "Marketing Strategist",
+        desc: "Plan and execute multi-channel marketing campaigns.",
+      },
+      {
+        title: "Growth Marketing Associate",
+        desc: "Run experiments to drive customer acquisition.",
+      },
+      {
+        title: "Brand Manager",
+        desc: "Manage brand consistency and messaging.",
+      },
+      {
+        title: "Campaign Manager",
+        desc: "Lead campaigns from strategy to delivery.",
+      },
+      {
+        title: "Content Marketing Lead",
+        desc: "Develop content that builds brand trust.",
+      },
+    ],
+    demand: {
+      badge: "High Demand",
+      title: "Future job demand for Brand Developers",
+      intro:
+        "Organizations are investing in brand strategy to stand out in crowded markets.",
+      national: [
+        "Marketing agencies",
+        "Consumer brands",
+        "E-commerce companies",
+        "Hospitality and travel",
+        "Education and training institutes",
+        "Technology companies",
+      ],
+      international: [
+        "Global D2C brands",
+        "Remote marketing teams",
+        "SaaS companies",
+        "Media and content firms",
+        "International agencies",
+        "Freelance brand consultants",
+      ],
+    },
   },
 };
 
@@ -420,7 +1066,16 @@ export default function JobTrainingSlugPage() {
   return (
     <div className="min-h-screen pt-16 pb-10 bg-zinc-100">
       {/* Course Header */}
-      <section className="bg-linear-to-r from-black to-blue-700 text-white">
+      <section
+        className="relative text-white"
+        style={{
+          backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.7), rgba(29,78,216,0.9)), url(${
+            course?.image ?? "/job-training/graphics/Krishna.png"
+          })`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="max-w-6xl mx-auto py-12">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left: Course Info */}
@@ -523,9 +1178,15 @@ export default function JobTrainingSlugPage() {
                     </p>
                   </div>
                 </div>
-                <button className="w-full py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors">
-                  Join Now
-                </button>
+                <Link
+                  href={`https://wa.me/+9779761082244?text=I%20want%20to%20enroll%20in%20the%20${encodeURIComponent(course.title)}%20course.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="w-full py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
+                    Join Now
+                  </button>
+                </Link>
                 <div className="pt-4">
                   <p className="text-sm font-semibold mb-3">
                     This course includes:
@@ -551,24 +1212,49 @@ export default function JobTrainingSlugPage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* What you will learn */}
-            <div>
-              <h2 className="text-2xl font-bold text-zinc-900 mb-6">
-                What you will learn
+            <div className="bg-white border border-zinc-200 rounded-2xl p-6">
+              <h2 className="text-2xl font-bold text-zinc-900 mb-2">
+                What you&apos;ll learn
               </h2>
-              <div className="grid md:grid-cols-2 gap-2">
-                {course.whatYouLearn.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3 bg-white p-4 rounded-lg"
-                  >
+              <p className="text-sm text-zinc-500 mb-6">
+                Highlights of the skills you&apos;ll gain.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                {course.whatYouLearn.slice(0, 6).map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
                     <Check
                       size={18}
                       className="text-blue-600 shrink-0 mt-0.5"
                     />
-                    <span className="text-zinc-800 font-medium">{item}</span>
+                    <span className="text-zinc-800">{item}</span>
                   </div>
                 ))}
               </div>
+
+              {course.whatYouLearn.length > 6 && (
+                <details className="group mt-4">
+                  <summary className="cursor-pointer select-none text-sm font-semibold text-blue-600 flex items-center gap-2">
+                    <span className="group-open:hidden">View more</span>
+                    <span className="hidden group-open:inline">View less</span>
+                    <ChevronDown
+                      size={16}
+                      className="transition-transform group-open:rotate-180"
+                    />
+                  </summary>
+                  <div className="grid md:grid-cols-2 gap-4 mt-4">
+                    {course.whatYouLearn.slice(6).map((item, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <Check
+                          size={18}
+                          className="text-blue-600 shrink-0 mt-0.5"
+                        />
+                        <span className="text-zinc-800">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              )}
             </div>
             {/* This course includes: */}
             <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
@@ -578,23 +1264,33 @@ export default function JobTrainingSlugPage() {
               <div className="grid sm:grid-cols-2 gap-4 text-sm text-zinc-700">
                 {[
                   {
-                    label: `${course.duration} on-demand video`,
-                    icon: <Play size={18} />,
+                    label: `${course.duration} practical training`,
+                    icon: <Clock size={18} />,
                   },
-                  { label: "Assignments", icon: <BookOpen size={18} /> },
-                  { label: "13 articles", icon: <Check size={18} /> },
                   {
-                    label: "15 downloadable resources",
+                    label: "Real world projects",
+                    icon: <BookOpen size={18} />,
+                  },
+                  {
+                    label: "Mentorship and guidance",
+                    icon: <Users size={18} />,
+                  },
+                  { label: "Job placement", icon: <CheckCheck size={18} /> },
+                  {
+                    label: "Job interview preparation",
+                    icon: <PlayCircle size={18} />,
+                  },
+                  {
+                    label: "CV and portfolio review",
                     icon: <Check size={18} />,
                   },
                   {
-                    label: "Access on mobile and TV",
+                    label: "Internship Opportunities",
                     icon: <Globe size={18} />,
                   },
-                  { label: "Closed captions", icon: <Verified size={18} /> },
                   {
                     label: "Certificate of completion",
-                    icon: <Check size={18} />,
+                    icon: <Verified size={18} />,
                   },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3">
@@ -681,38 +1377,9 @@ export default function JobTrainingSlugPage() {
               <h2 className="text-2xl font-bold text-zinc-900 mb-4">
                 What you&apos;ll become
               </h2>
-              <p className="text-zinc-600 mb-6">
-                With our market-leading teaching style and refined design sense,
-                you&apos;ll graduate with confident skills and a portfolio that
-                reflects real-world standards.
-              </p>
+              <p className="text-zinc-600 mb-6">{course.outcomesIntro}</p>
               <div className="grid md:grid-cols-2 gap-4">
-                {[
-                  {
-                    title: "Brand Designer",
-                    desc: "Create cohesive visual identities, logos, and brand systems.",
-                  },
-                  {
-                    title: "Digital Visual Designer",
-                    desc: "Design high-impact visuals for web, social, and campaigns.",
-                  },
-                  {
-                    title: "Layout & Typography Specialist",
-                    desc: "Craft clear, balanced layouts with professional type systems.",
-                  },
-                  {
-                    title: "Portfolio-Ready Creative",
-                    desc: "Present client-ready case studies that stand out to employers.",
-                  },
-                  {
-                    title: "Logo Designer",
-                    desc: "Design distinctive logos that effectively represent brands.",
-                  },
-                  {
-                    title: "Leanding Visual Designer",
-                    desc: "Create engaging visuals for landing pages that convert visitors.",
-                  },
-                ].map((role) => (
+                {course.roles.map((role) => (
                   <div
                     key={role.title}
                     className="bg-white flex items-start gap-3 p-4 rounded-xl border border-zinc-200"
@@ -735,28 +1402,19 @@ export default function JobTrainingSlugPage() {
             {/* Future job demands rate */}
             <div className="bg-blue-50 rounded-2xl p-8 border border-blue-200">
               <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-yellow-600 text-white px-4 py-1 text-sm font-semibold">
-                High Demand
+                {course.demand.badge}
               </div>
               <h2 className="text-2xl font-bold text-blue-700 mb-4">
-                Future job demand for Graphic Designers
+                {course.demand.title}
               </h2>
               <p className="text-zinc-700 text-sm mb-6">
-                Opportunities are growing across national and international
-                companies hiring for branding, UI, marketing, and product
-                design.
+                {course.demand.intro}
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-white rounded-xl p-4 border border-blue-100">
                   <h3 className="font-semibold text-blue-700 mb-2">National</h3>
                   <ul className="space-y-2 text-sm text-zinc-700">
-                    {[
-                      "Digital agencies",
-                      "Marketing firms",
-                      "E-commerce brands",
-                      "Media and publishing houses",
-                      "Startups and tech companies",
-                      "Education and training institutes",
-                    ].map((item) => (
+                    {course.demand.national.map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <CheckCheck
                           size={16}
@@ -772,14 +1430,7 @@ export default function JobTrainingSlugPage() {
                     International
                   </h3>
                   <ul className="space-y-2 text-sm text-zinc-700">
-                    {[
-                      "Global design studios",
-                      "SaaS product companies",
-                      "Marketing agencies",
-                      "E-commerce marketplaces",
-                      "Content and media platforms",
-                      "Remote freelance clients",
-                    ].map((item) => (
+                    {course.demand.international.map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <CheckCheck
                           size={16}
@@ -816,7 +1467,11 @@ export default function JobTrainingSlugPage() {
                 {/* Instructor Avatar - Full Width */}
                 <div className="w-full h-70 relative overflow-hidden">
                   <Image
-                    src="/job-training/graphics/Krishna.png"
+                    src={
+                      course.instructor.image ??
+                      course.image ??
+                      "/job-training/graphics/Krishna.png"
+                    }
                     alt={course.instructor.name}
                     fill
                     className="object-cover object-top"

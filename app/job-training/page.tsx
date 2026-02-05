@@ -1,12 +1,12 @@
 "use client";
 
-import { Clock, PlayCircle, Timer, User, UserCheck, UserCircle, Users } from "lucide-react";
+import { Timer, UserCheck } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
 export default function JobTrainingPage() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery] = useState("");
 
   const courses = [
     {
@@ -23,7 +23,7 @@ export default function JobTrainingPage() {
         "Life Books",
         "Portfolio Review",
         "Internship Guidance",
-        "Placement Oppertunity",
+        "Placement Opportunity",
       ],
     },
     {
@@ -40,7 +40,7 @@ export default function JobTrainingPage() {
         "Life Books",
         "Personal Guidance",
         "Interview Practice",
-        "Placement Oppertunity",
+        "Placement Opportunity",
       ],
     },
     {
@@ -57,12 +57,12 @@ export default function JobTrainingPage() {
         "Life Books",
         "Personal Guidance",
         "Interview Practice",
-        "Placement Oppertunity",
+        "Placement Opportunity",
       ],
     },
     {
       id: 4,
-      slug: "web-development-bootcamp",
+      slug: "full-stack-web-development-bootcamp",
       title: "Full Stack Web Developer",
       img: "/job-training/fullstack.png",
       duration: "5 months",
@@ -74,7 +74,7 @@ export default function JobTrainingPage() {
         "Life Books",
         "Personal Guidance",
         "Interview Practice",
-        "Placement Oppertunity",
+        "Placement Opportunity",
       ],
     },
     {
@@ -91,7 +91,7 @@ export default function JobTrainingPage() {
         "Life Books",
         "Personal Guidance",
         "Interview Practice",
-        "Placement Oppertunity",
+        "Placement Opportunity",
       ],
     },
     {
@@ -108,7 +108,7 @@ export default function JobTrainingPage() {
         "Life Books",
         "Personal Guidance",
         "Interview Practice",
-        "Placement Oppertunity",
+        "Placement Opportunity",
       ],
     },
   ];
@@ -216,9 +216,7 @@ export default function JobTrainingPage() {
                 <div className="mb-3 ">
                   <div className="flex items-center gap-2 text-sm font-medium  text-green-500">
                     <UserCheck size={20} className="" />
-                    <p className="">
-                      Limited seats
-                    </p>
+                    <p className="">Limited seats</p>
                   </div>
                 </div>
 

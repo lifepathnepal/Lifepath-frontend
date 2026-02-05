@@ -1,51 +1,15 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const footerColumns = [
     {
-      title: "Products",
       links: [
-        { label: "Career Tools", href: "#" },
-        { label: "Premium", href: "#" },
-        { label: "Enterprise", href: "#" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { label: "Roadmap", href: "#" },
-        { label: "Blog", href: "#" },
-        { label: "Documentation", href: "#" },
-        { label: "Guides", href: "#" },
-      ],
-    },
-    {
-      title: "Solutions",
-      links: [
-        { label: "Career Assessment", href: "#" },
-        { label: "Job Matching", href: "#" },
-        { label: "Skill Development", href: "#" },
-        { label: "Mentorship", href: "#" },
-        { label: "Pricing", href: "#" },
-        { label: "FAQ", href: "#" },
-      ],
-    },
-    {
-      title: "Platform",
-      links: [
-        { label: "Features", href: "#" },
-        { label: "Integrations", href: "#" },
-        { label: "Security", href: "#" },
-        { label: "API", href: "#" },
-        { label: "Updates", href: "#" },
-        { label: "Changelog", href: "#" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { label: "Contact Us", href: "#" },
-        { label: "About", href: "#" },
+        { label: "Job Training", href: "/job-training" },
+        { label: "Best Jobs", href: "/best-jobs" },
+        { label: "Success Stories", href: "/success-stories" },
+        { label: "About Us", href: "/about-us" },
+        { label: "Contact Us", href: "/contact-us" },
       ],
     },
   ];
@@ -53,14 +17,38 @@ export default function Footer() {
   return (
     <footer className="bg-white">
       <div className="max-w-6xl mx-auto">
+        {/* Large Background Text */}
+        <div className="relative py-8 md:py-20 overflow-hidden w-full mx-auto">
+          <div className="text-center">
+            <h2
+              className="text-[64px] sm:text-[90px] md:text-[160px] lg:text-[220px] font-black text-transparent"
+              style={
+                {
+                  WebkitTextStroke: "2px #2b37e3",
+                  letterSpacing: "-0.05em",
+                  lineHeight: "0.9",
+                } as React.CSSProperties
+              }
+            >
+              LifePath
+            </h2>
+            {/* <Image
+              src="/main-logo.png"
+              alt="LifePath Logo"
+              width={1300}
+              height={160}
+              className="mx-auto"
+            /> */}
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-zinc-200"></div>
         {/* Footer Links */}
-        <div className="py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="py-4">
           {footerColumns.map((column, index) => (
             <div key={index}>
-              <h4 className="font-semibold text-blue-600 mb-6">
-                {column.title}
-              </h4>
-              <ul className="space-y-4">
+              <ul className="flex justify-center gap-2 md:gap-4 flex-wrap">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a
@@ -79,33 +67,11 @@ export default function Footer() {
             </div>
           ))}
         </div>
-
-        {/* Divider */}
-        <div className="border-t border-zinc-200"></div>
-
         {/* Copyright */}
-        <div className="py-6 md:py-8 text-center">
+        <div className="py-2 md:py-4 text-center">
           <p className="text-sm text-zinc-500">
             © 2026 LifePath Career Platform. All rights reserved.
           </p>
-        </div>
-
-        {/* Large Background Text */}
-        <div className="relative py-8 md:py-10 overflow-hidden w-full mx-auto">
-          <div className="text-center">
-            <h2
-              className="text-[64px] sm:text-[90px] md:text-[160px] lg:text-[220px] font-black text-transparent"
-              style={
-                {
-                  WebkitTextStroke: "2px #2b37e3",
-                  letterSpacing: "-0.05em",
-                  lineHeight: "0.9",
-                } as React.CSSProperties
-              }
-            >
-              LifePath
-            </h2>
-          </div>
         </div>
       </div>
     </footer>

@@ -9,8 +9,8 @@ import FAQSection from "./components/home/FAQSection";
 import NewsletterCTA from "./components/home/NewsletterCTA";
 import Divider2 from "./components/home/Divider2";
 import Divider3 from "./components/home/Divider3";
-import Footer from "./components/layout/Footer";
-import FooterCTA from "./components/footerCTA/FooterCTA";
+// import Footer from "./components/layout/Footer";
+// import FooterCTA from "./components/footerCTA/FooterCTA";
 // import Help from "./components/help/Help";
 // import Help2 from "./components/help/Help2";
 
@@ -28,14 +28,14 @@ export default function Home() {
       <CategorySection />
       <Divider3 />
       <FAQSection />
-      {/* <NewsletterCTA
+      <NewsletterCTA
         title="Clarity changes everything."
         btnText="Start Your Journey"
         imageSrc="/heroImages/woman2.png"
         description="Build a career that fits you — one insight at a time."
-      /> */}
+      />
       {/* Call */}
-      <FooterCTA />
+      {/* <FooterCTA /> */}
     </div>
   );
 }

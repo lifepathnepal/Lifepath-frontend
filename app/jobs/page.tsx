@@ -1,86 +1,28 @@
 "use client";
 
-import {
-  MapPin,
-  Clock,
-  DollarSign,
-  BellRing,
-  TrendingUp,
-  ArrowRight,
-  Search,
-} from "lucide-react";
+import { MapPin, Clock, DollarSign, ArrowRight, Globe } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+import NewsletterCTA from "../components/home/NewsletterCTA";
+import { jobs } from "./data";
 
 export default function JobsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const jobs = [
-    {
-      id: 1,
-      title: "Software Developer",
-      company: "F1 Soft",
-      location: "Kathmandu only",
-      type: "Full time",
-      salary: "80k-200k",
-      experience: "1-5 yrs exp",
-      category: "Software Developer",
-      postedDate: "1 hour ago",
-      img: "/company-logo/webx.png",
-    },
-    {
-      id: 2,
-      title: "UI/UX Designer",
-      company: "Cursor",
-      location: "Remote",
-      type: "Full time",
-      salary: "60k-180k",
-      experience: "1-4 yrs exp",
-      category: "Product Designer",
-      postedDate: "4 hours ago",
-      img: "/company-logo/cursor.svg",
-    },
-    {
-      id: 3,
-      title: "Graphic Designer",
-      company: "FonePay",
-      location: "Nepal only",
-      type: "Full time",
-      salary: "60k-150k",
-      experience: "3-7 yrs exp",
-      category: "Branding Designer",
-      postedDate: "5 hours ago",
-      img: "/company-logo/webx.png",
-    },
-    {
-      id: 4,
-      title: "Account Executive",
-      company: "Nameste",
-      location: "Nepal only",
-      type: "Part-time",
-      salary: "90k-140k",
-      experience: "2-6 yrs exp",
-      category: "Finance",
-      postedDate: "5 hours ago",
-      img: "/company-logo/cursor.svg",
-    },
-  ];
-
-  const popularSearches = [
-    { title: "Product Designer", count: "284 jobs" },
-    { title: "Customer Success", count: "301 jobs" },
-    { title: "Product Manager", count: "380 jobs" },
-    { title: "Engineering Manager", count: "64 jobs" },
-  ];
+  const [searchQuery] = useState("");
+  const [activeRegion, setActiveRegion] = useState<"nepal" | "global">("nepal");
 
   const filteredJobs = jobs.filter(
     (job) =>
-      job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      job.company.toLowerCase().includes(searchQuery.toLowerCase()),
+      job.region === activeRegion &&
+      (job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.company.toLowerCase().includes(searchQuery.toLowerCase())),
   );
 
+  const nepalCount = jobs.filter((job) => job.region === "nepal").length;
+  const globalCount = jobs.filter((job) => job.region === "global").length;
+
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 bg-zinc-100">
       {/* Hero Section */}
       <section className="bg-linear-to-r from-black to-blue-700 text-white">
         <div className="max-w-6xl mx-auto py-8">
@@ -95,14 +37,52 @@ export default function JobsPage() {
             {/* Search Bar */}
             <div className="flex items-center justify-center">
               <div className="inline-flex rounded-full bg-white/20 border-2 border-white/20 p-1">
-              <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-blue-700 font-semibold shadow-sm">
-                <MapPin size={18} />
-                Nepal
-              </button>
-              <button className="flex items-center gap-2 px-5 py-2.5 rounded-full text-white/90 font-semibold hover:text-white">
-                <Search size={18} />
-                Global
-              </button>
+                <button
+                  onClick={() => setActiveRegion("nepal")}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold shadow-sm transition-colors cursor-pointer ${
+                    activeRegion === "nepal"
+                      ? "bg-white text-blue-700"
+                      : "text-white/90 hover:text-white"
+                  }`}
+                >
+                  <Image
+                    src="/flags/Nepal.png"
+                    alt="Nepal Flag"
+                    width={16}
+                    height={16}
+                    className=""
+                  />
+                  Nepal
+                  <span
+                    className={`ml-1 rounded-full px-2 py-0.5 text-xs font-semibold transition-colors ${
+                      activeRegion === "nepal"
+                        ? "bg-blue-100 text-blue-700"
+                        : "bg-white/20 text-white"
+                    }`}
+                  >
+                    {nepalCount}
+                  </span>
+                </button>
+                <button
+                  onClick={() => setActiveRegion("global")}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold transition-colors cursor-pointer ${
+                    activeRegion === "global"
+                      ? "bg-white text-blue-700"
+                      : "text-white/90 hover:text-white"
+                  }`}
+                >
+                  <Globe size={18} />
+                  International
+                  <span
+                    className={`ml-1 rounded-full px-2 py-0.5 text-xs font-semibold transition-colors ${
+                      activeRegion === "global"
+                        ? "bg-blue-100 text-blue-700"
+                        : "bg-white/20 text-white"
+                    }`}
+                  >
+                    {globalCount}
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -111,22 +91,24 @@ export default function JobsPage() {
 
       {/* Main Layout - List + Sidebar */}
       <section className="max-w-6xl mx-auto py-8">
-        <div className="flex flex-col gap-8">{/* Jobs List */}
+        <div className="flex flex-col gap-8">
+          {/* Jobs List */}
           <div className="">
-            <div className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredJobs.map((job) => (
-                <div
+                <Link
+                  href={`/jobs/${job.id}`}
                   key={job.id}
-                  className="bg-white rounded-2xl border border-blue-100 p-6 hover:shadow-sm transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  className="bg-white/90 backdrop-blur rounded-2xl border border-zinc-200 p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group relative overflow-hidden focus-within:ring-2 focus-within:ring-blue-300"
                 >
                   {/* Animated border */}
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-blue-400 via-blue-700 to-sky-500 blur-sm" />
-                    <div className="absolute inset-0.5 rounded-2xl bg-white z-0" />
+                    <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-blue-400 via-blue-700 to-sky-500 blur" />
+                    <div className="absolute inset-px rounded-2xl bg-white z-0" />
                   </div>
                   <div className="flex gap-4 z-10 relative">
                     {/* Logo */}
-                    <div className="w-20 h-20 rounded-lg flex items-center justify-center shrink-0 group-hover:border transition-shadow">
+                    <div className="w-20 h-20 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm group-hover:shadow-md transition-shadow">
                       <Image
                         src={job.img || `/company-logos/${job.img}.png`}
                         alt={`${job.company} logo`}
@@ -148,7 +130,7 @@ export default function JobsPage() {
                             {job.company}
                           </p>
                         </div>
-                        <span className="text-xs text-zinc-400 whitespace-nowrap bg-zinc-100 px-3 py-1 rounded-full">
+                        <span className="text-xs text-zinc-500 whitespace-nowrap bg-zinc-100 px-3 py-1 rounded-full border border-zinc-200">
                           {job.postedDate}
                         </span>
                       </div>
@@ -170,7 +152,7 @@ export default function JobsPage() {
                       </div>
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">
                           {job.type}
                         </span>
@@ -178,100 +160,35 @@ export default function JobsPage() {
                           {job.category}
                         </span>
                       </div>
+
+                      {/* Actions */}
+                      <div className="flex items-center justify-between">
+                        <Link
+                          href={`/jobs/${job.id}`}
+                          className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-2 transition-colors cursor-pointer"
+                        >
+                          View details
+                          <ArrowRight size={16} />
+                        </Link>
+                        <Link
+                          href={`/jobs/${job.id}?apply=true`}
+                          className="text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full transition-colors cursor-pointer"
+                        >
+                          Apply now
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
-
-            {/* View More Button */}
-            <div className="mt-8 text-center">
-              <button className="px-6 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors flex items-center gap-2 cursor-pointer mx-auto">
-                <span>View More Jobs</span>
-                <ArrowRight size={18} />
-              </button>
-            </div>
           </div>
-          {/* Left Sidebar */}
-          <div className="flex justify-between">
-            {/* Newsletter Section */}
-            <div className="bg-linear-to-br from-blue-600 to-indigo-600 rounded-xl p-6 shadow-lg border border-blue-400/20">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-blue-500/30 rounded-lg">
-                  <BellRing size={24} className="text-white" />
-                </div>
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">Job Alerts</h4>
-              <p className="text-blue-100 text-sm mb-4">
-                Get notified about new opportunities matching your profile.
-              </p>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full px-4 py-2.5 border border-blue-400/50 bg-white/10 rounded-full text-sm text-white placeholder-blue-200 focus:outline-none focus:border-white focus:bg-white/20 transition-all mb-3"
-              />
-              <button className="w-full bg-white hover:bg-blue-50 text-blue-600 font-semibold py-2.5 rounded-full cursor-pointer transition-colors shadow-md hover:shadow-lg">
-                Subscribe Now
-              </button>
-              <p className="text-xs text-blue-50 mt-3">
-                We care about your data in our{" "}
-                <a
-                  href="#"
-                  className="text-blue-50 font-semibold hover:italic hover:text-white underline"
-                >
-                  privacy policy
-                </a>
-              </p>
-            </div>
-
-            {/* Popular Searches */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <TrendingUp size={20} className="text-blue-600" />
-                <h4 className="text-lg font-bold text-zinc-900">
-                  Trending Roles
-                </h4>
-              </div>
-              <div className="space-y-3">
-                {popularSearches.map((search, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    className="flex items-center justify-between p-4 rounded-lg bg-white border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300 group"
-                  >
-                    <div>
-                      <p className="text-sm font-semibold text-zinc-900 group-hover:text-blue-600 transition-colors">
-                        {search.title}
-                      </p>
-                    </div>
-                    <span className="text-xs font-medium text-zinc-500 bg-zinc-100 group-hover:bg-blue-100 group-hover:text-blue-600 px-2.5 py-1 rounded-full transition-colors">
-                      {search.count}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-300">
-              <h4 className="font-bold text-zinc-900 mb-4">Quick Stats</h4>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-zinc-600">Avg. Salary</span>
-                  <span className="font-bold text-blue-600">
-                    Rs.70k-Rs.400k
-                  </span>
-                </div>
-                <div className="w-full bg-yellow-400 rounded-full h-1.5"></div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-zinc-600">Companies</span>
-                  <span className="font-bold text-blue-600">500+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          
+          <NewsletterCTA
+            btnText="Join Class Today"
+            title="Ready to take the next step in your career?"
+            description="Enroll in our job training programs and unlock your potential."
+            imageSrc="/heroImages/woman2.png"
+          />
         </div>
       </section>
     </div>

@@ -49,7 +49,7 @@ export default function HeroSection() {
               alt="Find Your Career Path"
               width={1000}
               height={1000}
-              className="w-full h-full object-contain opacity-70"
+              className="w-full h-full object-contain opacity-80"
               priority
             />
           </div>

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { getPersonalityType } from "./personalityData";
+import NewsletterCTA from "../components/home/NewsletterCTA";
 
 type Question = {
   id: number;
@@ -386,7 +387,7 @@ export default function PersonalityTestPage() {
     return (
       <div className="min-h-screen pt-16 pb-12 bg-white">
         {/* Hero Section - Enhanced Banner */}
-        <section className="bg-linear-to-r from-black  to-blue-600 relative overflow-hidden">
+        <section className="bg-blue-600 relative overflow-hidden">
           <div className="max-w-6xl mx-auto py-16 md:py-8 relative">
             {/* Back Button */}
             <button
@@ -557,7 +558,7 @@ export default function PersonalityTestPage() {
             </div>
 
             {/* Encouraging Note */}
-            <div className="mt-10 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200">
+            <div className="mt-10 p-6 bg-linear-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200">
               <p className="text-lg text-zinc-800 leading-loose">
                 <strong className="text-blue-700">Remember:</strong> These
                 aren&apos;t flaws—they&apos;re simply areas where you can level
@@ -753,12 +754,9 @@ export default function PersonalityTestPage() {
   }
 
   return (
-    <div className="min-h-screen pt-16 pb-12 bg-gradient-to-b from-white via-blue-50/30 to-white overflow-hidden">
+    <div className="min-h-screen pt-16 bg-zinc-100 overflow-hidden">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-black to-blue-600 text-white relative overflow-hidden">
-        {/* Decorative gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent pointer-events-none"></div>
-
+      <section className="bg-blue-600 text-white relative overflow-hidden">
         <div className="max-w-6xl mx-auto py-8 md:py-12 px-4 relative">
           {/* Test Toggle Button */}
           <button
@@ -797,9 +795,9 @@ export default function PersonalityTestPage() {
       </section>
 
       {/* Test Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+      <section className="max-w-6xl mx-auto pt-8">
         {/* Progress Bar */}
-        <div className="mb-6">
+        <div className="mb-6 max-w-2xl mx-auto">
           <div className="flex justify-between items-center mb-3">
             <span className="text-sm font-semibold text-zinc-700">
               Question {currentQuestion + 1} of {questions.length}
@@ -810,96 +808,70 @@ export default function PersonalityTestPage() {
           </div>
           <div className="w-full bg-zinc-200 rounded-full h-2.5 shadow-inner">
             <div
-              className="bg-gradient-to-r from-blue-600 to-blue-700 h-2.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-600/30"
+              className="bg-linear-to-r from-blue-600 to-blue-700 h-2.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-600/30"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
         </div>
 
         {/* Question Card */}
-        <div className="bg-white rounded-2xl p-6 md:p-8 border border-zinc-200 shadow-xl">
-          <h2 className="text-lg md:text-2xl font-bold text-zinc-900 mb-8 text-center leading-relaxed">
+        <div className="bg-white rounded-2xl p-6 md:p-8 border border-zinc-200">
+          <h2 className="text-lg md:text-3xl font-semibold text-zinc-900 text-center leading-relaxed">
             {questions[currentQuestion].question}
           </h2>
+          {/* Helper Text */}
+          <div className=" p-2 mb-6">
+            <p className="text-center text-zinc-700">
+              Pick <span className="font-semibold text-zinc-900">1-2</span> for
+              Option A, <span className="font-semibold text-zinc-900">3</span>{" "}
+              for neutral, and{" "}
+              <span className="font-semibold text-zinc-900">4-5</span> for
+              Option B.
+            </p>
+          </div>
 
-          {/* Scale Options */}
-          <div className="space-y-5 mb-6">
-            {/* Option A Label */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border-2 border-blue-200 shadow-sm">
-              <p className="text-xs font-bold text-blue-700 mb-1 uppercase tracking-wide">
+          {/* Options + Scale */}
+          <div className="mb-6 grid gap-4 md:grid-cols-[1fr_auto_1fr] items-center">
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
+              <p className="text-xs font-semibold text-zinc-500 mb-1 uppercase tracking-wide">
                 Option A
               </p>
-              <p className="text-sm md:text-base font-semibold text-zinc-900">
+              <p className="text-sm md:text-lg font-medium text-zinc-900">
                 {questions[currentQuestion].optionA}
               </p>
             </div>
 
-            {/* 5-point Scale with clear labels */}
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs font-medium text-zinc-600 px-2">
-                <span>← Strongly A</span>
+                <span>Left (A)</span>
                 <span className="text-zinc-500">Neutral</span>
-                <span>Strongly B →</span>
+                <span>Right (B)</span>
               </div>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
+              <div className="flex items-center justify-center gap-2">
                 {[1, 2, 3, 4, 5].map((value) => (
                   <button
                     key={value}
                     onClick={() => handleAnswer(value)}
-                    className={`flex flex-col items-center justify-center w-full md:w-20 h-20 md:h-24 rounded-xl border-2 transition-all cursor-pointer transform hover:scale-105 ${
+                    className={`flex h-12 w-12 items-center justify-center rounded-md border text-sm font-semibold transition-colors cursor-pointer ${
                       currentAnswer === value
-                        ? "border-blue-600 bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-600/30"
-                        : "border-zinc-300 bg-white hover:border-blue-400 hover:bg-blue-50 hover:shadow-md"
+                        ? "border-blue-600 bg-blue-600 text-white"
+                        : "border-zinc-300 bg-white text-zinc-800 hover:border-blue-400"
                     }`}
                   >
-                    <div
-                      className={`text-2xl font-bold mb-1 ${
-                        currentAnswer === value ? "text-white" : "text-zinc-800"
-                      }`}
-                    >
-                      {value}
-                    </div>
-                    <div
-                      className={`text-[10px] font-semibold text-center px-1 ${
-                        currentAnswer === value
-                          ? "text-blue-100"
-                          : "text-zinc-600"
-                      }`}
-                    >
-                      {value === 1 && "Very A"}
-                      {value === 2 && "Mostly A"}
-                      {value === 3 && "Neutral"}
-                      {value === 4 && "Mostly B"}
-                      {value === 5 && "Very B"}
-                    </div>
+                    {value}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Option B Label */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border-2 border-blue-200 shadow-sm">
-              <p className="text-xs font-bold text-blue-700 mb-1 uppercase tracking-wide">
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
+              <p className="text-xs font-semibold text-zinc-500 mb-1 uppercase tracking-wide">
                 Option B
               </p>
-              <p className="text-sm md:text-base font-semibold text-zinc-900">
+              <p className="text-sm md:text-lg font-medium text-zinc-900">
                 {questions[currentQuestion].optionB}
               </p>
             </div>
-          </div>
-
-          {/* Helper Text */}
-          <div className="bg-gradient-to-r from-zinc-50 to-blue-50 rounded-xl p-4 border border-zinc-200 mb-6">
-            <p className="text-center text-sm text-zinc-700">
-              <span className="font-bold text-zinc-900">How to answer:</span>{" "}
-              Choose <span className="font-bold text-blue-600">1-2</span> if you
-              strongly relate to{" "}
-              <span className="font-bold text-blue-600">Option A</span>,{" "}
-              <span className="font-bold text-zinc-700">3</span> if neutral, or{" "}
-              <span className="font-bold text-indigo-600">4-5</span> if you
-              relate more to{" "}
-              <span className="font-bold text-indigo-600">Option B</span>
-            </p>
           </div>
 
           {/* Navigation Buttons */}
@@ -932,7 +904,7 @@ export default function PersonalityTestPage() {
               className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all ${
                 !isAnswered
                   ? "bg-zinc-200 text-zinc-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 cursor-pointer"
+                  : "bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 cursor-pointer"
               }`}
             >
               <span className="hidden sm:inline">
@@ -946,6 +918,12 @@ export default function PersonalityTestPage() {
           </div>
         </div>
       </section>
+      <NewsletterCTA
+        btnText="Join Class Today"
+        title="Ready to take the next step in your career?"
+        description="Enroll in our job training programs and unlock your potential."
+        imageSrc="/heroImages/woman2.png"
+      />
     </div>
   );
 }

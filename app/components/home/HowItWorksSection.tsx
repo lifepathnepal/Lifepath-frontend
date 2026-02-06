@@ -19,15 +19,15 @@ export default function HowItWorksSection() {
         </div>
 
         {/* Stepped Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-4 overflow-hidden">
           {/* Step 1 */}
-          <div className="border-b md:border-b-0 md:border-r border-zinc-200">
+          <div className="border-b md:border-t md:border-r border-zinc-200 p-4">
             <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
-              01
+              STEP 01
             </div>
             <div className="text-blue-600 text-xs font-semibold mb-2 flex items-center gap-2">
               <Brain size={14} />
-              STEP 1 — KNOW YOURSELF
+              KNOW YOURSELF
             </div>
             <h3 className="text-2xl font-semibold text-zinc-900 mb-2">
               Before choosing a career, we help you answer:
@@ -43,13 +43,13 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Step 2 */}
-          <div className="border-b md:border-b-0 md:border-r border-zinc-200 md:mt-40">
+          <div className="border-b md:border-t md:border-r border-zinc-200 md:mt-40 p-4">
             <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
-              02
+              STEP 02
             </div>
             <div className="text-blue-600 text-xs font-semibold mb-2 flex items-center gap-2">
               <Target size={14} />
-              STEP 2 — CHOOSE THE RIGHT CAREER PATH
+              CHOOSE THE RIGHT CAREER PATH
             </div>
             <p className="text-2xl font-semibold text-zinc-900 mb-2">
               Based on your personality and interests, we guide you toward
@@ -65,20 +65,21 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Step 3 */}
-          <div className="border-b md:border-b-0 md:border-r border-zinc-200 md:mt-80">
+          <div className="border-b md:border-t md:border-r border-zinc-200 md:mt-80 p-4">
             <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
-              03
+              STEP 03
             </div>
             <div className="text-blue-600 text-xs font-semibold mb-2 flex items-center gap-2">
               <Wrench size={14} />
-              STEP 3 — PRACTICAL JOB TRAINING (WHAT REALLY MATTERS)
+              PRACTICAL JOB TRAINING
             </div>
             <p className="text-2xl font-semibold text-zinc-900 mb-2">
               Degrees don&apos;t get jobs. Skills do.
             </p>
             <p className="text-zinc-600 text-lg">
-              Degrees don&apos;t get jobs—skills do. We focus on real tools, real
-              projects, mentorship, and portfolio-building so you finish ready.
+              Degrees don&apos;t get jobs—skills do. We focus on real tools,
+              real projects, mentorship, and portfolio-building so you finish
+              ready.
             </p>
             {/* <p className="text-zinc-800 font-semibold text-lg mt-3">
               You don&apos;t just finish a course. You finish ready.
@@ -86,13 +87,13 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Step 4 */}
-          <div className=" md:mt-120">
+          <div className=" md:mt-120 border-t border-zinc-200 p-4">
             <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
-              04
+              STEP 04
             </div>
             <div className="text-blue-600 text-xs font-semibold mb-2 flex items-center gap-2">
               <Rocket size={14} />
-              STEP 4 — FROM LEARNING TO EARNING
+              FROM LEARNING TO EARNING
             </div>
             <p className="text-2xl font-semibold text-zinc-900 mb-2">
               Our goal is not certificates. Our goal is confidence + capability.

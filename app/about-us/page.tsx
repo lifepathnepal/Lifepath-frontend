@@ -1,14 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import {
   Brain,
   Target,
   Users,
   Sparkles,
   CheckCircle,
-  ArrowRight,
-  ArrowBigDown,
   ArrowDown,
 } from "lucide-react";
 import NewsletterCTA from "../components/home/NewsletterCTA";
@@ -52,10 +49,10 @@ export default function WhyLifePathPage() {
   ];
 
   const stats = [
-    { number: "100+", label: "Students Guided" },
+    { number: "2000+", label: "Students Guided" },
     { number: "16", label: "Personality Types" },
     { number: "10+", label: "Career Paths" },
-    { number: "96%", label: "Success Rate" },
+    { number: "100%", label: "Success Rate" },
   ];
 
   return (
@@ -161,27 +158,27 @@ export default function WhyLifePathPage() {
       {/* How We're Different */}
       <section className="py-20 px-4 bg-zinc-100">
         <div className="max-w-6xl mx-auto">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6">
-                A Complete Career Solution
-              </h2>
-              <p className="text-lg text-zinc-600 mb-8">
-                Unlike traditional career counseling or generic course
-                platforms, LifePath combines personality assessment, career
-                matching, and skill development in one seamless journey.
-              </p>
-              <div className="space-y-4">
-                {differentiators.map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <CheckCircle
-                      className="text-blue-600 shrink-0 mt-1"
-                      size={20}
-                    />
-                    <span className="text-zinc-700">{item}</span>
-                  </div>
-                ))}
-              </div>
+          <div>
+            <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6">
+              A Complete Career Solution
+            </h2>
+            <p className="text-lg text-zinc-600 mb-8">
+              Unlike traditional career counseling or generic course platforms,
+              LifePath combines personality assessment, career matching, and
+              skill development in one seamless journey.
+            </p>
+            <div className="space-y-4">
+              {differentiators.map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <CheckCircle
+                    className="text-blue-600 shrink-0 mt-1"
+                    size={20}
+                  />
+                  <span className="text-zinc-700">{item}</span>
+                </div>
+              ))}
             </div>
+          </div>
         </div>
       </section>
 

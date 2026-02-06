@@ -24,7 +24,7 @@ export default function JobsPage() {
   return (
     <div className="min-h-screen pt-16 bg-zinc-100">
       {/* Hero Section */}
-      <section className="bg-linear-to-r from-black to-blue-700 text-white">
+      <section className="bg-blue-700 text-white">
         <div className="max-w-6xl mx-auto py-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
@@ -183,14 +183,14 @@ export default function JobsPage() {
               ))}
             </div>
           </div>
-          <NewsletterCTA
-            btnText="Join Class Today"
-            title="Ready to take the next step in your career?"
-            description="Enroll in our job training programs and unlock your potential."
-            imageSrc="/heroImages/woman2.png"
-          />
         </div>
       </section>
+      <NewsletterCTA
+        btnText="Join Class Today"
+        title="Ready to take the next step in your career?"
+        description="Enroll in our job training programs and unlock your potential."
+        imageSrc="/heroImages/woman2.png"
+      />
     </div>
   );
 }

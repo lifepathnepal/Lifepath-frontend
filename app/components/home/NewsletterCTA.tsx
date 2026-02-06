@@ -17,9 +17,9 @@ export default function NewsletterCTA({
   imageSrc,
 }: NewsletterCTAProps) {
   return (
-    <section className="bg-zinc-50">
-      <div className="max-w-6xl mx-auto bg-blue-600 text-white rounded-2xl px-2 md:px-4 lg:px-8 my-8">
-        <div className="">
+    <section className="">
+      <div className="w-full mx-auto bg-blue-600 text-white px-2 md:px-4 lg:px-8 my-8">
+        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="">

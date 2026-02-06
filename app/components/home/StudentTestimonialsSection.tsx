@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, ChevronLeft, ChevronRight, MoveRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -62,21 +62,29 @@ export default function StudentTestimonialsSection() {
       <div className="max-w-6xl mx-auto ">
         {/* Section Header */}
         <div className="text- max-w-6xl mx-auto pb-16">
-          <div className="inline-flex items-start gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
+          {/* <div className="inline-flex items-start gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             Why Student trust Lifepath?
-          </div>
-          <h2 className="max-w-6xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
-            Because we don&apos;t ask: &quot;What do you want to study?&quot;{" "}
-            <br /> We ask: &quot;Who are you becoming?&quot;
+          </div> */}
+          <h2 className="max-w-6xl mx-auto leading-tight text-3xl md:text-4xl font-semibold text-slate-900 mt-4">
+            <span className="text-blue-600">Because we don&apos;t ask:</span>{" "}
+            &quot;What do you want to study?&quot; <br />{" "}
+            <span className="text-blue-600">We ask:</span> &quot;Who are you
+            becoming?&quot;
           </h2>
 
-          <div className="mt-4 flex flex-col md:flex-row items-start justify-start gap-3 text-sm text-slate-700">
+          <div className="mt-4 flex flex-col md:flex-row items-center justify-start gap-3 text-normal text-slate-700">
             <span>Built for Nepali youth</span>
-            <span className="hidden md:inline text-blue-500 text-lg">•</span>
+            <span className="hidden md:inline text-blue-500 text-lg">
+              <MoveRight size={16} />
+            </span>
             <span>Learn in psychology</span>
-            <span className="hidden md:inline text-blue-500 text-lg">•</span>
+            <span className="hidden md:inline text-blue-500 text-lg">
+              <MoveRight size={16} />
+            </span>
             <span>Focused on future demand</span>
-            <span className="hidden md:inline text-blue-500 text-lg">•</span>
+            <span className="hidden md:inline text-blue-500 text-lg">
+              <MoveRight size={16} />
+            </span>
             <span>Designed for you</span>
           </div>
         </div>

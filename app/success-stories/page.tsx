@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import NewsletterCTA from "../components/home/NewsletterCTA";
 
 const stories = [
   {
@@ -99,13 +100,25 @@ const stories = [
     tags: ["QA", "Testing", "Bug Reports"],
     img: "/students/yess.png",
   },
+  {
+    name: "Nanu Maya",
+    role: "Product Designer",
+    company: "NovaTech",
+    before: "Did random courses without outcome",
+    after: "Moved into a product design role",
+    quote: "The career mapping helped me choose the right path fast.",
+    story:
+      "He mapped his skills to product roles, built a UX case study from scratch, and demonstrated a clear product mindset during interviews. The additional focus on problem framing and user insights made his portfolio feel professional and job‑ready.",
+    tags: ["Product Design", "Career Mapping", "Job Ready"],
+    img: "/students/woman3.png",
+  },
 ];
 
 const page = () => {
   return (
     <section className="bg-zinc-100">
       {/* Banner */}
-      <section className="bg-linear-to-r from-black to-blue-700 text-white mt-16">
+      <section className="bg-blue-700 text-white mt-16">
         <div className="max-w-6xl mx-auto py-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
@@ -280,6 +293,12 @@ const page = () => {
           })}
         </div>
       </div>
+       <NewsletterCTA
+              btnText="Join Class Today"
+              title="Ready to take the next step in your career?"
+              description="Enroll in our job training programs and unlock your potential."
+              imageSrc="/heroImages/woman2.png"
+            />
     </section>
   );
 };

@@ -11,7 +11,7 @@ export default function HowItWorksSection() {
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             How LifePath Works
           </div>
-          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
+          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-zinc-900 mt-4">
             We help you discover your <br />
             personality and identify career paths <br /> that align with your
             strengths.
@@ -21,7 +21,7 @@ export default function HowItWorksSection() {
         {/* Stepped Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 overflow-hidden">
           {/* Step 1 */}
-          <div className="border-b md:border-b-0 md:border-r border-slate-200">
+          <div className="border-b md:border-b-0 md:border-r border-zinc-200">
             <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
               01
             </div>
@@ -29,21 +29,21 @@ export default function HowItWorksSection() {
               <Brain size={14} />
               STEP 1 — KNOW YOURSELF
             </div>
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">
+            <h3 className="text-2xl font-semibold text-zinc-900 mb-2">
               Before choosing a career, we help you answer:
             </h3>
-            <p className="text-slate-600 text-sm">
-              We use science‑backed tests to reveal how you think and work best,
+            <p className="text-zinc-600 text-lg">
+              We use science-backed tests to reveal how you think and work best,
               what energizes or drains you, and the strengths and careers that
               fit you.
             </p>
-            <p className="text-slate-800 font-semibold text-sm mt-3">
+            {/* <p className="text-zinc-800 font-semibold text-lg mt-3">
               “When you understand yourself, confusion disappears.”
-            </p>
+            </p> */}
           </div>
 
           {/* Step 2 */}
-          <div className="border-b md:border-b-0 md:border-r border-slate-200 md:mt-40">
+          <div className="border-b md:border-b-0 md:border-r border-zinc-200 md:mt-40">
             <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
               02
             </div>
@@ -51,21 +51,21 @@ export default function HowItWorksSection() {
               <Target size={14} />
               STEP 2 — CHOOSE THE RIGHT CAREER PATH
             </div>
-            <p className="text-xl font-semibold text-slate-900 mb-2">
+            <p className="text-2xl font-semibold text-zinc-900 mb-2">
               Based on your personality and interests, we guide you toward
               careers like:
             </p>
-            <p className="text-slate-600 text-sm">
-              We guide you toward in‑demand roles that match your personality,
+            <p className="text-zinc-600 text-lg">
+              We guide you toward in-demand roles that match your personality,
               interests, and market reality—no guesswork, just clarity.
             </p>
-            <p className="text-slate-800 font-semibold text-sm mt-3">
+            {/* <p className="text-zinc-800 font-semibold text-lg mt-3">
               No guesswork. No pressure. Just clarity.
-            </p>
+            </p> */}
           </div>
 
           {/* Step 3 */}
-          <div className="border-b md:border-b-0 md:border-r border-slate-200 md:mt-80">
+          <div className="border-b md:border-b-0 md:border-r border-zinc-200 md:mt-80">
             <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
               03
             </div>
@@ -73,19 +73,16 @@ export default function HowItWorksSection() {
               <Wrench size={14} />
               STEP 3 — PRACTICAL JOB TRAINING (WHAT REALLY MATTERS)
             </div>
-            <p className="text-xl font-semibold text-slate-900 mb-2">
-              Degrees don’t get jobs. Skills do.
+            <p className="text-2xl font-semibold text-zinc-900 mb-2">
+              Degrees don&apos;t get jobs. Skills do.
             </p>
-            <p className="text-xl font-semibold text-slate-900 mb-2 mt-3">
-              Lifepath training focuses on:
+            <p className="text-zinc-600 text-lg">
+              Degrees don&apos;t get jobs—skills do. We focus on real tools, real
+              projects, mentorship, and portfolio-building so you finish ready.
             </p>
-            <p className="text-slate-600 text-sm">
-              Degrees don’t get jobs—skills do. We focus on real tools, real
-              projects, mentorship, and portfolio‑building so you finish ready.
-            </p>
-            <p className="text-slate-800 font-semibold text-sm mt-3">
-              You don’t just finish a course. You finish ready.
-            </p>
+            {/* <p className="text-zinc-800 font-semibold text-lg mt-3">
+              You don&apos;t just finish a course. You finish ready.
+            </p> */}
           </div>
 
           {/* Step 4 */}
@@ -97,19 +94,16 @@ export default function HowItWorksSection() {
               <Rocket size={14} />
               STEP 4 — FROM LEARNING TO EARNING
             </div>
-            <p className="text-xl font-semibold text-slate-900 mb-2">
+            <p className="text-2xl font-semibold text-zinc-900 mb-2">
               Our goal is not certificates. Our goal is confidence + capability.
             </p>
-            <p className="text-slate-600 text-sm mt-3">
-              Lifepath prepares you for:
+            <p className="text-zinc-600 text-lg">
+              We prepare you for freelancing, internships, entry-level roles,
+              and career switches—building confidence and long-term growth.
             </p>
-            <p className="text-slate-600 text-sm">
-              We prepare you for freelancing, internships, entry‑level roles,
-              and career switches—building confidence and long‑term growth.
-            </p>
-            <p className="text-slate-800 font-semibold text-sm mt-3">
-              “We don’t promise shortcuts. We build foundations.”
-            </p>
+            {/* <p className="text-zinc-800 font-semibold text-sm mt-3">
+              “We don&apos;t promise shortcuts. We build foundations.”
+            </p> */}
           </div>
         </div>
       </div>

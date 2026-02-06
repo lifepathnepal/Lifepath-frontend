@@ -2,6 +2,7 @@
 
 import { Compass, Flag, HelpCircle, Map } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function PathCardsSection() {
   const steps = [
@@ -29,7 +30,7 @@ export default function PathCardsSection() {
     {
       leftTitle: "No next steps",
       rightTitle: "Confident next steps",
-      problem: "Unsure how to translate skills into opportunities.",
+      problem: "Unsure how to tranzinc skills into opportunities.",
       solution: "Portfolio, jobs, or freelancing with clear next steps.",
       Icon: Flag,
     },
@@ -43,19 +44,34 @@ export default function PathCardsSection() {
             Why choose Lifepath?
           </div>
 
-          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
+          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-zinc-900 mt-4">
             From confusion to career clarity
           </h2>
-          <p className="text-slate-600 mt-3 max-w-2xl mx-auto text-base md:text-lg">
+          <p className="text-zinc-800 mt-3 max-w-2xl mx-auto text-base md:text-lg">
             LifePath helps students decide first, then learn with confidence.
           </p>
         </div>
 
         <div className="relative grid gap-8">
-          <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-blue-200/70 lg:block" />
+          <div className="absolute inset-0 hidden h-full lg:flex lg:justify-between">
+            <Image
+              src="/heroImages/problem.jpg"
+              alt="Path illustration"
+              width={400}
+              height={300}
+              className="opacity-20"
+            />
+            <Image
+              src="/heroImages/happy.png"
+              alt="Path illustration"
+              width={400}
+              height={300}
+              className="opacity-20"
+            />
+          </div>
 
           {steps.map((step, index) => {
-            const isEven = index % 2 === 0;
+            // const isEven = index % 2 === 0;
             return (
               <motion.div
                 key={index}
@@ -69,10 +85,10 @@ export default function PathCardsSection() {
                   <div className="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700">
                     Confusion
                   </div>
-                  <h3 className="mt-3 text-xl font-semibold text-slate-900">
+                  <h3 className="mt-3 text-xl font-semibold text-zinc-900">
                     {step.leftTitle}
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600">{step.problem}</p>
+                  <p className="mt-2 text-lg font-medium text-zinc-600">{step.problem}</p>
                 </div>
 
                 <div className="relative hidden lg:flex items-center justify-center">
@@ -85,10 +101,10 @@ export default function PathCardsSection() {
                   <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
                     Lifepath guidance
                   </div>
-                  <h3 className="mt-3 text-xl font-semibold text-slate-900">
+                  <h3 className="mt-3 text-xl font-semibold text-zinc-900">
                     {step.rightTitle}
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600">{step.solution}</p>
+                  <p className="mt-2 text-lg font-medium text-zinc-600">{step.solution}</p>
                 </div>
               </motion.div>
             );

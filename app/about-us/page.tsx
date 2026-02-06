@@ -8,8 +8,11 @@ import {
   Sparkles,
   CheckCircle,
   ArrowRight,
+  ArrowBigDown,
+  ArrowDown,
 } from "lucide-react";
 import NewsletterCTA from "../components/home/NewsletterCTA";
+import Image from "next/image";
 
 export default function WhyLifePathPage() {
   const benefits = [
@@ -49,22 +52,20 @@ export default function WhyLifePathPage() {
   ];
 
   const stats = [
-    { number: "10,000+", label: "Students Guided" },
+    { number: "100+", label: "Students Guided" },
     { number: "16", label: "Personality Types" },
-    { number: "50+", label: "Career Paths" },
-    { number: "95%", label: "Success Rate" },
+    { number: "10+", label: "Career Paths" },
+    { number: "96%", label: "Success Rate" },
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center pb-16 px-4 text-white overflow-hidden">
-        {/* Background Image */}
+      {/* <section className="relative h-[90vh] flex items-center justify-center pb-16 px-4 text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/heroImages/life.png')" }}
         />
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-linear-to-r from-black/90 to-blue-700/80" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -84,10 +85,29 @@ export default function WhyLifePathPage() {
             </button>
           </Link>
         </div>
-      </section>
+      </section> */}
+      <div className="flex flex-col items-center mt-16 justify-center">
+        <Image
+          src="/heroImages/boat.gif"
+          alt="Path illustration"
+          width={400}
+          height={300}
+          className="opacity-100"
+        />
+        <div className="max-w-5xl mx-auto text-center relative z-10 mb-8">
+          <p className="text-lg md:text-3xl text-blue-600 mb-10 mx-auto">
+            We believe every student deserves a clear path to their dream
+            career. That&apos;s why we combine personality science with career
+            guidance to help you make confident decisions about your future.
+          </p>
+          <div className="place-items-center">
+            <ArrowDown size={20} />
+          </div>
+        </div>
+      </div>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 bg-white border-y border-zinc-200">
+      <section className="py-16 px-4 bg-zinc-100 border-y border-zinc-200">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
@@ -108,7 +128,7 @@ export default function WhyLifePathPage() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-4">
+            <h2 className="text-3xl md:text-3xl font-semibold text-zinc-900 mb-4">
               What Makes Us Different
             </h2>
             <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
@@ -117,16 +137,16 @@ export default function WhyLifePathPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-4 gap-4 ">
             {benefits.map((benefit) => (
               <div
                 key={benefit.title}
-                className="p-8 rounded-2xl border border-zinc-200 hover:border-blue-200 hover:shadow-lg transition-all"
+                className="p-8 rounded-2xl border border-zinc-200 hover:border-blue-200 hover:shadow-lg transition-all group"
               >
                 <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
                   <benefit.icon className="text-blue-600" size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900 mb-3">
+                <h3 className="text-xl font-semibold text-zinc-900 group-hover:text-blue-600 mb-3">
                   {benefit.title}
                 </h3>
                 <p className="text-zinc-600 leading-relaxed">
@@ -139,9 +159,8 @@ export default function WhyLifePathPage() {
       </section>
 
       {/* How We're Different */}
-      <section className="py-20 px-4 bg-linear-to-b from-blue-50/30 to-white">
+      <section className="py-20 px-4 bg-zinc-100">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6">
                 A Complete Career Solution
@@ -163,23 +182,6 @@ export default function WhyLifePathPage() {
                 ))}
               </div>
             </div>
-
-            <div className="bg-linear-to-br from-blue-100 to-blue-50 rounded-3xl p-12 text-center">
-              <div className="text-6xl mb-6">🎯</div>
-              <h3 className="text-2xl font-bold text-zinc-900 mb-4">
-                Your Success is Our Mission
-              </h3>
-              <p className="text-zinc-600 mb-6">
-                We&apos;re committed to helping every student find their perfect
-                career path through personalized guidance and continuous
-                support.
-              </p>
-              <div className="inline-flex items-center gap-2 text-blue-600 font-semibold">
-                <span>Join 10,000+ students</span>
-                <ArrowRight size={18} />
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

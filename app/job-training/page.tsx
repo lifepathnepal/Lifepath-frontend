@@ -45,8 +45,8 @@ export default function JobTrainingPage() {
     },
     {
       id: 3,
-      slug: "sales-manager",
-      title: "Sales Executive",
+      slug: "creative-designer",
+      title: "Creative Designer",
       img: "/job-training/sales.png",
       duration: "3 months",
       price: "6200",

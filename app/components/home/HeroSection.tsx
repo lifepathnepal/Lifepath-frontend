@@ -1,6 +1,6 @@
 "use client";
 
-import { Brain, ArrowRight, CheckCircle, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -114,11 +114,11 @@ export default function HeroSection() {
               {/* Image */}
               <div className="relative w-full aspect-square rounded-xl overflow-hidden">
                 <Image
-                  src="/heroImages/yess.png"
+                  src="/heroImages/woman2.png"
                   alt="Find Your Career Path"
                   width={500}
                   height={500}
-                  className="w-full h-full object-cover "
+                  className="w-full h-full object-contain "
                   priority
                 />
               </div>

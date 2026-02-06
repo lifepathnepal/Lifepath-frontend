@@ -574,10 +574,10 @@ const courseData: Record<string, Course> = {
       ],
     },
   },
-  "sales-manager": {
+  "creative-designer": {
     id: 4,
-    title: "Sales Executive",
-    slug: "sales-manager",
+    title: "Creative Designer",
+    slug: "creative-designer",
     description:
       "Build core sales skills with real-world practice. Learn prospecting, pitching, negotiation, and relationship management to close deals consistently.",
     image: "/job-training/sales.png",

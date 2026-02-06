@@ -55,7 +55,7 @@ const CategorySection = () => {
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-semibold text-blue-700">
             Designed for real people
           </div>
-          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-slate-900 mt-4">
+          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
             Who Is Lifepath For?
           </h2>
           <p className="text-sm md:text-base text-slate-600 mt-3 max-w-2xl mx-auto">
@@ -64,7 +64,7 @@ const CategorySection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {categories.map((category, index) => (
             <CategoryCard
               key={index}

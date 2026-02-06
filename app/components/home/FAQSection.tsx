@@ -44,53 +44,51 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-  const [openId, setOpenId] = useState<number | null>(null);
+  const [openId, setOpenId] = useState<number | null>(1);
 
   const toggleFAQ = (id: number) => {
     setOpenId(openId === id ? null : id);
   };
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
+    <section className="py-16 bg-zinc-50">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="text-center mb-10">
+          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-zinc-600">
+          <p className="text-base md:text-lg text-zinc-600 mt-2">
             Got questions? We&apos;ve got answers
           </p>
         </div>
 
-        {/* FAQ Accordion */}
-        <div className="space-y-4">
-          {faqs.map((faq) => (
-            <div
-              key={faq.id}
-              className="border border-zinc-200 rounded-2xl overflow-hidden bg-white hover:shadow-md transition-shadow"
-            >
+        <div className="divide-y divide-zinc-200 border-y border-zinc-200 bg-zinc-50">
+          {faqs.map((faq, index) => (
+            <div key={faq.id} className="py-6">
               <button
                 onClick={() => toggleFAQ(faq.id)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-zinc-50 transition-colors  cursor-pointer"
+                className="w-full flex items-start gap-4 text-left hover:text-zinc-900 transition-colors"
                 aria-expanded={openId === faq.id}
               >
-                <span className="font-semibold text-zinc-900 pr-4">
+                <span className="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-600 text-[11px] font-bold text-white">
+                  {`${index + 1}`.padStart(2, "0")}
+                </span>
+                <span className="flex-1 text-base md:text-lg font-semibold text-zinc-900">
                   {faq.question}
                 </span>
                 <ChevronDown
-                  size={20}
-                  className={`text-blue-600 shrink-0 transition-transform duration-300 ${
+                  size={18}
+                  className={`mt-1 text-zinc-500 shrink-0 transition-transform duration-300 ${
                     openId === faq.id ? "rotate-180" : ""
                   }`}
                 />
               </button>
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openId === faq.id ? "max-h-96" : "max-h-0"
+                className={`pl-11 pr-6 overflow-hidden transition-all duration-300 ${
+                  openId === faq.id ? "max-h-96 mt-3" : "max-h-0"
                 }`}
               >
-                <div className="px-6 pb-5 pt-2 text-zinc-600 leading-relaxed">
+                <div className="text-sm md:text-base text-zinc-600 leading-relaxed">
                   {faq.answer}
                 </div>
               </div>
@@ -98,10 +96,9 @@ export default function FAQSection() {
           ))}
         </div>
 
-        {/* Contact CTA */}
         <div className="mt-12 text-center">
           <p className="text-zinc-600 mb-4">Still have questions?</p>
-          <Link href="/contact">
+          <Link href="/contact-us">
             <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-sm cursor-pointer">
               Contact Support
             </button>

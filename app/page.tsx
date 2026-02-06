@@ -25,8 +25,8 @@ export default function Home() {
       {/* <MBTISection /> */}
       <HowItWorksSection />
       <StudentTestimonialsSection />
-      <CategorySection />
       <Divider3 />
+      <CategorySection />
       <FAQSection />
       <NewsletterCTA
         title="Clarity changes everything."

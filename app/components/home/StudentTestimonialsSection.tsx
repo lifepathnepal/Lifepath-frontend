@@ -61,15 +61,15 @@ export default function StudentTestimonialsSection() {
     <section className="py-8">
       <div className="max-w-6xl mx-auto ">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto pb-16">
-          <p className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-semibold text-blue-700">
+        <div className="text-center max-w-5xl mx-auto pb-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             Why Student trust Lifepath?
-          </p>
-          <h2 className="text-3xl md:text-5xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-black to-blue-600">
-            Because we don&apos;t ask: <br />
-            &quot;What do you want to study?&quot; We ask: <br />
-            &quot;Who are you becoming?&quot;
+          </div>
+          <h2 className="max-w-6xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
+            Because we don&apos;t ask: &quot;What do you want to study?&quot;{" "}
+            <br /> We ask: &quot;Who are you becoming?&quot;
           </h2>
+
           <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-3 text-sm text-slate-700">
             <span>Built for Nepali youth</span>
             <span className="hidden md:inline text-blue-500 text-lg">•</span>

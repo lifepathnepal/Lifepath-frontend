@@ -120,8 +120,8 @@ const page = () => {
       </section>
 
       {/* Cards */}
-      <div className="max-w-6xl mx-auto py-16">
-        <div className="space-y-6">
+      <div className="max-w-6xl mx-auto py-16 px-4 md:px-0">
+        <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
           {stories.map((s, idx) => {
             const nepaliOverrides = [
               {
@@ -223,66 +223,56 @@ const page = () => {
               ? { ...s, ...nepaliOverrides[idx] }
               : s;
 
-            const isReverse = idx % 2 !== 0;
-
             return (
               <div
                 key={data.name}
-                className={`rounded-3xl border border-blue-100 bg-white p-4 md:p-6 hover:shadow-lg transition-shadow grid md:grid-cols-2 gap-6 items-center ${
-                  isReverse ? "md:[&>*:first-child]:order-2" : ""
-                }`}
+                className="flex h-full flex-col border border-zinc-200 bg-white p-6"
               >
-                <div className="relative w-full h-72 md:h-100 rounded-2xl overflow-hidden border border-blue-200">
-                  <Image
-                    src={data.img}
-                    alt={data.name}
-                    fill
-                    className="object-cover object-top"
-                  />
-                </div>
-
-                <div>
-                  <div className="mb-4">
-                    <h3 className="text-xl font-semibold text-slate-900">
-                      {data.name}
-                    </h3>
-                    <p className="text-sm text-slate-600">
-                      {data.role} • {data.company}
-                    </p>
+                <div className="flex-1">
+                  <div className="text-xl text-yellow-500 tracking-[0.2em]">
+                    ★★★★★
                   </div>
 
-                  <div className="space-y-2 text-sm text-slate-700">
-                    <p>
-                      <span className="font-semibold text-slate-900">
-                        Before:
-                      </span>{" "}
-                      {data.before}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-slate-900">
-                        After:
-                      </span>{" "}
-                      {data.after}
-                    </p>
-                  </div>
+                  <p className="mt-4 text-lg text-zinc-900 leading-relaxed">
+                    {data.quote}
+                  </p>
 
-                  <blockquote className="mt-4 text-xl text-slate-700 italic">
-                    “{data.quote}”
-                  </blockquote>
-
-                  <p className="mt-4 text-lg text-slate-700 leading-relaxed">
+                  <p className="mt-3 text-sm text-zinc-700 leading-relaxed min-h-30">
                     {data.story}
                   </p>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {data.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs text-blue-700"
-                      >
-                        {t}
-                      </span>
-                    ))}
+                  <div className="mt-8 grid grid-cols-2 gap-4 border-t border-zinc-200 pt-4 text-xs text-zinc-600 min-h-27.5">
+                    <div>
+                      <div className="text-base font-semibold text-zinc-900">
+                        Before
+                      </div>
+                      <div className="mt-1">{data.before}</div>
+                    </div>
+                    <div>
+                      <div className="text-base font-semibold text-zinc-900">
+                        After
+                      </div>
+                      <div className="mt-1">{data.after}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-auto flex items-center gap-3 border-t border-zinc-200 pt-4">
+                  <div className="relative h-10 w-10 overflow-hidden rounded-full border border-zinc-200">
+                    <Image
+                      src={data.img}
+                      alt={data.name}
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold text-zinc-900 uppercase tracking-wide">
+                      {data.name}
+                    </div>
+                    <div className="text-xs text-zinc-600">
+                      {data.role} • {data.company}
+                    </div>
                   </div>
                 </div>
               </div>

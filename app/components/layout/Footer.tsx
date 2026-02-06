@@ -4,6 +4,7 @@ export default function Footer() {
   const footerColumns = [
     {
       links: [
+        { label: "Home", href: "/" },
         { label: "Job Training", href: "/job-training" },
         { label: "Best Jobs", href: "/best-jobs" },
         { label: "Success Stories", href: "/success-stories" },

@@ -52,7 +52,7 @@ export default function FAQSection() {
 
   return (
     <section className="py-16 bg-zinc-50">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-10">
           <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
             Frequently Asked Questions

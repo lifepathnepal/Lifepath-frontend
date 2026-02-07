@@ -46,16 +46,16 @@ export default function PathCardsSection() {
 
   return (
     <section className="w-full px-4 md:px-0 bg-white">
-      <div className="max-w-6xl mx-auto py-16">
+      <div className="max-w-4xl mx-auto py-16">
         <div className="text-center mb-12">
           {/* <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             Why choose Lifepath?
           </div> */}
 
-          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-4xl font-semibold text-zinc-900 mt-4">
-            From confusion to career clarity
+          <h2 className="max-w-5xl mx-auto text-3xl  md:text-7xl font-semibold text-blue-700 mt-4">
+            From confusion to <br />career clarity
           </h2>
-          <p className="text-zinc-800 mt-3 max-w-2xl mx-auto text-base md:text-lg">
+          <p className="text-zinc-800 mt-3 max-w-2xl mx-auto text-base md:text-sm">
             LifePath helps students decide first, then learn with confidence.
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function PathCardsSection() {
                     <h3 className="mt-3 text-xl font-semibold text-zinc-900">
                       {step.leftTitle}
                     </h3>
-                    <p className="mt-2 text-lg font-medium text-zinc-600">
+                    <p className="mt-2 text-sm font-medium text-zinc-600">
                       {step.problem}
                     </p>
                   </div>
@@ -136,7 +136,7 @@ export default function PathCardsSection() {
                     <h3 className="mt-3 text-xl font-semibold text-zinc-900">
                       {step.rightTitle}
                     </h3>
-                    <p className="mt-2 text-lg font-medium text-zinc-600">
+                    <p className="mt-2 text-sm font-medium text-zinc-600">
                       {step.solution}
                     </p>
                   </div>

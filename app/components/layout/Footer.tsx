@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 
 export default function Footer() {
   const footerColumns = [
@@ -71,7 +70,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="py-2 md:py-4 text-center">
           <p className="text-sm text-zinc-500">
-            © 2026 LifePath Career Platform. All rights reserved.
+            © {new Date().getFullYear()} Lifepath Nepal. All rights reserved.
           </p>
         </div>
       </div>

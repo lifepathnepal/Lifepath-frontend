@@ -1076,7 +1076,7 @@ export default function JobTrainingSlugPage() {
           backgroundPosition: "center",
         }}
       >
-        <div className="max-w-6xl mx-auto py-12">
+        <div className="max-w-6xl mx-auto py-12 px-4 md:px-0">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left: Course Info */}
             <div className="lg:col-span-2 flex flex-col justify-center">
@@ -1206,7 +1206,7 @@ export default function JobTrainingSlugPage() {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto py-12">
+      <div className="max-w-6xl mx-auto py-12 px-4 md:px-0">
         <div className="grid lg:grid-cols-3 gap-8">
           {" "}
           {/* Main Content */}

@@ -50,7 +50,7 @@ export default function JobDetailsPage() {
 
   return (
     <div className="min-h-screen pt-16 bg-zinc-100">
-      <section className="max-w-6xl mx-auto py-10">
+      <section className="max-w-6xl mx-auto py-10 px-4 md:px-0">
         <div className="text-sm text-zinc-500 flex items-center gap-2">
           <Link href="/" className="hover:text-blue-600">
             Home

@@ -121,7 +121,7 @@ export default function JobTrainingPage() {
     <div className="min-h-screen pt-16 bg-zinc-100">
       {/* Hero Section */}
       <section className="bg-linear-to-l from-blue-600 to-black text-white">
-        <div className="max-w-6xl mx-auto py-8">
+        <div className="max-w-6xl mx-auto py-8 px-4 md:px-0">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
               Job Training Programs
@@ -150,7 +150,7 @@ export default function JobTrainingPage() {
       </section>
 
       {/* Courses Grid */}
-      <section className="max-w-6xl mx-auto py-8">
+      <section className="max-w-6xl mx-auto py-8 px-4 md:px-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4">
           {filteredCourses.map((course) => (
             <Link

@@ -6,36 +6,29 @@ import { Play, ChevronLeft, ChevronRight, MoveRight } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    name: "Priya Sharma",
-    role: "Software Engineer",
-    video: "/videos/krish.mp4",
+    name: "Alish Maharjan",
+    role: "Creative Designer",
+    video: "/videos/Alish.mp4",
     quote: "LifePath helped me discover my true potential",
     caption: "I found my dream career path through LifePath",
   },
   {
     id: 2,
-    name: "Rajesh Kumar",
+    name: "Krishma Maharjan",
     role: "UX Designer",
-    video: "/videos/Alish.mp4",
+    video: "/videos/krish.mp4",
     quote: "The personality test was eye-opening",
     caption: "First of all, it's safe and accurate",
   },
   {
     id: 3,
-    name: "Anita Thapa",
+    name: "Zidan Chaudary",
     role: "Data Analyst",
-    video: "/videos/krish.mp4",
+    video: "/videos/Alish.mp4",
     quote: "Career guidance at its best",
     caption: "The concept of LifePath changed my life",
   },
-  {
-    id: 4,
-    name: "Deepak Rai",
-    role: "Marketing Manager",
-    video: "/videos/Alish.mp4",
-    quote: "Found clarity in my career choices",
-    caption: "I am now confident about my future",
-  },
+
 ];
 
 export default function StudentTestimonialsSection() {
@@ -77,30 +70,15 @@ export default function StudentTestimonialsSection() {
 
   return (
     <section className="py-8 px-4 md:px-0">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto mb-16">
         {/* Section Header */}
-        <div className="text-center lg:text-left max-w-6xl mx-auto pb-8 sm:pb-12 lg:pb-16">
-          <h2 className="leading-tight text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-900 mt-4">
-            <span className="text-blue-600">Because we don&apos;t ask:</span>{" "}
-            &quot;What do you want to study?&quot; <br />{" "}
-            <span className="text-blue-600">We ask:</span> &quot;Who are you
-            becoming?&quot;
+        <div className="text-center lg:text-center max-w-6xl mx-auto pb-8 sm:pb-12 lg:pb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-7xl font-semibold text-blue-700 mt-4">
+            Real Students. <br /> Real Journeys.
           </h2>
 
-          <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-sm sm:text-base text-slate-700">
-            <span>Built for Nepali youth</span>
-            <span className="inline text-blue-500 text-lg">
-              <MoveRight size={16} />
-            </span>
-            <span>Learn in psychology</span>
-            <span className="inline text-blue-500 text-lg">
-              <MoveRight size={16} />
-            </span>
-            <span>Focused on future demand</span>
-            <span className="inline text-blue-500 text-lg">
-              <MoveRight size={16} />
-            </span>
-            <span>Designed for you</span>
+          <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-center gap-2 sm:gap-3 text-sm sm:text-base text-slate-700">
+            Real stories from students who found clarity and direction.
           </div>
         </div>
 

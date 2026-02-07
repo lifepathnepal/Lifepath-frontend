@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Play, ChevronLeft, ChevronRight, MoveRight } from "lucide-react";
 
 const testimonials = [
@@ -41,8 +41,26 @@ const testimonials = [
 export default function StudentTestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState<number | null>(null);
+  const [itemsPerView, setItemsPerView] = useState(3);
 
-  const itemsPerView = 3;
+  // Update items per view based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerView(1); // Mobile
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2); // Tablet
+      } else {
+        setItemsPerView(3); // Desktop
+      }
+      setCurrentIndex(0); // Reset to first slide on resize
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const maxIndex = Math.max(0, testimonials.length - itemsPerView);
 
   const handlePrevious = () => {
@@ -58,31 +76,28 @@ export default function StudentTestimonialsSection() {
   };
 
   return (
-    <section className="py-8">
-      <div className="max-w-6xl mx-auto ">
+    <section className="py-8 px-4 md:px-0">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text- max-w-6xl mx-auto pb-16">
-          {/* <div className="inline-flex items-start gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
-            Why Student trust Lifepath?
-          </div> */}
-          <h2 className="max-w-6xl mx-auto leading-tight text-3xl md:text-4xl font-semibold text-slate-900 mt-4">
+        <div className="text-center lg:text-left max-w-6xl mx-auto pb-8 sm:pb-12 lg:pb-16">
+          <h2 className="leading-tight text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-900 mt-4">
             <span className="text-blue-600">Because we don&apos;t ask:</span>{" "}
             &quot;What do you want to study?&quot; <br />{" "}
             <span className="text-blue-600">We ask:</span> &quot;Who are you
             becoming?&quot;
           </h2>
 
-          <div className="mt-4 flex flex-col md:flex-row items-center justify-start gap-3 text-normal text-slate-700">
+          <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-sm sm:text-base text-slate-700">
             <span>Built for Nepali youth</span>
-            <span className="hidden md:inline text-blue-500 text-lg">
+            <span className="inline text-blue-500 text-lg">
               <MoveRight size={16} />
             </span>
             <span>Learn in psychology</span>
-            <span className="hidden md:inline text-blue-500 text-lg">
+            <span className="inline text-blue-500 text-lg">
               <MoveRight size={16} />
             </span>
             <span>Focused on future demand</span>
-            <span className="hidden md:inline text-blue-500 text-lg">
+            <span className="inline text-blue-500 text-lg">
               <MoveRight size={16} />
             </span>
             <span>Designed for you</span>
@@ -91,48 +106,54 @@ export default function StudentTestimonialsSection() {
 
         {/* Testimonial Carousel */}
         <div className="relative">
-          {/* Navigation Buttons */}
-          <button
-            onClick={handlePrevious}
-            disabled={currentIndex === 0}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center transition-all ${
-              currentIndex === 0
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-blue-600 hover:text-white"
-            }`}
-            aria-label="Previous testimonials"
-          >
-            <ChevronLeft size={24} />
-          </button>
+          {/* Navigation Buttons - Hidden on mobile */}
+          {maxIndex > 0 && (
+            <>
+              <button
+                onClick={handlePrevious}
+                disabled={currentIndex === 0}
+                className={`hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-6 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white shadow-lg items-center justify-center transition-all ${
+                  currentIndex === 0
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:bg-blue-600 hover:text-white"
+                }`}
+                aria-label="Previous testimonials"
+              >
+                <ChevronLeft size={20} className="lg:w-6 lg:h-6" />
+              </button>
 
-          <button
-            onClick={handleNext}
-            disabled={currentIndex >= maxIndex}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center transition-all ${
-              currentIndex >= maxIndex
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-blue-600 hover:text-white"
-            }`}
-            aria-label="Next testimonials"
-          >
-            <ChevronRight size={24} />
-          </button>
+              <button
+                onClick={handleNext}
+                disabled={currentIndex >= maxIndex}
+                className={`hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-6 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white shadow-lg items-center justify-center transition-all ${
+                  currentIndex >= maxIndex
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:bg-blue-600 hover:text-white"
+                }`}
+                aria-label="Next testimonials"
+              >
+                <ChevronRight size={20} className="lg:w-6 lg:h-6" />
+              </button>
+            </>
+          )}
 
           {/* Testimonials Grid */}
           <div className="overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-out gap-6"
+              className="flex transition-transform duration-500 ease-out gap-4 sm:gap-6"
               style={{
-                transform: `translateX(-${currentIndex * (100 / itemsPerView + 2)}%)`,
+                transform: `translateX(-${
+                  currentIndex *
+                  (100 / itemsPerView + (itemsPerView > 1 ? 2 : 0))
+                }%)`,
               }}
             >
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
-                  className="shrink-0"
-                  style={{ width: `calc(${100 / itemsPerView}% - 1rem)` }}
+                  className="shrink-0 w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
                 >
-                  <div className="group relative h-125 rounded-3xl overflow-hidden bg-zinc-900 cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-blue-600/20">
+                  <div className="group relative h-96 sm:h-125 lg:h-137.5 rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-900 cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-blue-600/20">
                     {/* Video Background */}
                     <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-110">
                       <video
@@ -159,13 +180,13 @@ export default function StudentTestimonialsSection() {
                     >
                       <div className="relative">
                         {/* Pulsing Ring */}
-                        <div className="absolute inset-0 w-20 h-20 rounded-full bg-blue-600/30 animate-ping"></div>
+                        <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-600/30 animate-ping"></div>
 
                         {/* Main Play Button */}
-                        <div className="relative w-20 h-20 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-blue-600 transition-all duration-300">
+                        <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-blue-600 transition-all duration-300">
                           <Play
-                            size={32}
-                            className="text-blue-600 group-hover:text-white ml-1 transition-colors"
+                            size={28}
+                            className="sm:w-8 sm:h-8 text-blue-600 group-hover:text-white ml-1 transition-colors"
                             fill="currentColor"
                           />
                         </div>
@@ -186,24 +207,24 @@ export default function StudentTestimonialsSection() {
                     )}
 
                     {/* Quote Badge */}
-                    <div className="absolute top-6 left-6 px-4 py-2 bg-blue-600/90 backdrop-blur-sm rounded-full">
+                    <div className="absolute top-4 sm:top-6 left-4 sm:left-6 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600/90 backdrop-blur-sm rounded-full">
                       <span className="text-white text-xs font-semibold">
                         Success Story
                       </span>
                     </div>
 
                     {/* Caption/Quote with Enhanced Design */}
-                    <div className="absolute bottom-0 left-0 right-0 p-8 text-white bg-linear-to-t from-black/95 via-black/80 to-transparent">
-                      <div className="space-y-3">
-                        <p className="text-xl font-bold mb-3 leading-tight group-hover:text-blue-300 transition-colors">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-8 text-white bg-linear-to-t from-black/95 via-black/80 to-transparent">
+                      <div className="space-y-2 sm:space-y-3">
+                        <p className="text-base sm:text-lg lg:text-xl font-bold leading-tight group-hover:text-blue-300 transition-colors">
                           &quot;{testimonial.caption}&quot;
                         </p>
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs sm:text-sm">
                             {testimonial.name.charAt(0)}
                           </div>
                           <div>
-                            <p className="font-semibold text-sm">
+                            <p className="font-semibold text-xs sm:text-sm">
                               {testimonial.name}
                             </p>
                             <p className="text-xs text-zinc-300">
@@ -215,7 +236,7 @@ export default function StudentTestimonialsSection() {
                     </div>
 
                     {/* Decorative Corner Accent */}
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-blue-600/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 bg-linear-to-br from-blue-600/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                 </div>
               ))}
@@ -223,20 +244,22 @@ export default function StudentTestimonialsSection() {
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex
-                    ? "bg-blue-600 w-8"
-                    : "bg-zinc-300 hover:bg-zinc-400"
-                }`}
-                aria-label={`Go to testimonial group ${index + 1}`}
-              />
-            ))}
-          </div>
+          {maxIndex > 0 && (
+            <div className="flex justify-center gap-2 mt-6 sm:mt-8">
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentIndex
+                      ? "bg-blue-600 w-6 sm:w-8"
+                      : "bg-zinc-300 hover:bg-zinc-400 w-2"
+                  }`}
+                  aria-label={`Go to testimonial group ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

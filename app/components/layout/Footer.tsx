@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const footerColumns = [
@@ -15,8 +16,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white">
-      <div className="max-w-6xl mx-auto">
+    <footer className="bg-white relative z-10">
+      <div className="max-w-6xl mx-auto px-4 md:px-0">
         {/* Large Background Text */}
         <div className="relative py-8 md:py-20 overflow-hidden w-full mx-auto">
           <div className="text-center">

@@ -19,7 +19,7 @@ export default function NewsletterCTA({
   return (
     <section className="">
       <div className="w-full mx-auto bg-blue-600 text-white px-2 md:px-4 lg:px-8 my-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-4 md:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="">
@@ -45,10 +45,10 @@ export default function NewsletterCTA({
                   alt="Newsletter"
                   width={500}
                   height={1000}
-                  className="w-full h-84 rounded-2xl object-contain object-top"
+                  className="w-full hidden md:block h-44 md:h-84 rounded-2xl object-contain object-top"
                 />
               ) : (
-                <div className="w-full aspect-square bg-linear-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center border-2 border-dashed border-blue-300">
+                <div className="w-full aspect-video bg-linear-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center border-2 border-dashed border-blue-300">
                   <div className="text-center">
                     <p className="text-blue-600 font-semibold text-lg">
                       Image Placeholder

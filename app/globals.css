@@ -23,6 +23,8 @@ html.lenis body {
   pointer-events: none;
 }
 
+
+
 @custom-variant dark (&:is(.dark *));
 
 :root {

@@ -48,10 +48,10 @@ const CategorySection = () => {
     <section className="w-full px-4 bg-linear-to-b from-blue-50 via-white to-zinc-50">
       <div className="max-w-6xl mx-auto py-16">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
+          {/* <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             Designed for real people
-          </div>
-          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-zinc-900 mt-4">
+          </div> */}
+          <h2 className="max-w-5xl mx-auto leading-tight text-2xl md:text-3xl font-semibold text-zinc-900 mt-4">
             Who Is Lifepath For?
           </h2>
           <p className="text-sm md:text-lg text-zinc-600 mt-3 max-w-2xl mx-auto">

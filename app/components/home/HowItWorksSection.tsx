@@ -1,110 +1,105 @@
 "use client";
 
-import { Brain, Target, Wrench, Rocket } from "lucide-react";
+import Image from "next/image";
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="pt-10 md:pt-8 pb-16 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <section id="how-it-works" className="pt-8 md:pt-16 bg-white">
+      <div className="max-w-6xl mx-auto px-4 md:px-0">
         {/* Section Header */}
-        <div className="mb-14 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
+        <div className="mb-0 text-left">
+          {/* <div className="inline-flex items-start gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
             How LifePath Works
-          </div>
-          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-zinc-900 mt-4">
-            We help you discover your <br />
-            personality and identify career paths <br /> that align with your
-            strengths.
+          </div> */}
+          <h2 className="max-w-5xl mx-auto text-center leading-tight text-2xl md:text-3xl font-semibold text-zinc-900 mt-4">
+            From self-discovery to paid work <br /> no guesswork, just momentum
           </h2>
+          <p className="max-w-3xl mx-auto text-center text-zinc-700 mt-4">
+            Discover your strengths, choose the right path, <br />
+            and take confident steps toward a fulfilling career.
+          </p>
         </div>
 
         {/* Stepped Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-16">
           {/* Step 1 */}
-          <div className="border-b md:border-t md:border-r border-zinc-200 p-4">
-            <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
-              STEP 01
+          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-lg overflow-hidden cursor-pointer">
+            <Image
+              src="/steps/how1.png"
+              alt="Step 1"
+              width={300}
+              height={400}
+              className="w-full h-full object-cover group-hover:opacity-10 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+              <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
+                Know Yourself (Deeply)
+              </h3>
+              <p className="text-zinc-200 text-sm">
+                Science-backed assessments reveal how you think, what energizes
+                you, and your real strengths.
+              </p>
             </div>
-            <div className="text-blue-600 text-xs font-semibold mb-2 flex items-center gap-2">
-              <Brain size={14} />
-              KNOW YOURSELF
-            </div>
-            <h3 className="text-2xl font-semibold text-zinc-900 mb-2">
-              Before choosing a career, we help you answer:
-            </h3>
-            <p className="text-zinc-600 text-lg">
-              We use science-backed tests to reveal how you think and work best,
-              what energizes or drains you, and the strengths and careers that
-              fit you.
-            </p>
-            {/* <p className="text-zinc-800 font-semibold text-lg mt-3">
-              “When you understand yourself, confusion disappears.”
-            </p> */}
           </div>
 
           {/* Step 2 */}
-          <div className="border-b md:border-t md:border-r border-zinc-200 md:mt-40 p-4">
-            <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
-              STEP 02
+          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-lg overflow-hidden cursor-pointer">
+            <Image
+              src="/steps/how1.png"
+              alt="Step 2"
+              width={300}
+              height={400}
+              className="w-full h-full object-cover group-hover:opacity-10 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+              <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
+                Choose the Right Path
+              </h3>
+              <p className="text-zinc-200 text-sm">
+                Match your personality and interests to in-demand careers that
+                actually exist right now.
+              </p>
             </div>
-            <div className="text-blue-600 text-xs font-semibold mb-2 flex items-center gap-2">
-              <Target size={14} />
-              CHOOSE THE RIGHT CAREER PATH
-            </div>
-            <p className="text-2xl font-semibold text-zinc-900 mb-2">
-              Based on your personality and interests, we guide you toward
-              careers like:
-            </p>
-            <p className="text-zinc-600 text-lg">
-              We guide you toward in-demand roles that match your personality,
-              interests, and market reality—no guesswork, just clarity.
-            </p>
-            {/* <p className="text-zinc-800 font-semibold text-lg mt-3">
-              No guesswork. No pressure. Just clarity.
-            </p> */}
           </div>
 
           {/* Step 3 */}
-          <div className="border-b md:border-t md:border-r border-zinc-200 md:mt-80 p-4">
-            <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
-              STEP 03
+          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-lg overflow-hidden cursor-pointer">
+            <Image
+              src="/steps/how1.png"
+              alt="Step 3"
+              width={300}
+              height={400}
+              className="w-full h-full object-cover group-hover:opacity-10 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+              <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
+                Build Real Skills
+              </h3>
+              <p className="text-zinc-200 text-sm">
+                Hands-on projects with real tools, portfolio-worthy work, and
+                mentorship that keeps you accountable.
+              </p>
             </div>
-            <div className="text-blue-600 text-xs font-semibold mb-2 flex items-center gap-2">
-              <Wrench size={14} />
-              PRACTICAL JOB TRAINING
-            </div>
-            <p className="text-2xl font-semibold text-zinc-900 mb-2">
-              Degrees don&apos;t get jobs. Skills do.
-            </p>
-            <p className="text-zinc-600 text-lg">
-              Degrees don&apos;t get jobs—skills do. We focus on real tools,
-              real projects, mentorship, and portfolio-building so you finish
-              ready.
-            </p>
-            {/* <p className="text-zinc-800 font-semibold text-lg mt-3">
-              You don&apos;t just finish a course. You finish ready.
-            </p> */}
           </div>
 
           {/* Step 4 */}
-          <div className=" md:mt-120 border-t border-zinc-200 p-4">
-            <div className="text-blue-600 text-4xl md:text-5xl font-bold mb-4">
-              STEP 04
+          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-lg overflow-hidden cursor-pointer">
+            <Image
+              src="/steps/how1.png"
+              alt="Step 4"
+              width={300}
+              height={400}
+              className="w-full h-full object-cover group-hover:opacity-10 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+              <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
+                From Learning to Earning
+              </h3>
+              <p className="text-zinc-200 text-sm">
+                Finish ready to land paid work, freelance with momentum, or
+                switch careers confidently.
+              </p>
             </div>
-            <div className="text-blue-600 text-xs font-semibold mb-2 flex items-center gap-2">
-              <Rocket size={14} />
-              FROM LEARNING TO EARNING
-            </div>
-            <p className="text-2xl font-semibold text-zinc-900 mb-2">
-              Our goal is not certificates. Our goal is confidence + capability.
-            </p>
-            <p className="text-zinc-600 text-lg">
-              We prepare you for freelancing, internships, entry-level roles,
-              and career switches—building confidence and long-term growth.
-            </p>
-            {/* <p className="text-zinc-800 font-semibold text-sm mt-3">
-              “We don&apos;t promise shortcuts. We build foundations.”
-            </p> */}
           </div>
         </div>
       </div>

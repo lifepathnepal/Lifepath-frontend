@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const faqs = [
   {
@@ -51,49 +52,57 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-16 bg-zinc-50">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-10">
-          <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-base md:text-lg text-zinc-600 mt-2">
-            Got questions? We&apos;ve got answers
-          </p>
-        </div>
-
-        <div className="divide-y divide-zinc-200 border-y border-zinc-200 bg-zinc-50">
-          {faqs.map((faq, index) => (
-            <div key={faq.id} className="py-6">
-              <button
-                onClick={() => toggleFAQ(faq.id)}
-                className="w-full flex items-start gap-4 text-left hover:text-zinc-900 transition-colors"
-                aria-expanded={openId === faq.id}
-              >
-                <span className="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-600 text-[11px] font-bold text-white">
-                  {`${index + 1}`.padStart(2, "0")}
-                </span>
-                <span className="flex-1 text-base md:text-lg font-semibold text-zinc-900">
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  size={18}
-                  className={`mt-1 text-zinc-500 shrink-0 transition-transform duration-300 ${
-                    openId === faq.id ? "rotate-180" : ""
+    <section className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-4 md:px-0">
+        <div className="flex">
+          <Image
+            src="/heroImages/qna.png"
+            alt="Footer Background"
+            height={300}
+            width={300}
+            className=" object-contain hidden md:block"
+          />
+          <div className="divide-y divide-zinc-200 border-y border-zinc-200 max-w-2xl mx-auto">
+            <div className="mb-4">
+              <h2 className="max-w-5xl mx-auto leading-tight text-3xl md:text-3xl font-semibold text-slate-900 mt-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-base md:text-lg text-zinc-600 mt-2">
+                Got questions? We&apos;ve got answers
+              </p>
+            </div>
+            {faqs.map((faq, index) => (
+              <div key={faq.id} className="py-6">
+                <button
+                  onClick={() => toggleFAQ(faq.id)}
+                  className="w-full flex items-start gap-4 text-left hover:text-zinc-900 transition-colors"
+                  aria-expanded={openId === faq.id}
+                >
+                  <span className="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-600 text-[11px] font-bold text-white">
+                    {`${index + 1}`.padStart(2, "0")}
+                  </span>
+                  <span className="flex-1 text-base md:text-lg font-semibold text-zinc-900">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    size={18}
+                    className={`mt-1 text-zinc-500 shrink-0 transition-transform duration-300 ${
+                      openId === faq.id ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`pl-11 pr-6 overflow-hidden transition-all duration-300 ${
+                    openId === faq.id ? "max-h-96 mt-3" : "max-h-0"
                   }`}
-                />
-              </button>
-              <div
-                className={`pl-11 pr-6 overflow-hidden transition-all duration-300 ${
-                  openId === faq.id ? "max-h-96 mt-3" : "max-h-0"
-                }`}
-              >
-                <div className="text-sm md:text-base text-zinc-600 leading-relaxed">
-                  {faq.answer}
+                >
+                  <div className="text-sm md:text-base text-zinc-600 leading-relaxed">
+                    {faq.answer}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 text-center">

@@ -387,7 +387,7 @@ export default function PersonalityTestPage() {
     return (
       <div className="min-h-screen pt-16 pb-12 bg-white">
         {/* Hero Section - Enhanced Banner */}
-        <section className="bg-blue-600 relative overflow-hidden">
+        <section className="bg-linear-to-l from-blue-600 to-black text-white">
           <div className="max-w-6xl mx-auto py-16 md:py-8 relative">
             {/* Back Button */}
             <button
@@ -756,7 +756,7 @@ export default function PersonalityTestPage() {
   return (
     <div className="min-h-screen pt-16 bg-zinc-100 overflow-hidden">
       {/* Hero Section */}
-      <section className="bg-blue-600 text-white relative overflow-hidden">
+      <section className="bg-linear-to-l from-blue-600 to-black text-white mt">
         <div className="max-w-6xl mx-auto py-8 md:py-12 px-4 relative">
           {/* Test Toggle Button */}
           <button

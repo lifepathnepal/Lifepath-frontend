@@ -6,17 +6,25 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-[90vh] w-full mx-auto overflow-hidden bg-white">
-      <div className="max-w-6xl mx-auto h-[90vh] flex items-center justify-start  pt-16">
-        <div className="flex justify-center items-center mb-16">
+    <section className="min-h-[90vh] w-full mx-auto px-4 md:px-0 pt-18 md:pt-0 overflow-hidden bg-white">
+      <div className="max-w-6xl mx-auto md:h-[90vh] flex md:items-center justify-start  md:pt-16">
+        <div className="flex justify-center md:items-center md:mb-16">
           {/* Left Content */}
           <div className="space-y-4 z-10 max-w-3xl">
             {/* Main Heading */}
-            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold leading- font-montserrat text-zinc-900">
+            <div className="inline-flex items-start gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
+              Stuck in Career Confusion?{" "}
+            </div>
+            {/* Main Heading */}
+            <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold text-zinc-900">
+              Discover Your Fit, Skill Up Fast, and Start Earning, No Useless
+              Degrees.
+            </h1>
+            {/* <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold leading- font-montserrat text-zinc-900">
               Discover Yourself. <br />
               Train Smart. <br />
               Build Your Future.
-            </h1>
+            </h1> */}
 
             {/* Subheading */}
             <p className="text-sm md:text-lg font-medium text-black leading-relaxed">
@@ -41,15 +49,25 @@ export default function HeroSection() {
                 </button>
               </Link>
             </div>
+            <div className="h-full overflow-hidden block md:hidden">
+              <Image
+                src="/heroImages/globe.png"
+                alt="Find Your Career Path"
+                width={400}
+                height={200}
+                className="w-full h-1/2 object-contain opacity-80"
+                priority
+              />
+            </div>
           </div>
 
-          <div className="absolute h-full top-0 right-0 z-0 overflow-hidden">
+          <div className="absolute h-full top-0 right-30 z-0 overflow-hidden hidden md:flex md:items-center md:justify-center">
             <Image
-              src="/heroImages/confused.png"
+              src="/heroImages/globe2.png"
               alt="Find Your Career Path"
-              width={1000}
+              width={800}
               height={1000}
-              className="w-full h-full object-contain opacity-80"
+              className="w-full h-130 object-contain opacity-80"
               priority
             />
           </div>

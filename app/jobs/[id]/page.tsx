@@ -223,7 +223,7 @@ export default function JobDetailsPage() {
             className="absolute inset-0 bg-black/40"
             onClick={() => setIsOpen(false)}
           />
-          <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-xl border border-zinc-200 p-6">
+          <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-zinc-200 p-6 flex flex-col max-h-[70vh]">
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h3 className="text-xl font-semibold text-zinc-900">
@@ -240,84 +240,90 @@ export default function JobDetailsPage() {
               </button>
             </div>
 
-            <form className="space-y-4">
-              <div>
-                <label className="text-sm font-semibold text-zinc-700">
-                  Full name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
-                />
+            <form className="space-y-3 flex flex-col">
+              <div className="flex gap-2">
+                <div className="w-full">
+                  <label className="text-sm font-semibold text-zinc-700">
+                    Full name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  />
+                </div>
+                <div className="w-full">
+                  <label className="text-sm font-semibold text-zinc-700">
+                    Email address
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="you@email.com"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  />
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <div className="w-full">
+                  <label className="text-sm font-semibold text-zinc-700">
+                    Phone number
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="98xxxxxxxx"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  />
+                </div>
+                <div className="w-full">
+                  <label className="text-sm font-semibold text-zinc-700">
+                    Portfolio or LinkedIn
+                  </label>
+                  <input
+                    type="url"
+                    placeholder="https://"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  />
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <div className="w-full">
+                  <label className="text-sm font-semibold text-zinc-700">
+                    Upload CV
+                  </label>
+                  <input
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 px-2 py-2 text-sm text-zinc-600 file:mr-3 file:rounded-full file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                </div>
+                <div className="w-full">
+                  <label className="text-sm font-semibold text-zinc-700">
+                    Upload Cover Letter
+                  </label>
+                  <input
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 px-2 py-2 text-sm text-zinc-600 file:mr-3 file:rounded-full file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                </div>
               </div>
               <div>
                 <label className="text-sm font-semibold text-zinc-700">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  placeholder="you@email.com"
-                  className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-zinc-700">
-                  Phone number
-                </label>
-                <input
-                  type="tel"
-                  placeholder="98xxxxxxxx"
-                  className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-zinc-700">
-                  Portfolio or LinkedIn
-                </label>
-                <input
-                  type="url"
-                  placeholder="https://"
-                  className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-zinc-700">
-                  Upload CV
-                </label>
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2.5 text-sm text-zinc-600 file:mr-3 file:rounded-full file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-zinc-700">
-                  Upload Cover Letter
-                </label>
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2.5 text-sm text-zinc-600 file:mr-3 file:rounded-full file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-zinc-700">
-                  Message
+                  Additional Notes
                 </label>
                 <textarea
-                  rows={4}
+                  rows={3}
                   placeholder="Tell us why you're a great fit..."
-                  className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  className="mt-1 w-full rounded-xl border border-zinc-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none"
                 />
               </div>
-              <button
-                type="button"
-                className="w-full rounded-full bg-blue-600 text-white font-semibold py-3 hover:bg-blue-700 transition-colors cursor-pointer"
-              >
-                Submit application
-              </button>
             </form>
+            <button
+              type="button"
+              className="w-full rounded-full bg-blue-600 text-white font-semibold py-2.5 hover:bg-blue-700 transition-colors cursor-pointer mt-4 flex-shrink-0"
+            >
+              Submit application
+            </button>
           </div>
         </div>
       )}

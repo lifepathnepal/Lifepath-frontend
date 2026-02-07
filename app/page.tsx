@@ -1,7 +1,6 @@
 import HeroSection from "./components/home/HeroSection";
 import StorySection from "./components/home/StorySection";
 import PathCardsSection from "./components/home/PathCardsSection";
-import CategorySection from "./components/home/CategorySection";
 // import MBTISection from "./components/home/MBTISection";
 import HowItWorksSection from "./components/home/HowItWorksSection";
 import StudentTestimonialsSection from "./components/home/StudentTestimonialsSection";
@@ -26,7 +25,6 @@ export default function Home() {
       <HowItWorksSection />
       <StudentTestimonialsSection />
       <Divider3 />
-      <CategorySection />
       <FAQSection />
       <NewsletterCTA
         title="Clarity changes everything."

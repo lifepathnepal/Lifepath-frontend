@@ -24,7 +24,7 @@ export default function JobsPage() {
   return (
     <div className="min-h-screen pt-16 bg-zinc-100">
       {/* Hero Section */}
-      <section className="bg-blue-700 text-white">
+      <section className="bg-linear-to-l from-blue-600 to-black text-white">
         <div className="max-w-6xl mx-auto py-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
@@ -114,7 +114,7 @@ export default function JobsPage() {
                         alt={`${job.company} logo`}
                         width={56}
                         height={56}
-                        className="rounded-lg"
+                        className=""
                       />
                     </div>
 
@@ -142,8 +142,7 @@ export default function JobsPage() {
                           {job.experience}
                         </span>
                         <span className="flex items-center gap-1 text-green-600 font-semibold">
-                          <DollarSign size={14} />
-                          {job.salary}
+                          {job.region === "nepal" ? "NPR" : "$"} {job.salary}
                         </span>
                         <span className="flex items-center gap-1">
                           <MapPin size={14} />

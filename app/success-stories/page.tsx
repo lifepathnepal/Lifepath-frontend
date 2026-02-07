@@ -118,7 +118,7 @@ const page = () => {
   return (
     <section className="bg-zinc-100">
       {/* Banner */}
-      <section className="bg-blue-700 text-white mt-16">
+      <section className="bg-linear-to-l from-blue-600 to-black text-white mt-16">
         <div className="max-w-6xl mx-auto py-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">
@@ -246,7 +246,7 @@ const page = () => {
                     ★★★★★
                   </div>
 
-                  <p className="mt-4 text-lg text-zinc-900 leading-relaxed">
+                  <p className="mt-4 text-lg font-semibold text-zinc-900 leading-relaxed">
                     {data.quote}
                   </p>
 

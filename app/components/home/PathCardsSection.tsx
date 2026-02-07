@@ -45,7 +45,7 @@ export default function PathCardsSection() {
   ];
 
   return (
-    <section className="w-full px-4 bg-white">
+    <section className="w-full px-4 md:px-0 bg-white">
       <div className="max-w-6xl mx-auto py-16">
         <div className="text-center mb-12">
           {/* <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xl font-semibold text-blue-700">
@@ -77,9 +77,9 @@ export default function PathCardsSection() {
                     <Image
                       src={
                         step.leftTitle === "Confused student"
-                          ? "/heroImages/problem.jpg"
+                          ? "/heroImages/unclear.png"
                           : step.leftTitle === "Unclear strengths"
-                            ? "/heroImages/unclear.png"
+                            ? "/heroImages/problem.jpg"
                             : step.leftTitle === "Random learning"
                               ? "/heroImages/random.png"
                               : step.leftTitle === "No next steps"
@@ -94,7 +94,7 @@ export default function PathCardsSection() {
                   </div>
                   <div className="">
                     <div className="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700">
-                      Confusion
+                      Problem
                     </div>
                     <h3 className="mt-3 text-xl font-semibold text-zinc-900">
                       {step.leftTitle}
@@ -131,7 +131,7 @@ export default function PathCardsSection() {
                   </div>
                   <div className="">
                     <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-                      Lifepath guidance
+                      Lifepath Solution
                     </div>
                     <h3 className="mt-3 text-xl font-semibold text-zinc-900">
                       {step.rightTitle}

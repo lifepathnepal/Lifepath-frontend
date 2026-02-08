@@ -20,7 +20,7 @@ export default function HeroSection() {
               Discover Your Fit, Skill Up Fast, and Start Earning, No Useless
               Degrees.
             </h1> */}
-            <h1 className="text-3xl md:text-5xl lg:text-8xl font-semibold text-blue-700">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-semibold text-blue-700">
               Discover Yourself. <br />
               Train Smart. <br />
               Build Your Future.

@@ -241,37 +241,8 @@ const page = () => {
                 key={data.name}
                 className="flex h-full flex-col border border-zinc-200 bg-white p-6"
               >
-                <div className="flex-1">
-                  <div className="text-xl text-yellow-500 tracking-[0.2em]">
-                    ★★★★★
-                  </div>
-
-                  <p className="mt-4 text-lg font-semibold text-zinc-900 leading-relaxed">
-                    {data.quote}
-                  </p>
-
-                  <p className="mt-3 text-sm text-zinc-700 leading-relaxed min-h-30">
-                    {data.story}
-                  </p>
-
-                  <div className="mt-8 grid grid-cols-2 gap-4 border-t border-zinc-200 pt-4 text-xs text-zinc-600 min-h-27.5">
-                    <div>
-                      <div className="text-base font-semibold text-zinc-900">
-                        Before
-                      </div>
-                      <div className="mt-1">{data.before}</div>
-                    </div>
-                    <div>
-                      <div className="text-base font-semibold text-zinc-900">
-                        After
-                      </div>
-                      <div className="mt-1">{data.after}</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-auto flex items-center gap-3 border-t border-zinc-200 pt-4">
-                  <div className="relative h-10 w-10 overflow-hidden rounded-full border border-zinc-200">
+                <div className="mt-auto flex flex-col items-center gap-3">
+                  <div className="relative h-44 w-44 overflow-hidden rounded-full border border-zinc-200">
                     <Image
                       src={data.img}
                       alt={data.name}
@@ -280,11 +251,42 @@ const page = () => {
                     />
                   </div>
                   <div>
-                    <div className="text-xs font-semibold text-zinc-900 uppercase tracking-wide">
+                    <div className="text-lg font-semibold text-zinc-900 uppercase tracking-wide text-center">
                       {data.name}
                     </div>
-                    <div className="text-xs text-zinc-600">
+                    <div className="text-sm text-zinc-600">
                       {data.role} • {data.company}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col justify-between h-full">
+                  <div className="">
+                    <div className="text-xl flex items-center justify-center gap-1  text-yellow-500 tracking-[0.2em]">
+                      ★★★★★
+                    </div>
+
+                    <p className="mt-4 text-lg font-semibold text-zinc-900 leading-relaxed">
+                      {data.quote}
+                    </p>
+
+                    <p className="mt-3 text-sm text-zinc-700 leading-relaxed min-h-30">
+                      {data.story}
+                    </p>
+                  </div>
+
+                  <div className="mt-8 flex gap-4 border-t border-zinc-200 text-xs text-zinc-600 pt-2">
+                    <div>
+                      <div className="text-base font-semibold text-zinc-900">
+                        Before
+                      </div>
+                      <div className="mt-1">{data.before}</div>
+                    </div>
+                    <div className="w-px h-full bg-zinc-200" />
+                    <div>
+                      <div className="text-base font-semibold text-zinc-900">
+                        After
+                      </div>
+                      <div className="mt-1">{data.after}</div>
                     </div>
                   </div>
                 </div>
@@ -293,12 +295,12 @@ const page = () => {
           })}
         </div>
       </div>
-       <NewsletterCTA
-              btnText="Join Class Today"
-              title="Ready to take the next step in your career?"
-              description="Enroll in our job training programs and unlock your potential."
-              imageSrc="/heroImages/woman2.png"
-            />
+      <NewsletterCTA
+        btnText="Join Class Today"
+        title="Ready to take the next step in your career?"
+        description="Enroll in our job training programs and unlock your potential."
+        imageSrc="/heroImages/woman2.png"
+      />
     </section>
   );
 };

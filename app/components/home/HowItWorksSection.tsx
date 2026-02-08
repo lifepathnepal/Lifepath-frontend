@@ -23,7 +23,7 @@ export default function HowItWorksSection() {
         {/* Stepped Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-16">
           {/* Step 1 */}
-          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-lg overflow-hidden cursor-pointer border-2 border-blue-300">
+          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-3xl overflow-hidden cursor-pointer border-2 border-blue-300">
             <Image
               src="/steps/know.png"
               alt="Step 1"
@@ -46,7 +46,7 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Step 2 */}
-          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-lg overflow-hidden cursor-pointer border-2 border-blue-300">
+          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-3xl overflow-hidden cursor-pointer border-2 border-blue-300">
             <Image
               src="/heroImages/step1.png"
               alt="Step 2"
@@ -69,7 +69,7 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Step 3 */}
-          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-lg overflow-hidden cursor-pointer border-2 border-blue-300">
+          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-3xl overflow-hidden cursor-pointer border-2 border-blue-300">
             <Image
               src="/heroImages/happy.png"
               alt="Step 3"
@@ -92,7 +92,7 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Step 4 */}
-          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-lg overflow-hidden cursor-pointer border-2 border-blue-300">
+          <div className="group relative h-100 bg-linear-to-br from-zinc-900 to-blue-700 rounded-3xl overflow-hidden cursor-pointer border-2 border-blue-300">
             <Image
               src="/heroImages/next.png"
               alt="Step 4"

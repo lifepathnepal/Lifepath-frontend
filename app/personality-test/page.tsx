@@ -8,6 +8,14 @@ import {
   CheckCircle,
   Clock,
   User,
+  Eye,
+  Leaf,
+  ListChecks,
+  Handshake,
+  BookOpen,
+  Lightbulb,
+  Zap,
+  Heart,
 } from "lucide-react";
 import Link from "next/link";
 import { getPersonalityType } from "./personalityData";
@@ -25,289 +33,345 @@ const questions: Question[] = [
   // Extraversion (E) vs Introversion (I) - 10 questions
   {
     id: 1,
-    question: "At social gatherings, I tend to:",
+    question: "At parties, I usually:",
     dimension: "EI",
-    optionA: "Talk to many people, even strangers",
-    optionB: "Have deeper conversations with a few close people",
+    optionA: "Talk to many different people",
+    optionB: "Stay with one or two close friends",
   },
   {
     id: 2,
-    question: "After a busy week, I recharge by:",
+    question: "After a long day, I feel better when I:",
     dimension: "EI",
-    optionA: "Going out and socializing with friends",
-    optionB: "Spending quiet time alone or with close ones",
+    optionA: "Go out with friends",
+    optionB: "Spend time alone",
   },
   {
     id: 3,
-    question: "In group settings, I usually:",
+    question: "In group projects, I:",
     dimension: "EI",
-    optionA: "Take initiative and lead conversations",
-    optionB: "Observe and contribute when needed",
+    optionA: "Like to take the lead",
+    optionB: "Prefer to work quietly",
   },
   {
     id: 4,
-    question: "I prefer working:",
+    question: "I work best:",
     dimension: "EI",
-    optionA: "In a collaborative team environment",
-    optionB: "Independently with minimal interruptions",
+    optionA: "With other people around",
+    optionB: "By myself",
   },
   {
     id: 5,
-    question: "When meeting new people, I:",
+    question: "Meeting new people makes me feel:",
     dimension: "EI",
-    optionA: "Feel energized and excited",
-    optionB: "Feel drained and need time to warm up",
+    optionA: "Excited and energized",
+    optionB: "Tired and drained",
   },
   {
     id: 6,
-    question: "My ideal weekend involves:",
+    question: "On weekends, I prefer to:",
     dimension: "EI",
-    optionA: "Multiple social activities and events",
-    optionB: "Peaceful activities at home or in nature",
+    optionA: "Go out and do activities",
+    optionB: "Relax at home",
   },
   {
     id: 7,
-    question: "When solving problems, I prefer:",
+    question: "When I have a problem, I:",
     dimension: "EI",
-    optionA: "Discussing ideas out loud with others",
-    optionB: "Thinking things through privately first",
+    optionA: "Talk it out with others",
+    optionB: "Think about it alone first",
   },
   {
     id: 8,
-    question: "In my free time, I'm more likely to:",
+    question: "I feel most comfortable:",
     dimension: "EI",
-    optionA: "Seek out social opportunities",
-    optionB: "Enjoy solitary hobbies and reflection",
+    optionA: "Being around lots of people",
+    optionB: "In quiet, calm places",
   },
   {
     id: 9,
-    question: "I feel most comfortable:",
+    question: "At school or work, I:",
     dimension: "EI",
-    optionA: "Being the center of attention",
-    optionB: "Staying in the background",
+    optionA: "Make friends easily",
+    optionB: "Keep to myself mostly",
   },
   {
     id: 10,
-    question: "My energy level increases when:",
+    question: "I get my energy from:",
     dimension: "EI",
-    optionA: "I'm around lots of people",
-    optionB: "I have personal space and quiet",
+    optionA: "Being social and active",
+    optionB: "Having alone time",
   },
 
-  // Sensing (S) vs Intuition (N) - 10 questions
+  // Sensing (S) vs Intuition (N) - 16 questions
   {
     id: 11,
-    question: "I'm more interested in:",
+    question: "I prefer to focus on:",
     dimension: "SN",
-    optionA: "Concrete facts and real experiences",
-    optionB: "Abstract concepts and future possibilities",
+    optionA: "What's real and practical",
+    optionB: "What's possible and imaginative",
   },
   {
     id: 12,
-    question: "When learning something new, I prefer:",
+    question: "When I learn something new, I like:",
     dimension: "SN",
-    optionA: "Step-by-step practical instructions",
-    optionB: "Understanding the big picture and theory",
+    optionA: "Clear, step-by-step instructions",
+    optionB: "Understanding why it works",
   },
   {
     id: 13,
-    question: "I tend to focus on:",
+    question: "I pay more attention to:",
     dimension: "SN",
-    optionA: "What is actually happening right now",
-    optionB: "What could happen in the future",
+    optionA: "Facts and details",
+    optionB: "Ideas and meanings",
   },
   {
     id: 14,
-    question: "I'm more impressed by people who are:",
+    question: "I trust:",
     dimension: "SN",
-    optionA: "Practical and realistic",
-    optionB: "Innovative and imaginative",
+    optionA: "What I can see and touch",
+    optionB: "My gut feelings",
   },
   {
     id: 15,
-    question: "When describing things, I use:",
+    question: "When telling a story, I:",
     dimension: "SN",
-    optionA: "Specific details and examples",
-    optionB: "Metaphors and analogies",
+    optionA: "Describe exactly what happened",
+    optionB: "Focus on the main idea",
   },
   {
     id: 16,
-    question: "I trust:",
+    question: "I'm better at:",
     dimension: "SN",
-    optionA: "Direct experience and proven methods",
-    optionB: "Intuition and gut feelings",
+    optionA: "Following proven methods",
+    optionB: "Coming up with new ideas",
   },
   {
     id: 17,
     question: "I prefer tasks that are:",
     dimension: "SN",
-    optionA: "Practical with clear applications",
-    optionB: "Theoretical with room for creativity",
+    optionA: "Practical and useful",
+    optionB: "Creative and original",
   },
   {
     id: 18,
-    question: "When reading, I pay more attention to:",
+    question: "When reading, I notice:",
     dimension: "SN",
-    optionA: "The literal meaning and facts",
-    optionB: "The underlying themes and symbolism",
+    optionA: "Specific facts and details",
+    optionB: "Hidden meanings and themes",
   },
   {
     id: 19,
-    question: "I'm better at remembering:",
+    question: "I remember things by:",
     dimension: "SN",
-    optionA: "Specific details and sequences",
-    optionB: "General impressions and patterns",
+    optionA: "Exact details of what happened",
+    optionB: "Overall impressions",
   },
   {
     id: 20,
-    question: "I prefer work that involves:",
+    question: "I like work that involves:",
     dimension: "SN",
-    optionA: "Established procedures and routines",
-    optionB: "Innovation and experimentation",
+    optionA: "Clear procedures",
+    optionB: "New possibilities",
   },
-
-  // Thinking (T) vs Feeling (F) - 10 questions
   {
     id: 21,
-    question: "When making important decisions, I prioritize:",
-    dimension: "TF",
-    optionA: "Logical analysis and objective criteria",
-    optionB: "Personal values and impact on people",
+    question: "When planning, I focus on:",
+    dimension: "SN",
+    optionA: "What needs to be done now",
+    optionB: "What could happen later",
   },
   {
     id: 22,
-    question: "I'm more convinced by:",
-    dimension: "TF",
-    optionA: "Logical reasoning and data",
-    optionB: "Emotional appeals and personal stories",
+    question: "I'm more interested in:",
+    dimension: "SN",
+    optionA: "How things work",
+    optionB: "Why things exist",
   },
   {
     id: 23,
-    question: "In conflicts, I focus on:",
-    dimension: "TF",
-    optionA: "Finding the most rational solution",
-    optionB: "Maintaining harmony and understanding feelings",
+    question: "I notice more:",
+    dimension: "SN",
+    optionA: "What's right in front of me",
+    optionB: "Patterns and connections",
   },
   {
     id: 24,
-    question: "I value being:",
-    dimension: "TF",
-    optionA: "Fair and consistent with everyone",
-    optionB: "Compassionate and accommodating to individual needs",
+    question: "I prefer:",
+    dimension: "SN",
+    optionA: "Tried and tested ways",
+    optionB: "Experimenting with new ways",
   },
   {
     id: 25,
-    question: "When giving feedback, I tend to be:",
-    dimension: "TF",
-    optionA: "Direct and straightforward about issues",
-    optionB: "Tactful and mindful of feelings",
+    question: "When solving problems, I use:",
+    dimension: "SN",
+    optionA: "Past experience",
+    optionB: "Imagination",
   },
   {
     id: 26,
-    question: "I make better decisions when considering:",
-    dimension: "TF",
-    optionA: "Objective pros and cons",
-    optionB: "How it affects people emotionally",
+    question: "I value:",
+    dimension: "SN",
+    optionA: "Being realistic",
+    optionB: "Being innovative",
   },
+
+  // Thinking (T) vs Feeling (F) - 12 questions
   {
     id: 27,
-    question: "In discussions, I'm more likely to:",
+    question: "When making decisions, I consider:",
     dimension: "TF",
-    optionA: "Challenge ideas to find the truth",
-    optionB: "Support others and build consensus",
+    optionA: "What makes sense logically",
+    optionB: "How people will feel",
   },
   {
     id: 28,
-    question: "I prefer praise that focuses on:",
+    question: "I'm more convinced by:",
     dimension: "TF",
-    optionA: "My competence and achievements",
-    optionB: "My character and positive impact",
+    optionA: "Facts and logic",
+    optionB: "Personal stories",
   },
   {
     id: 29,
-    question: "When someone is upset, I first:",
+    question: "When there's a conflict, I:",
     dimension: "TF",
-    optionA: "Try to solve the problem logically",
-    optionB: "Offer emotional support and empathy",
+    optionA: "Find the fair solution",
+    optionB: "Try to keep everyone happy",
   },
   {
     id: 30,
-    question: "I believe it's more important to be:",
+    question: "It's more important to be:",
     dimension: "TF",
-    optionA: "Right and accurate",
-    optionB: "Kind and understanding",
+    optionA: "Right",
+    optionB: "Kind",
+  },
+  {
+    id: 31,
+    question: "When I critique something, I:",
+    dimension: "TF",
+    optionA: "Point out what's wrong",
+    optionB: "Consider people's feelings",
+  },
+  {
+    id: 32,
+    question: "I make decisions based on:",
+    dimension: "TF",
+    optionA: "Pros and cons",
+    optionB: "Personal values",
+  },
+  {
+    id: 33,
+    question: "In arguments, I focus on:",
+    dimension: "TF",
+    optionA: "Being correct",
+    optionB: "Maintaining harmony",
+  },
+  {
+    id: 34,
+    question: "I prefer to be seen as:",
+    dimension: "TF",
+    optionA: "Competent",
+    optionB: "Caring",
+  },
+  {
+    id: 35,
+    question: "When someone is upset, I:",
+    dimension: "TF",
+    optionA: "Try to fix the problem",
+    optionB: "Offer comfort and support",
+  },
+  {
+    id: 36,
+    question: "I value:",
+    dimension: "TF",
+    optionA: "Truth and fairness",
+    optionB: "Compassion and empathy",
+  },
+  {
+    id: 37,
+    question: "I'm better at:",
+    dimension: "TF",
+    optionA: "Analyzing things objectively",
+    optionB: "Understanding people's emotions",
+  },
+  {
+    id: 38,
+    question: "When giving feedback, I:",
+    dimension: "TF",
+    optionA: "Say it directly",
+    optionB: "Say it gently",
   },
 
   // Judging (J) vs Perceiving (P) - 10 questions
   {
-    id: 31,
-    question: "I prefer my daily life to be:",
-    dimension: "JP",
-    optionA: "Planned and organized in advance",
-    optionB: "Spontaneous and flexible",
-  },
-  {
-    id: 32,
-    question: "With projects, I tend to:",
-    dimension: "JP",
-    optionA: "Start early and work steadily",
-    optionB: "Wait until closer to the deadline",
-  },
-  {
-    id: 33,
-    question: "I feel more comfortable when things are:",
-    dimension: "JP",
-    optionA: "Decided and settled",
-    optionB: "Open to change and adaptation",
-  },
-  {
-    id: 34,
-    question: "My workspace is usually:",
-    dimension: "JP",
-    optionA: "Neat and organized",
-    optionB: "Cluttered but I know where things are",
-  },
-  {
-    id: 35,
+    id: 39,
     question: "I prefer to:",
     dimension: "JP",
-    optionA: "Make plans and stick to them",
-    optionB: "Go with the flow and see what happens",
-  },
-  {
-    id: 36,
-    question: "When traveling, I like to:",
-    dimension: "JP",
-    optionA: "Have a detailed itinerary",
-    optionB: "Keep plans loose and explore freely",
-  },
-  {
-    id: 37,
-    question: "I handle deadlines by:",
-    dimension: "JP",
-    optionA: "Working ahead to avoid last-minute stress",
-    optionB: "Working best under time pressure",
-  },
-  {
-    id: 38,
-    question: "I feel stressed when:",
-    dimension: "JP",
-    optionA: "Things are too open-ended or chaotic",
-    optionB: "I'm too restricted by schedules and rules",
-  },
-  {
-    id: 39,
-    question: "In my life, I prefer:",
-    dimension: "JP",
-    optionA: "Structure and predictability",
-    optionB: "Variety and spontaneity",
+    optionA: "Plan things in advance",
+    optionB: "Be spontaneous",
   },
   {
     id: 40,
+    question: "With homework or projects, I:",
+    dimension: "JP",
+    optionA: "Start early",
+    optionB: "Wait until the last minute",
+  },
+  {
+    id: 41,
+    question: "I feel better when things are:",
+    dimension: "JP",
+    optionA: "Organized and decided",
+    optionB: "Flexible and open",
+  },
+  {
+    id: 42,
+    question: "My room is usually:",
+    dimension: "JP",
+    optionA: "Clean and organized",
+    optionB: "A bit messy",
+  },
+  {
+    id: 43,
+    question: "I like to:",
+    dimension: "JP",
+    optionA: "Make a plan and follow it",
+    optionB: "See what happens",
+  },
+  {
+    id: 44,
+    question: "When traveling, I prefer:",
+    dimension: "JP",
+    optionA: "A detailed schedule",
+    optionB: "Going with the flow",
+  },
+  {
+    id: 45,
+    question: "Deadlines make me:",
+    dimension: "JP",
+    optionA: "Work ahead to finish early",
+    optionB: "Work best under pressure",
+  },
+  {
+    id: 46,
+    question: "I feel stressed when:",
+    dimension: "JP",
+    optionA: "Things are unorganized",
+    optionB: "I have too many rules",
+  },
+  {
+    id: 47,
+    question: "I prefer:",
+    dimension: "JP",
+    optionA: "Structure and routine",
+    optionB: "Variety and change",
+  },
+  {
+    id: 48,
     question: "I make decisions:",
     dimension: "JP",
-    optionA: "Quickly to bring closure",
-    optionB: "After exploring all options",
+    optionA: "Quickly",
+    optionB: "After considering all options",
   },
 ];
 
@@ -387,7 +451,7 @@ export default function PersonalityTestPage() {
     return (
       <div className="min-h-screen pt-16 pb-12 bg-white">
         {/* Hero Section - Enhanced Banner */}
-        <section className="bg-linear-to-l from-blue-600 to-black text-white">
+        <section className="bg-gradient-to-l from-blue-600 to-black text-white">
           <div className="max-w-6xl mx-auto py-16 md:py-8 relative">
             {/* Back Button */}
             <button
@@ -423,6 +487,89 @@ export default function PersonalityTestPage() {
               <p className="text-lg md:text-xl text-blue-50 leading-relaxed mb-8">
                 {personality.tagline}
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Cognitive Functions Section */}
+        <section className="bg-white py-8 md:py-10 border-b">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl font-bold text-zinc-900 mb-6 text-center">
+              8 Cognitive Functions
+            </h2>
+
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+              {/* Se - Experience */}
+              <div className="bg-zinc-50 rounded-lg p-4 text-center hover:bg-zinc-100 transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <Eye size={20} className="text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-base text-zinc-900">Se</h3>
+                <p className="text-xs text-zinc-600">Experience</p>
+              </div>
+
+              {/* Ne - Possibilities */}
+              <div className="bg-zinc-50 rounded-lg p-4 text-center hover:bg-zinc-100 transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <Leaf size={20} className="text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-base text-zinc-900">Ne</h3>
+                <p className="text-xs text-zinc-600">Possibilities</p>
+              </div>
+
+              {/* Te - Order */}
+              <div className="bg-zinc-50 rounded-lg p-4 text-center hover:bg-zinc-100 transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <ListChecks size={20} className="text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-base text-zinc-900">Te</h3>
+                <p className="text-xs text-zinc-600">Order</p>
+              </div>
+
+              {/* Fe - Harmony */}
+              <div className="bg-zinc-50 rounded-lg p-4 text-center hover:bg-zinc-100 transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <Handshake size={20} className="text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-base text-zinc-900">Fe</h3>
+                <p className="text-xs text-zinc-600">Harmony</p>
+              </div>
+
+              {/* Si - Memory */}
+              <div className="bg-zinc-50 rounded-lg p-4 text-center hover:bg-zinc-100 transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <BookOpen size={20} className="text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-base text-zinc-900">Si</h3>
+                <p className="text-xs text-zinc-600">Memory</p>
+              </div>
+
+              {/* Ni - Insight */}
+              <div className="bg-zinc-50 rounded-lg p-4 text-center hover:bg-zinc-100 transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <Lightbulb size={20} className="text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-base text-zinc-900">Ni</h3>
+                <p className="text-xs text-zinc-600">Insight</p>
+              </div>
+
+              {/* Ti - Logic */}
+              <div className="bg-zinc-50 rounded-lg p-4 text-center hover:bg-zinc-100 transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <Zap size={20} className="text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-base text-zinc-900">Ti</h3>
+                <p className="text-xs text-zinc-600">Logic</p>
+              </div>
+
+              {/* Fi - Values */}
+              <div className="bg-zinc-50 rounded-lg p-4 text-center hover:bg-zinc-100 transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <Heart size={20} className="text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-base text-zinc-900">Fi</h3>
+                <p className="text-xs text-zinc-600">Values</p>
+              </div>
             </div>
           </div>
         </section>
@@ -558,7 +705,7 @@ export default function PersonalityTestPage() {
             </div>
 
             {/* Encouraging Note */}
-            <div className="mt-10 p-6 bg-linear-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200">
+            <div className="mt-10 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200">
               <p className="text-lg text-zinc-800 leading-loose">
                 <strong className="text-blue-700">Remember:</strong> These
                 aren&apos;t flaws—they&apos;re simply areas where you can level
@@ -756,7 +903,7 @@ export default function PersonalityTestPage() {
   return (
     <div className="min-h-screen pt-16 bg-zinc-100 overflow-hidden">
       {/* Hero Section */}
-      <section className="bg-linear-to-l from-blue-600 to-black text-white mt">
+      <section className="bg-gradient-to-l from-blue-600 to-black text-white">
         <div className="max-w-6xl mx-auto py-8 md:py-12 px-4 relative">
           {/* Test Toggle Button */}
           <button
@@ -776,7 +923,7 @@ export default function PersonalityTestPage() {
               Discover Your Personality Type
             </h1>
             <p className="text-base md:text-lg text-blue-100 mb-4">
-              Take our comprehensive 40-question MBTI assessment
+              Take our comprehensive 48-question MBTI assessment
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-blue-200">
               <span className="flex items-center gap-2">
@@ -785,7 +932,7 @@ export default function PersonalityTestPage() {
               </span>
               <span className="text-blue-400">•</span>
               <span className="flex items-center gap-2">
-                <Clock size={16} />5 Minutes
+                <Clock size={16} />7 Minutes
               </span>
               <span className="text-blue-400">•</span>
               <span>Instant Results</span>
@@ -795,9 +942,9 @@ export default function PersonalityTestPage() {
       </section>
 
       {/* Test Section */}
-      <section className="max-w-6xl mx-auto pt-8">
+      <section className="max-w-6xl mx-auto  h-screen flex flex-col justify-center px-4 sm:px-6">
         {/* Progress Bar */}
-        <div className="mb-6 max-w-2xl mx-auto">
+        <div className="mb-6 max-w-2xl mx-auto w-full">
           <div className="flex justify-between items-center mb-3">
             <span className="text-sm font-semibold text-zinc-700">
               Question {currentQuestion + 1} of {questions.length}
@@ -808,7 +955,7 @@ export default function PersonalityTestPage() {
           </div>
           <div className="w-full bg-zinc-200 rounded-full h-2.5 shadow-inner">
             <div
-              className="bg-linear-to-r from-blue-600 to-blue-700 h-2.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-600/30"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 h-2.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-600/30"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -816,24 +963,23 @@ export default function PersonalityTestPage() {
 
         {/* Question Card */}
         <div className="bg-white rounded-2xl p-6 md:p-8 border border-zinc-200">
-          <h2 className="text-lg md:text-3xl font-semibold text-zinc-900 text-center leading-relaxed">
+          <h2 className="text-lg md:text-2xl font-semibold text-zinc-900 text-center leading-relaxed mb-8">
             {questions[currentQuestion].question}
           </h2>
           {/* Helper Text */}
-          <div className=" p-2 mb-6">
-            <p className="text-center text-zinc-700">
-              Pick <span className="font-semibold text-zinc-900">1-2</span> for
-              Option A, <span className="font-semibold text-zinc-900">3</span>{" "}
-              for neutral, and{" "}
-              <span className="font-semibold text-zinc-900">4-5</span> for
-              Option B.
+          <div className="p-2 mb-6">
+            <p className="text-center text-zinc-600">
+              Choose <span className="font-semibold text-blue-600">A</span> or{" "}
+              <span className="font-semibold text-green-600">B</span>, or{" "}
+              <span className="font-semibold text-zinc-700">Neutral</span> if
+              neither fits perfectly
             </p>
           </div>
 
           {/* Options + Scale */}
           <div className="mb-6 grid gap-4 md:grid-cols-[1fr_auto_1fr] items-center">
-            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
-              <p className="text-xs font-semibold text-zinc-500 mb-1 uppercase tracking-wide">
+            <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+              <p className="text-xs font-semibold text-blue-600 mb-1 uppercase tracking-wide">
                 Option A
               </p>
               <p className="text-sm md:text-lg font-medium text-zinc-900">
@@ -843,9 +989,9 @@ export default function PersonalityTestPage() {
 
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs font-medium text-zinc-600 px-2">
-                <span>Left (A)</span>
+                <span>A</span>
                 <span className="text-zinc-500">Neutral</span>
-                <span>Right (B)</span>
+                <span>B</span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 {[1, 2, 3, 4, 5].map((value) => (
@@ -854,7 +1000,11 @@ export default function PersonalityTestPage() {
                     onClick={() => handleAnswer(value)}
                     className={`flex h-12 w-12 items-center justify-center rounded-md border text-sm font-semibold transition-colors cursor-pointer ${
                       currentAnswer === value
-                        ? "border-blue-600 bg-blue-600 text-white"
+                        ? value === 3
+                          ? "border-zinc-500 bg-zinc-500 text-white"
+                          : value < 3
+                            ? "border-blue-600 bg-blue-600 text-white"
+                            : "border-green-600 bg-green-600 text-white"
                         : "border-zinc-300 bg-white text-zinc-800 hover:border-blue-400"
                     }`}
                   >
@@ -864,8 +1014,8 @@ export default function PersonalityTestPage() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
-              <p className="text-xs font-semibold text-zinc-500 mb-1 uppercase tracking-wide">
+            <div className="rounded-lg border border-green-200 bg-green-50 p-4">
+              <p className="text-xs font-semibold text-green-600 mb-1 uppercase tracking-wide">
                 Option B
               </p>
               <p className="text-sm md:text-lg font-medium text-zinc-900">
@@ -904,7 +1054,7 @@ export default function PersonalityTestPage() {
               className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all ${
                 !isAnswered
                   ? "bg-zinc-200 text-zinc-400 cursor-not-allowed"
-                  : "bg-linear-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 cursor-pointer"
+                  : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 cursor-pointer"
               }`}
             >
               <span className="hidden sm:inline">
